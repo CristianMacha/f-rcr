@@ -1,0 +1,11 @@
+@import "../assets/scss/breakpoint";
+
+.cart-container {
+  @media (min-width: $sm) {
+    width: 100%;
+  }
+
+  @media (min-width: $md) {
+    width: calc(100% - 24rem);
+  }
+}
