@@ -1,0 +1,114 @@
+<div class="relative">
+  <div class="p-5 md:p-10 box-border cart-container">
+    <div class="flex g-5 items-center">
+      <img
+        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+        alt="rcr" width="75">
+      <h1 class="text-2xl font-light">Your Shopping Cart</h1>
+    </div>
+    <div class="mt-20 w-auto px-0 lg:px-20">
+      <div class="flex flex-col gap-5" *ngIf="woo">
+        <div *ngFor="let item of woo.items" class=" bg-slate-200 flex flex-row gap-5 justify-between">
+          <div>
+            <img [src]="item.images[0].src" [alt]="item.images[0].alt" class="w-40 h-40">
+          </div>
+          <div
+            class="flex flex-col h-40 w-60 justify-center lg:flex-row lg: lg:items-center lg:gap-5 lg:w-80 lg:justify-between">
+            <h3 class="font-bold text-lg whitespace-pre-wrap">{{item.name | titlecase}}</h3>
+            <div>
+              <p>{{item.variation[0].value}}</p>
+              <p>{{item.variation[1].value}}</p>
+            </div>
+            <div class="flex flex-row items-center gap-2">
+              <small>{{item.quantity}}</small>
+              <div class="flex flex-row gap-1">
+                <button class="bg-gray-500 text-white rounded-xl pl-2 pr-2 hover:bg-gray-700"
+                        (click)="handleAdd(item, true)">+
+                </button>
+                <button class="bg-gray-500 text-white rounded-xl pl-2 pr-2 hover:bg-gray-700"
+                        (click)="handleAdd(item, false)">-
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-start lg:items-center lg:h-40 lg:bg-stone-100">
+            <button class="bg-slate-200 lg:bg-slate-100 p-2 font-bold" (click)="handleRemoveItem(item)">X</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="checkout_container"
+     class="fixed bottom-2 w-full p-5 box-border md:bottom-0 md:p-0 md:w-96 md:right-0 md:top-0 drop-shadow-none md:drop-shadow-2xl transition-all">
+  <div id="view_checkout"
+       class="bg-gray-100 rounded-lg h-10 relative overflow-hidden transition-all md:rounded-none md:h-full">
+    <div id="view_cart_popup"
+         class="h-10 md:hidden bg-primary cursor-pointer md:cursor-default flex items-center justify-center"
+         (click)="openCheckout()">
+      <p class="text-white m-0">{{activeCheckout ? 'Close' : 'Open'}} Checkout</p>
+    </div>
+    <div class="w-full p-5">
+      <div class="text-center">
+        <h1 class="font-bold text-primary text-2xl">CONTACT US</h1>
+      </div>
+      <div>
+        <form [formGroup]="contactUsForm">
+          <div class="flex flex-col">
+            <mat-form-field>
+              <mat-label>Full Name</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="Full Name"
+                autocomplete="off"
+                formControlName="fullName">
+              <mat-error>Full name is required.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input
+                type="email"
+                matInput
+                placeholder="Email"
+                autocomplete="off"
+                formControlName="email">
+              <mat-error>Email is required.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>City</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="city"
+                autocomplete="off"
+                formControlName="city">
+              <mat-error>City is required.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Message</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="Message"
+                autocomplete="off"
+                formControlName="message">
+            </mat-form-field>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="relative md:absolute w-full p-5 md:bottom-0">
+      <button
+        mat-flat-button
+        color="primary"
+        class="w-full"
+        (click)="handleCheckout()"
+        *ngIf="woo"
+        [disabled]="loading || woo.items.length == 0">Checkout</button>
+    </div>
+  </div>
+</div>

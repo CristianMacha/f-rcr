@@ -1,4 +1,4 @@
-export interface RootObject {
+export interface WooInterface {
   billing_address:         IngAddress;
   coupons:                 any[];
   errors:                  any[];
@@ -15,9 +15,9 @@ export interface RootObject {
   shipping_address:        IngAddress;
   shipping_rates:          any[];
   totals:                  RootObjectTotals;
- }
+}
 
- export interface IngAddress {
+export interface IngAddress {
   address_1:  string;
   address_2:  string;
   city:       string;
@@ -29,12 +29,12 @@ export interface RootObject {
   phone?:     string;
   postcode:   string;
   state:      string;
- }
+}
 
- export interface Extensions {
- }
+export interface Extensions {
+}
 
- export interface Item {
+export interface Item {
   backorders_allowed:   boolean;
   catalog_visibility:   string;
   description:          string;
@@ -55,9 +55,9 @@ export interface RootObject {
   sold_individually:    boolean;
   totals:               ItemTotals;
   variation:            Variation[];
- }
+}
 
- export interface Image {
+export interface Image {
   alt:       string;
   id:        number;
   name:      string;
@@ -65,9 +65,9 @@ export interface RootObject {
   src:       string;
   srcset:    string;
   thumbnail: string;
- }
+}
 
- export interface Prices {
+export interface Prices {
   currency_code:               string;
   currency_decimal_separator:  string;
   currency_minor_unit:         number;
@@ -80,16 +80,16 @@ export interface RootObject {
   raw_prices:                  RawPrices;
   regular_price:               string;
   sale_price:                  string;
- }
+}
 
- export interface RawPrices {
+export interface RawPrices {
   precision:     number;
   price:         string;
   regular_price: string;
   sale_price:    string;
- }
+}
 
- export interface ItemTotals {
+export interface ItemTotals {
   currency_code:               string;
   currency_decimal_separator:  string;
   currency_minor_unit:         number;
@@ -101,14 +101,14 @@ export interface RootObject {
   line_subtotal_tax:           string;
   line_total:                  string;
   line_total_tax:              string;
- }
+}
 
- export interface Variation {
+export interface Variation {
   attribute: string;
   value:     string;
- }
+}
 
- export interface RootObjectTotals {
+export interface RootObjectTotals {
   currency_code:               string;
   currency_decimal_separator:  string;
   currency_minor_unit:         number;
@@ -127,4 +127,4 @@ export interface RootObject {
   total_shipping:              string;
   total_shipping_tax:          string;
   total_tax:                   string;
- }
+}
