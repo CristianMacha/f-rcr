@@ -16,7 +16,7 @@ export class WoocommerceService {
   }
 
   getCart(): Observable<WooInterface> {
-    return this.http.get<WooInterface>(`${this.uri}/cart?${this.accessApi}`);
+    return this.http.get<WooInterface>(`${this.uri}/cart?${this.accessApi}`, {});
   }
 
   removeItem(key: string): Observable<WooInterface> {

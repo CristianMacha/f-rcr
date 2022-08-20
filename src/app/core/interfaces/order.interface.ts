@@ -1,6 +1,7 @@
 import {WooInterface} from "./woo.interfaces";
 
 export interface OrderInterface {
+  code: string;
   contact: ContactInterface,
   woo: WooInterface
   createdAt: string,
@@ -11,5 +12,5 @@ export interface ContactInterface {
   email: string,
   city: string,
   message: string,
-  photo?: string,
+  file?: string,
 }

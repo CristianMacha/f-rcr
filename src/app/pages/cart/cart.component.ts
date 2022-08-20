@@ -1,8 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {Item, WooInterface} from '@core/interfaces';
-import {OrderService, WoocommerceService} from '@core/services';
-import {Router} from "@angular/router";
+import {OrderService, StorageService, WoocommerceService} from '@core/services';
+import {ActivatedRoute, Router} from "@angular/router";
+import {nanoid} from "nanoid";
+import * as moment from "moment";
+import {finalize} from "rxjs";
 
 @Component({
   selector: 'vs-cart',
@@ -13,19 +16,25 @@ export class CartComponent implements OnInit {
   activeCheckout = false;
   woo!: WooInterface;
   loading: boolean = false;
+  loadingCart = false;
+
+  file!: File | null;
+  fileName!: string;
 
   contactUsForm = new UntypedFormGroup({
     fullName: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
     city: new FormControl('', Validators.required),
     message: new FormControl(''),
-    photo: new FormControl('')
+    file: new FormControl('')
   });
 
   constructor(
     private wo: WoocommerceService,
     private orderService: OrderService,
     private router: Router,
+    private storageService: StorageService,
+    private activatedRoute: ActivatedRoute,
   ) {
   }
 
@@ -37,26 +46,56 @@ export class CartComponent implements OnInit {
     this.contactUsForm.invalid ? this.contactUsForm.markAllAsTouched() : this.createOrder();
   }
 
+  handleSelectFile(event: any) {
+    this.file = event.target.files[0];
+    if (!this.file) {
+      return
+    }
+    this.fileName = this.file.name;
+    this.contactUsForm.controls['file'].patchValue(nanoid(10));
+  }
+
   createOrder() {
     this.loading = true;
-    this.orderService.createNewOrder({woo: this.woo, contact: this.contactUsForm.value, createdAt: new Date().toString()})
+    const code = nanoid();
+    this.orderService.createNewOrder({
+      code,
+      woo: this.woo,
+      contact: this.contactUsForm.value,
+      createdAt: moment().format().toString(),
+    })
       .then((resp) => {
         this.cleanCart();
+        this.uploadFile();
+        this.contactUsForm.reset();
         this.router.navigateByUrl('checkout');
       })
       .finally(() => this.loading = false);
   }
 
   getCart(): void {
+    this.loadingCart = this.loading = true;
     this.wo.getCart()
-      .subscribe((resp) => {
-        this.woo = resp;
-        console.log(resp)
-      });
+      .pipe(finalize(() => this.loadingCart = this.loading = false))
+      .subscribe((resp) => this.woo = resp);
   }
 
   cleanCart(): void {
+    if (this.woo.items.length == 0) {
+      return;
+    }
     this.woo.items.forEach((item) => this.wo.removeItem(item.key).subscribe((resp) => console.log(resp)));
+  }
+
+  uploadFile(): void {
+    if (!this.file) {
+      return;
+    }
+    this.storageService.uploadOrderFile(this.contactUsForm.controls['file'].value, this.file)
+      .then(() => {
+        (document.getElementById('fileUpload') as HTMLInputElement).value = "";
+        this.file = null;
+      })
   }
 
   handleAdd(item: Item, add: boolean): void {

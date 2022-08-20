@@ -15,6 +15,8 @@ import {MaterialModule} from './material/material.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FIREBASE_OPTIONS} from "@angular/fire/compat";
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import {SharedModule} from "./shared/shared.module";
+import {CookieService} from "ngx-cookie-service";
 
 @NgModule({
   declarations: [
@@ -33,8 +35,10 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
     BrowserAnimationsModule,
+    SharedModule
   ],
   providers: [
+    CookieService,
     {
       provide: FIREBASE_OPTIONS, useValue: environment.firebase,
     }

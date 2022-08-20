@@ -1,4 +1,9 @@
 <mat-toolbar color="primary">
-  <img src="https://www.rcr-flooring.com/wp-content/uploads/2022/05/LOGO-RCR-ACTUALIZADO-blanco-150x150.png" alt="logo" width="75">
+  <img src="https://www.rcr-flooring.com/wp-content/uploads/2022/05/LOGO-RCR-ACTUALIZADO-blanco-150x150.png" alt="logo"
+       width="75">
+  <span class="example-spacer"></span>
+  <button mat-icon-button (click)="logout()">
+    <mat-icon>logout</mat-icon>
+  </button>
 </mat-toolbar>
 <router-outlet></router-outlet>

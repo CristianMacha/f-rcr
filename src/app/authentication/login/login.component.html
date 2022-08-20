@@ -1,0 +1,40 @@
+<div class="flex justify-center items-center h-full">
+  <div class="relative p-10 drop-shadow-none md:px-5 md:bg-white md:w-96 md:drop-shadow-md md:rounded-md">
+    <div class="mb-5">
+      <img src="https://www.rcr-flooring.com/wp-content/uploads/2022/04/logonuevo.svg" width="75">
+    </div>
+    <div>
+      <h1 class="text-4xl">Welcome!</h1>
+      <p class="text-base text-gray-500">Sign in to continue</p>
+    </div>
+    <div class="mt-2" *ngIf="hasErrorMessage">
+      <div class="bg-red-200 rounded-md p-5 flex gap-5">
+        <mat-icon>warning</mat-icon>
+        <p class="m-0 text-gray-600 font-light">Sorry, that password isn't right.</p>
+      </div>
+    </div>
+    <div class="pt-14">
+      <form [formGroup]="authForm">
+        <mat-form-field class="w-full">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="email">
+          <mat-error>Email is required</mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-full">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password">
+          <mat-error>Password is required</mat-error>
+        </mat-form-field>
+      </form>
+      <div class="text-center">
+        <button
+          mat-flat-button
+          color="primary"
+          class="w-full"
+          (click)="handleLogin()"
+          [disabled]="loading">Login</button>
+        <a class="text-sm text-gray-600 mt-5">Forgot Password?</a>
+      </div>
+    </div>
+  </div>
+</div>

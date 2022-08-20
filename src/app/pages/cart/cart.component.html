@@ -2,37 +2,44 @@
   <div class="p-5 md:p-10 box-border cart-container">
     <div class="flex g-5 items-center">
       <img
-        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+        src="../../../assets/svg/cart.svg"
         alt="rcr" width="75">
       <h1 class="text-2xl font-light">Your Shopping Cart</h1>
     </div>
     <div class="mt-20 w-auto px-0 lg:px-20">
+      <vs-loader [text]="'Loading cart items'" *ngIf="loadingCart"></vs-loader>
+      <div *ngIf="woo && woo.items.length == 0" class="w-full flex flex-col items-center">
+        <img src="assets/svg/undraw_empty_cart_co35.svg" class="w-96">
+        <p class="text-lg">Go to our <a href="https://www.rcr-flooring.com/services/" class="text-primary font-bold underline decoration-primary">services</a></p>
+      </div>
       <div class="flex flex-col gap-5" *ngIf="woo">
         <div *ngFor="let item of woo.items" class=" bg-slate-200 flex flex-row gap-5 justify-between">
           <div>
             <img [src]="item.images[0].src" [alt]="item.images[0].alt" class="w-40 h-40">
           </div>
           <div
-            class="flex flex-col h-40 w-60 justify-center lg:flex-row lg: lg:items-center lg:gap-5 lg:w-80 lg:justify-between">
-            <h3 class="font-bold text-lg whitespace-pre-wrap">{{item.name | titlecase}}</h3>
+            class="flex flex-col lg:flex-row h-40 justify-center lg:flex-row lg: lg:items-center lg:gap-5 lg:justify-between">
+            <h3 class="font-bold text-lg whitespace-nowrap">{{item.name | titlecase}}</h3>
             <div>
-              <p>{{item.variation[0].value}}</p>
-              <p>{{item.variation[1].value}}</p>
+              <p class="whitespace-nowrap">material: {{item.variation[0].value}}</p>
+              <p class="whitespace-nowrap">tile: {{item.variation[1].value}}</p>
             </div>
             <div class="flex flex-row items-center gap-2">
               <small>{{item.quantity}}</small>
               <div class="flex flex-row gap-1">
-                <button class="bg-gray-500 text-white rounded-xl pl-2 pr-2 hover:bg-gray-700"
-                        (click)="handleAdd(item, true)">+
+                <button mat-icon-button color="primary" (click)="handleAdd(item, false)">
+                  <mat-icon>remove</mat-icon>
                 </button>
-                <button class="bg-gray-500 text-white rounded-xl pl-2 pr-2 hover:bg-gray-700"
-                        (click)="handleAdd(item, false)">-
+                <button mat-icon-button color="primary" (click)="handleAdd(item, true)">
+                  <mat-icon>add</mat-icon>
                 </button>
               </div>
             </div>
           </div>
           <div class="flex items-start lg:items-center lg:h-40 lg:bg-stone-100">
-            <button class="bg-slate-200 lg:bg-slate-100 p-2 font-bold" (click)="handleRemoveItem(item)">X</button>
+            <button mat-icon-button (click)="handleRemoveItem(item)">
+              <mat-icon>close</mat-icon>
+            </button>
           </div>
         </div>
       </div>
@@ -49,8 +56,9 @@
       <p class="text-white m-0">{{activeCheckout ? 'Close' : 'Open'}} Checkout</p>
     </div>
     <div class="w-full p-5">
-      <div class="text-center">
-        <h1 class="font-bold text-primary text-2xl">CONTACT US</h1>
+      <div class="flex place-items-center flex-col w-full">
+        <img src="https://www.rcr-flooring.com/wp-content/uploads/2022/04/logonuevo.svg" width="125px">
+        <h1 class="font-bold text-primary text-2xl mt-2 md:mt-5 lg:mt-6">CONTACT US</h1>
       </div>
       <div>
         <form [formGroup]="contactUsForm">
@@ -97,6 +105,13 @@
                 autocomplete="off"
                 formControlName="message">
             </mat-form-field>
+
+            <p>Upload your Sketch / Layout / Drawing</p>
+            <input
+              id="fileUpload"
+              type="file"
+              class="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
+              (change)="handleSelectFile($event)">
           </div>
         </form>
       </div>
@@ -108,7 +123,8 @@
         class="w-full"
         (click)="handleCheckout()"
         *ngIf="woo"
-        [disabled]="loading || woo.items.length == 0">Checkout</button>
+        [disabled]="loading">Checkout
+      </button>
     </div>
   </div>
 </div>

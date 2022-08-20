@@ -1,0 +1,68 @@
+<h1 mat-dialog-title>Order: #{{data.code}}</h1>
+<div mat-dialog-content>
+  <div class="">
+    <div class="mb-3">
+      <h4 class="m-0 font-bold text-primary">Full Name</h4>
+      <p>{{data.contact.fullName | titlecase}}</p>
+    </div>
+    <div class="mb-3">
+      <h4 class="m-0 font-bold text-primary">Email</h4>
+      <p>{{data.contact.email}}</p>
+    </div>
+    <div class="mb-3">
+      <h4 class="m-0 font-bold text-primary">City</h4>
+      <p>{{data.contact.city | uppercase}}</p>
+    </div>
+    <div class="mb-3">
+      <h4 class="m-0 font-bold text-primary">Message</h4>
+      <p>{{data.contact.message || '---'}}</p>
+    </div>
+    <div class="mb-3" *ngIf="data.contact.file">
+      <button
+        mat-raised-button
+        (click)="handleOpenLink(data.contact.file)"
+        [disabled]="loadingFile">
+        Open File
+        <mat-icon>open_in_new</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="overflow-auto" *ngIf="dataSource.data.length > 0">
+    <table mat-table [dataSource]="dataSource" class="w-full">
+      <ng-container matColumnDef="photo">
+        <th mat-header-cell *matHeaderCellDef>Photo</th>
+        <td mat-cell *matCellDef="let item">
+          <div class="py-2">
+            <img [src]="item.images[0].src" [alt]="item.images[0].alt" width="75" height="75">
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let item">{{item.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="variation">
+        <th mat-header-cell *matHeaderCellDef>Variation</th>
+        <td mat-cell *matCellDef="let item">{{item.variation[0].value}} | {{item.variation[1].value}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef>Quantity</th>
+        <td mat-cell *matCellDef="let item">{{item.quantity}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnsToDisplay" class="px-2"></tr>
+    </table>
+  </div>
+</div>
+<div mat-dialog-actions [align]="'end'">
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="onNoClick()">
+    Close
+  </button>
+</div>

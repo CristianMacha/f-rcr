@@ -1,14 +1,16 @@
 export const environment = {
   firebase: {
-    projectId: 'intranet-360-cc055',
-    appId: '1:446152677682:web:79e0ec6a4c3ceb08e21f2b',
-    databaseURL: 'https://intranet-360-cc055-default-rtdb.firebaseio.com',
-    storageBucket: 'intranet-360-cc055.appspot.com',
+    apiKey: "AIzaSyA9XsKTGOGc_BeH5gvAO0D-WoWBi_iUU7E",
+    authDomain: "rcr-cart.firebaseapp.com",
+    projectId: "rcr-cart",
+    storageBucket: "rcr-cart.appspot.com",
+    messagingSenderId: "1078889983311",
+    appId: "1:1078889983311:web:2aaa5e8bb517c0a7a6293a",
+    measurementId: "G-Q3GT43FNLS",
     locationId: 'us-central',
-    apiKey: 'AIzaSyB0mJ2PVOCQIUIO4yATPNtfsJdsLhW7QJQ',
-    authDomain: 'intranet-360-cc055.firebaseapp.com',
-    messagingSenderId: '446152677682',
-    measurementId: 'G-6VF6TD49FK',
   },
-  production: true
+  production: true,
+  wp_url: 'https://www.rcr-flooring.com',
+  consumer_key: 'ck_07fa79aee80bd4585dfde9b362f2cba6263015d6',
+  consumer_secret: 'cs_f31e79b09aebfd1ba6553f0d8763ef6bbca150df',
 };
