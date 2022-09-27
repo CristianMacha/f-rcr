@@ -16,12 +16,14 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {FIREBASE_OPTIONS} from "@angular/fire/compat";
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import {SharedModule} from "./shared/shared.module";
+import { FormComponent } from './pages/form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
