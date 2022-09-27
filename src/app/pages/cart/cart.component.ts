@@ -1,11 +1,11 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, UntypedFormGroup, Validators} from '@angular/forms';
-import {Item, WooInterface} from '@core/interfaces';
+import {ProductInterface} from '@core/interfaces';
 import {OrderService, StorageService, WoocommerceService} from '@core/services';
 import {ActivatedRoute, Router} from "@angular/router";
 import {nanoid} from "nanoid";
 import * as moment from "moment";
-import {finalize} from "rxjs";
+import {finalize, timeout} from "rxjs";
 
 @Component({
   selector: 'vs-cart',
@@ -14,7 +14,7 @@ import {finalize} from "rxjs";
 })
 export class CartComponent implements OnInit {
   activeCheckout = false;
-  woo!: WooInterface;
+  products: ProductInterface[] = [];
   loading: boolean = false;
   loadingCart = false;
 
@@ -39,7 +39,7 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCart();
+    this.activatedRoute.queryParams.subscribe((resp) => this.products = JSON.parse(resp['data']));
   }
 
   handleCheckout() {
@@ -60,7 +60,7 @@ export class CartComponent implements OnInit {
     const code = nanoid();
     this.orderService.createNewOrder({
       code,
-      woo: this.woo,
+      products: this.products,
       contact: this.contactUsForm.value,
       createdAt: moment().format().toString(),
     })
@@ -73,18 +73,11 @@ export class CartComponent implements OnInit {
       .finally(() => this.loading = false);
   }
 
-  getCart(): void {
-    this.loadingCart = this.loading = true;
-    this.wo.getCart()
-      .pipe(finalize(() => this.loadingCart = this.loading = false))
-      .subscribe((resp) => this.woo = resp);
-  }
-
   cleanCart(): void {
-    if (this.woo.items.length == 0) {
+    if (this.products.length == 0) {
       return;
     }
-    this.woo.items.forEach((item) => this.wo.removeItem(item.key).subscribe((resp) => console.log(resp)));
+    this.products.forEach((item) => this.wo.removeItem(item.key).subscribe((resp) => console.log(resp)));
   }
 
   uploadFile(): void {
@@ -98,14 +91,13 @@ export class CartComponent implements OnInit {
       })
   }
 
-  handleAdd(item: Item, add: boolean): void {
-    add ? item.quantity++ : item.quantity--;
-    item.quantity == 0 && item.quantity++;
+  handleAdd(product: ProductInterface, add: boolean): void {
+    add ? product.quantity++ : product.quantity--;
+    product.quantity == 0 && product.quantity++;
   }
 
-  handleRemoveItem(item: Item): void {
-    const indexItem = this.woo.items.findIndex(i => i.key === item.key);
-    (this.woo.items.length > 1) && this.woo.items.splice(indexItem, 1);
+  handleRemoveItem(index: number): void {
+    this.products.splice(index, 1);
   }
 
   openCheckout(): void {

@@ -16,6 +16,6 @@ export class OrderService {
   }
 
   getOrders(): Observable<OrderInterface[]> {
-    return this.afs.collection<OrderInterface>(this.path, ref => ref.orderBy('woo.generated_timestamp', 'desc')).valueChanges();
+    return this.afs.collection<OrderInterface>(this.path, ref => ref.orderBy('createdAt', 'desc')).valueChanges();
   }
 }

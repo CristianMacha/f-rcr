@@ -8,21 +8,21 @@
     </div>
     <div class="mt-20 w-auto px-0 lg:px-20">
       <vs-loader [text]="'Loading cart items'" *ngIf="loadingCart"></vs-loader>
-      <div *ngIf="woo && woo.items.length == 0" class="w-full flex flex-col items-center">
+      <div *ngIf="products.length == 0" class="w-full flex flex-col items-center">
         <img src="assets/svg/undraw_empty_cart_co35.svg" class="w-96">
         <p class="text-lg">Go to our <a href="https://www.rcr-flooring.com/services/" class="text-primary font-bold underline decoration-primary">services</a></p>
       </div>
-      <div class="flex flex-col gap-5" *ngIf="woo">
-        <div *ngFor="let item of woo.items" class=" bg-slate-200 flex flex-row gap-5 justify-between">
+      <div class="flex flex-col gap-5 mb-14" *ngIf="products.length > 0">
+        <div *ngFor="let item of products; let i = index;" class=" bg-slate-200 flex flex-row gap-5 justify-between">
           <div>
-            <img [src]="item.images[0].src" [alt]="item.images[0].alt" class="w-40 h-40">
+            <img [src]="item.image" class="w-40 h-40">
           </div>
           <div
             class="flex flex-col lg:flex-row h-40 justify-center lg:flex-row lg: lg:items-center lg:gap-5 lg:justify-between">
             <h3 class="font-bold text-lg whitespace-nowrap">{{item.name | titlecase}}</h3>
             <div>
-              <p class="whitespace-nowrap">material: {{item.variation[0].value}}</p>
-              <p class="whitespace-nowrap">tile: {{item.variation[1].value}}</p>
+              <p class="whitespace-nowrap">material: {{item.material}}</p>
+              <p class="whitespace-nowrap">tile: {{item.tile}}</p>
             </div>
             <div class="flex flex-row items-center gap-2">
               <small>{{item.quantity}}</small>
@@ -37,7 +37,7 @@
             </div>
           </div>
           <div class="flex items-start lg:items-center lg:h-40 lg:bg-stone-100">
-            <button mat-icon-button (click)="handleRemoveItem(item)">
+            <button mat-icon-button (click)="handleRemoveItem(i)">
               <mat-icon>close</mat-icon>
             </button>
           </div>
@@ -122,7 +122,6 @@
         color="primary"
         class="w-full"
         (click)="handleCheckout()"
-        *ngIf="woo"
         [disabled]="loading">Checkout
       </button>
     </div>

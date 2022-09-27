@@ -1,9 +1,9 @@
-import {WooInterface} from "./woo.interfaces";
+import {ProductInterface} from "./product.interface";
 
 export interface OrderInterface {
   code: string;
   contact: ContactInterface,
-  woo: WooInterface
+  products: ProductInterface[],
   createdAt: string,
 }
 

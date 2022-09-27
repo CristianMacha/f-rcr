@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {MatTableDataSource} from "@angular/material/table";
-import {Item, OrderInterface} from "@core/interfaces";
+import {OrderInterface, ProductInterface} from "@core/interfaces";
 import {DOCUMENT} from "@angular/common";
 import {StorageService} from "@core/services";
 
@@ -11,8 +11,8 @@ import {StorageService} from "@core/services";
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
-  columnsToDisplay = ['photo', 'name', 'variation', 'quantity'];
-  dataSource = new MatTableDataSource<Item>([]);
+  columnsToDisplay = ['photo', 'name', 'material', 'tile', 'quantity'];
+  dataSource = new MatTableDataSource<ProductInterface>([]);
 
   loadingFile: boolean = false;
 
@@ -22,7 +22,7 @@ export class DetailComponent implements OnInit {
     @Inject(DOCUMENT) private document: Document,
     private storageService: StorageService,
   ) {
-    this.dataSource.data = this.data.woo.items;
+    this.dataSource.data = this.data.products;
   }
 
   ngOnInit(): void {
