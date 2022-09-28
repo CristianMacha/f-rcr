@@ -1,0 +1,15 @@
+.input_group {
+  width: 60rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.input_name {
+  width: 100%;
+  padding: 15px;
+  font-size: 24px;
+  border: 2px solid #2f68db;
+  border-radius: 5px;
+  color: #2f68db;
+}

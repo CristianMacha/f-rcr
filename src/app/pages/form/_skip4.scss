@@ -1,0 +1,54 @@
+.s4_options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.s4_item {
+  display: flex;
+  gap: 10px;
+}
+
+.s4_name {
+  width: 300px;
+  text-align: center;
+
+  &.name_item {
+    padding: 12px 14px 12px 14px;
+    color: white;
+    border: 2px solid white;
+  }
+}
+
+.s4_materials {
+  display: flex;
+  gap: 10px;
+}
+
+.material_header {
+  width: 80px;
+  color: white;
+  text-align: center;
+  display: flex;
+  align-items: flex-end;
+}
+
+.option_selectable {
+  width: 80px;
+  color: white;
+  font-weight: bold;
+  border: 2px solid white;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #1f4998b8;
+  }
+
+  &.active {
+    background-color: #1f4998;
+  }
+}

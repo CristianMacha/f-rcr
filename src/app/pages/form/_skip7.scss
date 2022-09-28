@@ -1,0 +1,32 @@
+.input {
+  width: 60rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border: 2px solid #2f68db;
+  background-color: white;
+  border-radius: 5px;
+
+  & h4 {
+    font-weight: 200;
+    font-size: 24px;
+    margin: 0;
+  }
+
+  & .btn_file {
+    background-color: #2f68db;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    font-weight: 200;
+    width: 15rem;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: .9;
+    }
+  }
+}

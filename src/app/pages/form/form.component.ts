@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormService, StorageService } from '@core/services';
+import * as moment from 'moment';
+import { nanoid } from 'nanoid';
 
 @Component({
   selector: 'vs-form',
@@ -13,14 +17,25 @@ export class FormComponent implements OnInit {
     scale: 'scaleX(1)',
   }
 
+  inputFile = 'No file selected';
+  file!: File;
+
+  s6formControl = new FormControl('LESS THAN 25 (SMALL)');
+  s8locationFormControl = new FormControl('');
+  s9InfoFormGroup = new UntypedFormGroup({
+    firstName: new FormControl('', Validators.required),
+    lastName: new FormControl('', Validators.required),
+
+  })
+
   skipts = [
     {
       skip: 1,
-      active: false,
+      active: true,
     },
     {
       skip: 2,
-      active: true,
+      active: false,
     },
     {
       skip: 3,
@@ -57,7 +72,8 @@ export class FormComponent implements OnInit {
   ];
 
   formRcr = {
-    id: null,
+    id: '',
+    createdAt: '',
     skipOne: {
       title: 'WHERE DO YOU NEED TILE?',
       subTitle: 'PICK ONE OR MANY AREAS',
@@ -107,25 +123,25 @@ export class FormComponent implements OnInit {
         {
           id: 1,
           name: 'FLOOR',
-          src: 'assets/imgs/Mesa_de_trabajo_16.jpg',
+          src: 'assets/imgs/Mesa_de_trabajo_18.jpg',
           selected: false,
         },
         {
           id: 2,
           name: 'BACKSPLASH',
-          src: 'assets/imgs/Mesa_de_trabajo_17.jpg',
+          src: 'assets/imgs/Mesa_de_trabajo_19.jpg',
           selected: false,
         },
         {
           id: 3,
           name: 'TUB/SHOWER ENCLOSURE',
-          src: 'assets/imgs/Mesa_de_trabajo_18.jpg',
+          src: 'assets/imgs/Mesa_de_trabajo_16.jpg',
           selected: false,
         },
         {
           id: 4,
           name: 'WALL',
-          src: 'assets/imgs/Mesa_de_trabajo_19.jpg',
+          src: 'assets/imgs/Mesa_de_trabajo_17.jpg',
           selected: false,
         },
         {
@@ -165,22 +181,106 @@ export class FormComponent implements OnInit {
         {
           id: 1,
           name: 'BATHROOM FLOOR',
-          material: null, // CERAMIC, PORCELAIN, NATURAL STONE AND GLASS
+          materials: [
+            {
+              id: 1,
+              name: 'CERAMIC',
+              selected: false
+            },
+            {
+              id: 2,
+              name: 'PORCELAIN',
+              selected: false
+            },
+            {
+              id: 3,
+              name: 'NATURE STONE',
+              selected: false
+            },
+            {
+              id: 4,
+              name: 'GLASS',
+              selected: false
+            },
+          ], // CERAMIC, PORCELAIN, NATURAL STONE AND GLASS
         },
         {
           id: 2,
           name: 'BATHROOM BACKSPLASH',
-          material: null,
+          materials: [
+            {
+              id: 1,
+              name: 'CERAMIC',
+              selected: false
+            },
+            {
+              id: 2,
+              name: 'PORCELAIN',
+              selected: false
+            },
+            {
+              id: 3,
+              name: 'NATURE STONE',
+              selected: false
+            },
+            {
+              id: 4,
+              name: 'GLASS',
+              selected: false
+            },
+          ],
         },
         {
           id: 3,
           name: 'BATHROOM WALL',
-          material: null,
+          materials: [
+            {
+              id: 1,
+              name: 'CERAMIC',
+              selected: false
+            },
+            {
+              id: 2,
+              name: 'PORCELAIN',
+              selected: false
+            },
+            {
+              id: 3,
+              name: 'NATURE STONE',
+              selected: false
+            },
+            {
+              id: 4,
+              name: 'GLASS',
+              selected: false
+            },
+          ],
         },
         {
           id: 4,
           name: 'BATHROOM TUB/SHOWER',
-          material: null,
+          materials: [
+            {
+              id: 1,
+              name: 'CERAMIC',
+              selected: false
+            },
+            {
+              id: 2,
+              name: 'PORCELAIN',
+              selected: false
+            },
+            {
+              id: 3,
+              name: 'NATURE STONE',
+              selected: false
+            },
+            {
+              id: 4,
+              name: 'GLASS',
+              selected: false
+            },
+          ],
         }
       ]
     },
@@ -215,7 +315,7 @@ export class FormComponent implements OnInit {
       selected: false,
       previusPage: 6,
       nextPage: 8,
-      fileName: null,
+      fileName: '',
     },
     skipEight: {
       title: 'ONE MORE THING - WHERE WILL THE PROJECT BE?',
@@ -242,15 +342,116 @@ export class FormComponent implements OnInit {
     },
   }
 
-  constructor() { }
+  constructor(
+    private storageService: StorageService,
+    private formService: FormService,
+  ) {
+    this.s6formControl.valueChanges.subscribe((resp: any) => this.skipSix.size = resp);
+    this.s8locationFormControl.valueChanges.subscribe((resp: any) => this.skipEight.address = resp);
+    this.s9InfoFormGroup.valueChanges.subscribe((resp: any) => {
+      this.skipNine.firstName = resp.firstName;
+      this.skipNine.lastName = resp.lastName;
+    })
+   }
 
   ngOnInit(): void {
     this.setPositionImg();
   }
 
+  get skiptTwo() {
+    return this.formRcr.skipTwo;
+  }
+
+  get skipThree() {
+    return this.formRcr.skipThree;
+  }
+
+  get skipFour() {
+    return this.formRcr.skipFour;
+  }
+
+  get skipFive() {
+    return this.formRcr.skipFive;
+  }
+
+  get skipSix() {
+    return this.formRcr.skipSix;
+  }
+
+  get skipSeven() {
+    return this.formRcr.skipSeven;
+  }
+
+  get skipEight() {
+    return this.formRcr.skipEight;
+  }
+
+  get skipNine() {
+    return this.formRcr.skipNine;
+  }
+
+  get skipTen() {
+    return this.formRcr.skipTen;
+  }
+
+  handleSendForm() {
+    if(this.s9InfoFormGroup.invalid) {
+
+    } else {
+      this.formRcr.id = nanoid();
+      this.formRcr.createdAt = moment().format().toString(),
+      this.formService.createForm(this.formRcr)
+        .then(() => this.uploadFile())
+    }
+  }
+
+  uploadFile() {
+    this.storageService.uploadFormFile(this.skipSeven.fileName, this.file)
+      .then(() => this.handleNextPage(10))
+      .catch((e) => console.error(e))
+  }
+
+  selectFile(event: any) {
+    if(event.target.files.length > 0) {
+      const fileTem = (event.target.files[0] as File);
+      const size = (fileTem.size / 1024) / 1024;
+      if(size > 10.6) { return }
+
+      this.file = fileTem;
+      this.inputFile = this.file.name;
+      this.skipSeven.fileName = nanoid();
+    }
+
+  }
+
+  handleSelectOptionSkipFive(optionId: number) {
+    this.skipFive.options.forEach((o) => o.selected = false);
+    const index = this.skipFive.options.findIndex((o) => o.id == optionId);
+    this.skipFive.options[index].selected = !this.skipFive.options[index].selected;
+  }
+
+  handleSelectOptionSkipFour(optionId: number, materialId: number) {
+    const indexOption = this.skipFour.options.findIndex((o) => o.id == optionId);
+    const indexMaterial = this.skipFour.options[indexOption].materials.findIndex((m) => m.id == materialId);
+    this.skipFour.options[indexOption].materials[indexMaterial].selected = !this.skipFour.options[indexOption].materials[indexMaterial].selected;
+  }
+
+  handleSelectOptionSkipThree(optionId: number) {
+    this.skipThree.options.forEach((o) => o.selected = false);
+    const index = this.skipThree.options.findIndex((o) => o.id == optionId);
+    this.skipThree.options[index].selected = !this.skipThree.options[index].selected;
+  }
+
+  handleSelectOptionSkipTwo(optionId: number) {
+    const index = this.skiptTwo.options.findIndex((o) => o.id == optionId);
+    this.skiptTwo.options[index].selected = !this.skiptTwo.options[index].selected;
+  }
+
   handleSelectOptionSkipOne(optionId: number) {
     const index = this.formRcr.skipOne.options.findIndex((o) => o.id == optionId);
-    this.formRcr.skipOne.options[index].selected = !this.formRcr.skipOne.options[index].selected;
+    this.formRcr.skipOne.options[index].selected = !this.formRcr.skipOne.options[index].selected
+    console.log(this.formRcr.skipOne.options[index].selected);
+    ;
   }
 
   handlePreviousPage(previusPage: number) {
