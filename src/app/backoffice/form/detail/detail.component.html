@@ -1,0 +1,77 @@
+<h1 mat-dialog-title>{{data.skipNine.fistName | uppercase}} {{data.skipNine.lastName | uppercase}}</h1>
+<div mat-dialog-content>
+  <div>
+    <h3>{{data.skipOne.title}}</h3>
+    <div>
+      <div *ngFor="let option of data.skipOne.options">
+        <div *ngIf="option.selected">
+          {{option.name}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h3>{{data.skipTwo.title}}</h3>
+    <div>
+      <div *ngFor="let option of data.skipTwo.options">
+        <div *ngIf="option.selected">
+          {{option.name}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h3>{{data.skipThree.title}}</h3>
+    <div>
+      <div *ngFor="let option of data.skipThree.options">
+        <div *ngIf="option.selected">
+          {{option.name}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h3>{{data.skipFour.title}}</h3>
+    <div>
+      <div *ngFor="let option of data.skipFour.options">
+        <div class="sub_option">{{option.name}}</div>
+        <div *ngFor="let material of option.materials">
+          <div *ngIf="material.selected">
+            {{material.name}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h3>{{data.skipFive.title}}</h3>
+    <div>
+      <div *ngFor="let option of data.skipFive.options">
+        <div *ngIf="option.selected">
+          {{option.name}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div>
+    <h3>{{data.skipSix.title}}</h3>
+    <div>{{data.skipSix.size}}</div>
+  </div>
+
+  <div>
+    <h3>{{data.skipSeven.title}}</h3>
+    <div>file</div>
+  </div>
+
+  <div>
+    <h3>{{data.skipEight.title}}</h3>
+    <div>{{data.skipEight.address}}</div>
+  </div>
+</div>
+

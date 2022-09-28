@@ -34,11 +34,9 @@ export class LoginComponent implements OnInit {
   loginWithEmailAndPassword() {
     this.loading = true;
     this.authService.authWithEmailAndPassword(this.authForm.value)
-      .then(() => {
-        this.loading = false;
-        this.router.navigateByUrl('backoffice/orders');
-      })
+      .then(() => this.router.navigateByUrl('backoffice/orders'))
       .catch(() => this.setErrorMessage(true))
+      .finally(() => this.loading = false)
   }
 
   setErrorMessage(showError: boolean): void {

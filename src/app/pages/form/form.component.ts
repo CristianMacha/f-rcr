@@ -322,23 +322,21 @@ export class FormComponent implements OnInit {
       selected: false,
       previusPage: 7,
       nextPage: 9,
-      address: null
+      address: ''
     },
     skipNine: {
       title: `LET'S GET YOU A QUOTE!`,
       selected: false,
       previusPage: 8,
       nextPage: 10,
-      firstName: null,
-      lastName: null,
+      firstName: '',
+      lastName: '',
     },
     skipTen: {
       title: `RECEIVE A QUOTE IN LESS THAN 24HRS`,
       subTitle: 'THANK YOU!',
       selected: false,
       previusPage: 9,
-      firstName: null,
-      lastName: null,
     },
   }
 
