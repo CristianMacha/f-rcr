@@ -1,1 +1,83 @@
-<p>form works!</p>
+<div id="skipOne" class="secction">
+  <div class="card-content">
+
+    <div class="form-content">
+
+      <!-- Start Skip 1-->
+      <div *ngIf="skipts[0].active">
+        <div class="header">
+          <h1 class="title">{{formRcr.skipOne.title}}</h1>
+          <h4 class="subTitle">{{formRcr.skipOne.subTitle}}</h4>
+        </div>
+        <div class="body">
+          <div class="options">
+            <div class="item"
+              *ngFor="let option of formRcr.skipOne.options"
+              [class.active]="option.selected"
+              (click)="handleSelectOptionSkipOne(option.id)">
+              {{option.name}}
+            </div>
+          </div>
+        </div>
+        <div class="navigate">
+          <div class="next">
+            <button mat-icon-button (click)="handleNextPage(formRcr.skipOne.nextPage)">
+              <mat-icon class="icon_right">navigate_next</mat-icon>
+            </button>
+            <h4>NEXT</h4>
+          </div>
+        </div>
+      </div>
+      <!-- End Skip 1-->
+
+      <!-- Start Skip 2-->
+      <div *ngIf="skipts[1].active">
+        <div class="header">
+          <h1 class="title">{{formRcr.skipTwo.title}}</h1>
+          <h4 class="subTitle">{{formRcr.skipTwo.subTitle}}</h4>
+        </div>
+        <div class="body">
+          <div class="s2_options">
+            <div class="s2_item" *ngFor="let option of formRcr.skipTwo.options">
+              <img [src]="option.src" width="150">
+              <h4>{{option.name}}</h4>
+            </div>
+          </div>
+        </div>
+        <div class="navigate">
+          <div class="previous">
+            <button mat-icon-button (click)="handlePreviousPage(formRcr.skipTwo.previusPage)">
+              <mat-icon class="icon_right">navigate_before</mat-icon>
+            </button>
+            <h4>PREVIOUS</h4>
+          </div>
+          <div class="next">
+            <button mat-icon-button (click)="handleNextPage(formRcr.skipTwo.nextPage)">
+              <mat-icon class="icon_right">navigate_next</mat-icon>
+            </button>
+            <h4>NEXT</h4>
+          </div>
+        </div>
+      </div>
+      <!-- End Skip 2-->
+
+      <div class="pagination">
+        <div class="pages">
+          <div *ngFor="let skip of skipts" class="number" [class.active]="skip.active">
+            {{skip.skip}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <img
+    src="assets/imgs/Personaje.png"
+    style="position: absolute"
+    [style.left]="imgPosition.left"
+    [style.right]="imgPosition.right"
+    [style.bottom]="imgPosition.bottom"
+    [style.transform]="imgPosition.scale"
+    width="500"
+    height="1000">
+</div>
