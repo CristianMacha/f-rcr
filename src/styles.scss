@@ -116,7 +116,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   flex-wrap: wrap;
   padding: 10px;
   position: relative;
-  overflow: hidden;
   background-image: url('./assets/imgs/Fondo.jpg');
 
   @media (max-width: $md) {

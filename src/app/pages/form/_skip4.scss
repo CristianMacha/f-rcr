@@ -66,6 +66,8 @@
 
   @media (max-width: $md) {
     display: block;
-    margin-top: 5rem;
+    padding-top: 4rem;
+    max-height: 400px;
+    min-height: 200px;
   }
 }
