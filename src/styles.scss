@@ -58,6 +58,9 @@ $rcr-accent: (
 $f-cart-page-primary: mat.define-palette($rcr-primary, 500);
 $f-cart-page-accent: mat.define-palette($rcr-accent, 500);
 
+$f-cart-page-dark-primary: mat.define-palette($rcr-primary, 500);
+$f-cart-page-dark-accent: mat.define-palette($rcr-accent, 500);
+
 $f-cart-page-warn: mat.define-palette(mat.$red-palette);
 
 $f-cart-page-theme: mat.define-light-theme((
@@ -69,6 +72,29 @@ $f-cart-page-theme: mat.define-light-theme((
 ));
 
 @include mat.all-component-themes($f-cart-page-theme);
+
+$dashboard-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $f-cart-page-dark-primary,
+      accent: $f-cart-page-dark-accent,
+      warn: $f-cart-page-warn,
+    ),
+  )
+);
+
+.darkMode {
+  @include mat.all-component-colors($dashboard-dark-theme);
+
+  & .sidenav_item_selected {
+    color: map-get($f-cart-page-primary, 200) !important;
+  }
+}
+
+.sidenav_item_selected {
+  background: rgba(63,81,181,.15);
+  color: map-get($f-cart-page-primary, 500) !important;
+}
 
 
 html, body {

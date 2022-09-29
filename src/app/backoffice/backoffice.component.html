@@ -1,9 +1,41 @@
-<mat-toolbar color="primary">
-  <img src="https://www.rcr-flooring.com/wp-content/uploads/2022/05/LOGO-RCR-ACTUALIZADO-blanco-150x150.png" alt="logo"
+<div class="container-dashboard">
+  <mat-toolbar color="primary" class="toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <img src="https://www.rcr-flooring.com/wp-content/uploads/2022/05/LOGO-RCR-ACTUALIZADO-blanco-150x150.png" alt="logo"
        width="75">
-  <span class="example-spacer"></span>
-  <button mat-icon-button (click)="logout()">
-    <mat-icon>logout</mat-icon>
-  </button>
-</mat-toolbar>
-<router-outlet></router-outlet>
+    <span class="spacer"></span>
+
+    <button mat-icon-button (click)="activateDarkMode(true)" *ngIf="!darkMode">
+      <mat-icon fontIcon="dark_mode"></mat-icon>
+    </button>
+    <button mat-icon-button (click)="activateDarkMode(false)" *ngIf="darkMode">
+      <mat-icon fontIcon="light_mode"></mat-icon>
+    </button>
+
+    <button mat-icon-button (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+
+  </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="marginTopSidenav">
+    <mat-sidenav
+      #snav
+      [fixedInViewport]="true"
+      [fixedTopGap]="marginTopSidenav"
+      [mode]="modeSidenav"
+      [opened]="opened"
+      [style.width.px]="250">
+      <mat-list role="navigation">
+        <a mat-list-item routerLink="orders" routerLinkActive="sidenav_item_selected">Orders</a>
+        <a mat-list-item routerLink="forms" routerLinkActive="sidenav_item_selected">Forms</a>
+      </mat-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div [style.padding-right.px]="padding" [style.padding-left.px]="padding">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

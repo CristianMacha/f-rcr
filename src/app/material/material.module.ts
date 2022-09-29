@@ -9,6 +9,11 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+
+// CDK
+import {LayoutModule} from '@angular/cdk/layout';
 
 const MATERIAL_MODULES = [
   MatIconModule,
@@ -19,7 +24,11 @@ const MATERIAL_MODULES = [
   MatPaginatorModule,
   MatCardModule,
   MatDialogModule,
-  MatSelectModule
+  MatSelectModule,
+  MatSidenavModule,
+  // CDK
+  LayoutModule,
+  MatListModule
 ]
 
 @NgModule({
