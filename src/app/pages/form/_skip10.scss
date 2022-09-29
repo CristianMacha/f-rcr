@@ -1,0 +1,45 @@
+.time {
+  text-align: center;
+  border: 5px solid #424242;
+  border-radius: 15px;
+  display: inline-flex;
+  font-size: 56px;
+  font-weight: 500;
+  box-shadow: 1px 5px 7px 3px black;
+  background-color: #424242;
+}
+
+.hour,
+.second,
+.min {
+  padding: 5px;
+  color: white;
+  font-weight: 400;
+  font-size: 60px;
+}
+
+.hrs,
+.mins,
+.secs {
+  padding-top: 2px;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+span {
+  padding: 5px;
+  color: white;
+  font-weight: 600;
+  font-size: 60px;
+}
+
+.hrsFinal,
+.minFinal,
+.secondFinal {
+  border: 2px solid black;
+  box-shadow: 0px 1px 4px 2px black;
+  padding-right: 10px;
+  padding-left: 10px;
+  line-height: normal;
+  letter-spacing: 8px;
+}
