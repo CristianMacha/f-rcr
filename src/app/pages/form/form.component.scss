@@ -5,54 +5,50 @@
 @import "skip7";
 @import "skip8";
 @import "skip9";
+@import "skip10";
 @import "../../../assets/scss/breakpoint";
-
 .options {
-  display: flex;
-  flex-wrap: wrap;
-  width: 600px;
-  gap: 10px;
-  justify-content: center;
-
-  @media (max-width: $md) {
-    width: auto;
-  }
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+    gap: 10px;
+    justify-content: center;
+    @media (max-width: $md) {
+        width: auto;
+    }
 }
 
 .item {
-  color: white;
-  border: 2px solid white;
-  border-radius: 5px;
-  padding: 12px 14px 12px 14px;
-  text-align: center;
-  width: 180px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #1f4998b8;;
-  }
-
-  &.active {
-    background-color: #1f4998;
-  }
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 12px 14px 12px 14px;
+    text-align: center;
+    width: 180px;
+    cursor: pointer;
+    &:hover {
+        background-color: #1f4998b8;
+        ;
+    }
+    &.active {
+        background-color: #1f4998;
+    }
 }
 
 #person {
-  width: 350px;
-  height: 700px;
-
-  @media (max-width: 895px) {
-    display: none;
-  }
+    width: 350px;
+    height: 700px;
+    @media (max-width: 895px) {
+        display: none;
+    }
 }
 
 .body_content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 400px;
-
-  @media (max-width: $md) {
-    height: 500px
-  }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    @media (max-width: $md) {
+        height: 500px
+    }
 }

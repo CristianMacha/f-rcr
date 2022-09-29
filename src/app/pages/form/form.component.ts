@@ -42,7 +42,7 @@ export class FormComponent implements OnInit {
   skipts = [
     {
       skip: 1,
-      active: true,
+      active: false,
     },
     {
       skip: 2,
@@ -78,7 +78,7 @@ export class FormComponent implements OnInit {
     },
     {
       skip: 10,
-      active: false,
+      active: true,
     },
   ];
 
