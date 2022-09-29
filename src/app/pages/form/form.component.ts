@@ -10,11 +10,22 @@ import { nanoid } from 'nanoid';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
+  loadingSend = false;
+  hours = moment().hour(23).minutes(59).second(59);
+  finalHour = '';
+  finalMinute = '';
+  finalsecond = '';
+
   imgPosition = {
     left: '-120px',
     right: '',
     bottom: '0',
     scale: 'scaleX(1)',
+  }
+
+  imgLogo = {
+    right: '20px',
+    left: ''
   }
 
   inputFile = 'No file selected';
@@ -322,23 +333,21 @@ export class FormComponent implements OnInit {
       selected: false,
       previusPage: 7,
       nextPage: 9,
-      address: null
+      address: ''
     },
     skipNine: {
       title: `LET'S GET YOU A QUOTE!`,
       selected: false,
       previusPage: 8,
       nextPage: 10,
-      firstName: null,
-      lastName: null,
+      firstName: '',
+      lastName: '',
     },
     skipTen: {
       title: `RECEIVE A QUOTE IN LESS THAN 24HRS`,
       subTitle: 'THANK YOU!',
       selected: false,
       previusPage: 9,
-      firstName: null,
-      lastName: null,
     },
   }
 
@@ -356,6 +365,7 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     this.setPositionImg();
+    this.timeRecorsive();
   }
 
   get skiptTwo() {
@@ -395,20 +405,30 @@ export class FormComponent implements OnInit {
   }
 
   handleSendForm() {
+    this.loadingSend = true;
     if(this.s9InfoFormGroup.invalid) {
-
+      alert('Incomplete information');
+      this.loadingSend = false;
     } else {
       this.formRcr.id = nanoid();
       this.formRcr.createdAt = moment().format().toString(),
       this.formService.createForm(this.formRcr)
-        .then(() => this.uploadFile())
+        .then(() => {
+          this.loadingSend = false;
+          this.uploadFile();
+        })
     }
   }
 
   uploadFile() {
+    this.loadingSend = true;
     this.storageService.uploadFormFile(this.skipSeven.fileName, this.file)
       .then(() => this.handleNextPage(10))
       .catch((e) => console.error(e))
+      .finally(() => {
+        this.handleNextPage(10)
+        this.loadingSend = false;
+      });
   }
 
   selectFile(event: any) {
@@ -479,20 +499,38 @@ export class FormComponent implements OnInit {
     const index = this.skipts.findIndex((s) => s.active == true);
     const skip = this.skipts[index];
 
-    if(skip.skip/2 == 1) {
-      this.imgPosition = {
-        right: '-120px',
-        bottom: '0px',
-        left: '',
-        scale: 'scaleX(-1)'
-      }
-    } else {
+    if(skip.skip%2 == 1) {
       this.imgPosition = {
         right: '0',
         bottom: '0',
         left: '-120px',
         scale: 'scaleX(1)'
       }
+      this.imgLogo = {
+        left: '',
+        right: '20px'
+      }
+    } else {
+      this.imgPosition = {
+        right: '-120px',
+        bottom: '0px',
+        left: '',
+        scale: 'scaleX(-1)'
+      }
+
+      this.imgLogo = {
+        left: '20px',
+        right: ''
+      }
     }
+  }
+
+  timeRecorsive() {
+    setInterval(() => {
+      this.hours.subtract(1, 'second');
+      this.finalHour = this.hours.format('HH');
+      this.finalMinute = this.hours.format('MM');
+      this.finalsecond = this.hours.format('ss');
+    }, 1000);
   }
 }

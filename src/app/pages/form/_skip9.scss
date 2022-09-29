@@ -1,8 +1,15 @@
+@import "../../../assets/scss/breakpoint";
+
 .input_group {
-  width: 60rem;
+  width: 100%;
   display: flex;
   gap: 1rem;
   justify-content: space-between;
+  flex-wrap: wrap;
+
+  @media (max-width: $md) {
+    padding: 7px;
+  }
 }
 
 .input_name {

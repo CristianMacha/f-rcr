@@ -1,6 +1,10 @@
 <div id="skipOne" class="secction">
+  <div style="position: absolute; top: 20px;" [style.left]="imgLogo.left"
+  [style.right]="imgLogo.right">
+    <img src="assets/imgs/logo.png" alt="logo" width="100">
+  </div>
+  <div class="spacer-t"></div>
   <div class="card-content">
-
     <div class="form-content">
 
       <!-- Start Skip 1-->
@@ -10,12 +14,14 @@
           <h4 class="subTitle">{{formRcr.skipOne.subTitle}}</h4>
         </div>
         <div class="body">
-          <div class="options">
-            <div class="item"
-              *ngFor="let option of formRcr.skipOne.options"
-              [class.active]="option.selected"
-              (click)="handleSelectOptionSkipOne(option.id)">
-              {{option.name}}
+          <div class="body_content">
+            <div class="options">
+              <div class="item"
+                *ngFor="let option of formRcr.skipOne.options"
+                [class.active]="option.selected"
+                (click)="handleSelectOptionSkipOne(option.id)">
+                {{option.name}}
+              </div>
             </div>
           </div>
         </div>
@@ -35,14 +41,16 @@
           <h4 class="subTitle">{{formRcr.skipTwo.subTitle}}</h4>
         </div>
         <div class="body">
-          <div class="s2_options">
-            <div
-              class="s2_item"
-              *ngFor="let option of formRcr.skipTwo.options"
-              [class.active]="option.selected"
-              (click)="handleSelectOptionSkipTwo(option.id)">
-              <img [src]="option.src" width="150">
-              <h4>{{option.name}}</h4>
+          <div class="body_content_s2">
+            <div class="s2_options">
+              <div
+                class="s2_item"
+                *ngFor="let option of formRcr.skipTwo.options"
+                [class.active]="option.selected"
+                (click)="handleSelectOptionSkipTwo(option.id)">
+                <img [src]="option.src" width="150">
+                <h4>{{option.name}}</h4>
+              </div>
             </div>
           </div>
         </div>
@@ -66,13 +74,15 @@
           <h4 class="subTitle">{{formRcr.skipThree.subTitle}}</h4>
         </div>
         <div class="body">
-          <div class="s3_options">
-            <div
-              class="s3_item"
-              *ngFor="let option of formRcr.skipThree.options"
-              [class.active]="option.selected"
-              (click)="handleSelectOptionSkipThree(option.id)">
-              {{option.name}}
+          <div class="body_content">
+            <div class="s3_options">
+              <div
+                class="s3_item"
+                *ngFor="let option of formRcr.skipThree.options"
+                [class.active]="option.selected"
+                (click)="handleSelectOptionSkipThree(option.id)">
+                {{option.name}}
+              </div>
             </div>
           </div>
         </div>
@@ -96,29 +106,31 @@
           <h4 class="subTitle">{{formRcr.skipFour.subTitle}}</h4>
         </div>
         <div class="body">
-          <div class="s4_options">
-            <div class="s4_materials">
-              <div class="s4_name"></div>
-              <div class="s4_materials">
-                <div class="material_header">CERAMIC</div>
-                <div class="material_header">PORCELAIN</div>
-                <div class="material_header">NATURAL STONE</div>
-                <div class="material_header">GLASS</div>
-              </div>
-            </div>
-            <div *ngFor="let option of skipFour.options">
-              <div class="s4_item">
-                <div class="s4_name name_item">{{option.name}}</div>
+          <div class="body_content_s4">
+            <div class="s4_options">
                 <div class="s4_materials">
-                  <div
-                    class="option_selectable"
-                    *ngFor="let material of option.materials"
-                    [class.active]="material.selected"
-                    (click)="handleSelectOptionSkipFour(option.id, material.id)">
-                    <mat-icon>check</mat-icon>
+                  <div class="s4_name"></div>
+                  <div class="s4_materials">
+                    <div class="material_header">CERAMIC</div>
+                    <div class="material_header">PORCELAIN</div>
+                    <div class="material_header">NATURAL STONE</div>
+                    <div class="material_header">GLASS</div>
                   </div>
                 </div>
-              </div>
+                <div *ngFor="let option of skipFour.options">
+                  <div class="s4_item">
+                    <div class="s4_name name_item">{{option.name}}</div>
+                    <div class="s4_materials">
+                      <div
+                        class="option_selectable"
+                        *ngFor="let material of option.materials"
+                        [class.active]="material.selected"
+                        (click)="handleSelectOptionSkipFour(option.id, material.id)">
+                        <mat-icon>check</mat-icon>
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </div>
           </div>
         </div>
@@ -141,13 +153,15 @@
           <h1 class="title">{{formRcr.skipFive.title}}</h1>
         </div>
         <div class="body">
-          <div class="s3_options">
-            <div
-              class="s3_item"
-              *ngFor="let option of skipFive.options"
-              [class.active]="option.selected"
-              (click)="handleSelectOptionSkipFive(option.id)">
-              {{option.name}}
+          <div class="body_content">
+            <div class="s3_options">
+              <div
+                class="s3_item"
+                *ngFor="let option of skipFive.options"
+                [class.active]="option.selected"
+                (click)="handleSelectOptionSkipFive(option.id)">
+                {{option.name}}
+              </div>
             </div>
           </div>
         </div>
@@ -170,11 +184,13 @@
           <h1 class="title">{{formRcr.skipSix.title}}</h1>
         </div>
         <div class="body">
-          <div class="s6_content">
-            <select class="s6_select" [formControl]="s6formControl">
-              <option value="LESS THAN 25 (SMALL)" style="color: #2f68db;">LESS THAN 25 (SMALL)</option>
-              <option value="LESS THAN 50 (MEDIUM)" style="color: #2f68db;">LESS THAN 50 (MEDIUM)</option>
-            </select>
+          <div class="body_content">
+            <div class="s6_content">
+              <select class="s6_select" [formControl]="s6formControl">
+                <option value="LESS THAN 25 (SMALL)" style="color: #2f68db;">LESS THAN 25 (SMALL)</option>
+                <option value="LESS THAN 50 (MEDIUM)" style="color: #2f68db;">LESS THAN 50 (MEDIUM)</option>
+              </select>
+            </div>
           </div>
         </div>
         <div class="navigate">
@@ -197,14 +213,16 @@
           <h4 class="subTitle">{{formRcr.skipSeven.subTitle}}</h4>
         </div>
         <div class="body">
-          <div class="input">
-            <div>
-              <h4>{{inputFile}}</h4>
-              <small>MAX. FILE SIZE: 10.6MB</small>
+          <div class="body_content">
+            <div class="input">
+              <div>
+                <h4>{{inputFile}}</h4>
+                <small>MAX. FILE SIZE: 10.6MB</small>
+              </div>
+              <div class="btn_file" (click)="fileProject.click()">BROWSE FILES</div>
             </div>
-            <div class="btn_file" (click)="fileProject.click()">BROWSE FILES</div>
+            <input #fileProject type="file" hidden (change)="selectFile($event)">
           </div>
-          <input #fileProject type="file" hidden (change)="selectFile($event)">
         </div>
         <div class="navigate">
           <div class="previous" (click)="handlePreviousPage(skipSeven.previusPage)">
@@ -225,11 +243,13 @@
           <h1 class="title">{{formRcr.skipEight.title}}</h1>
         </div>
         <div class="body">
-          <input
-            type="text"
-            class="input_location"
-            placeholder="ENTER A LOCATION"
-            [formControl]="s8locationFormControl">
+          <div class="body_content">
+            <input
+              type="text"
+              class="input_location"
+              placeholder="ENTER A LOCATION"
+              [formControl]="s8locationFormControl">
+          </div>
         </div>
         <div class="navigate">
           <div class="previous" (click)="handlePreviousPage(skipEight.previusPage)">
@@ -250,29 +270,34 @@
           <h1 class="title">{{formRcr.skipNine.title}}</h1>
         </div>
         <div class="body">
-          <form [formGroup]="s9InfoFormGroup">
-            <div class="input_group">
-              <input
-                type="text"
-                class="input_name"
-                placeholder="FIRST NAME"
-                formControlName="firstName">
-              <input
-                type="text"
-                class="input_name"
-                placeholder="LAST NAME"
-                formControlName="lastName">
-            </div>
-          </form>
+          <div class="body_content">
+            <form [formGroup]="s9InfoFormGroup">
+              <div class="input_group">
+                <input
+                  type="text"
+                  class="input_name"
+                  placeholder="FIRST NAME"
+                  formControlName="firstName">
+                <input
+                  type="text"
+                  class="input_name"
+                  placeholder="LAST NAME"
+                  formControlName="lastName">
+              </div>
+            </form>
+          </div>
         </div>
         <div class="navigate">
           <div class="previous" (click)="handlePreviousPage(skipNine.previusPage)">
             <mat-icon class="icon_right">navigate_before</mat-icon>
             <h4>PREVIOUS</h4>
           </div>
-          <div class="next" (click)="handleSendForm()">
+          <div class="next" (click)="handleSendForm()" *ngIf="!loadingSend">
             <mat-icon class="icon_right">send</mat-icon>
             <h4>DONE</h4>
+          </div>
+          <div *ngIf="loadingSend" style="color: white; display: flex; align-items: center;">
+            Loading...
           </div>
         </div>
       </div>
@@ -285,10 +310,14 @@
           <h4 class="subTitle">{{skipTen.subTitle}}</h4>
         </div>
         <div class="body">
-          Complete
+          <div>
+            {{finalHour}}
+            {{finalMinute}}
+            {{finalsecond}}
+          </div>
         </div>
       </div>
-      <!-- End Skip 9-->
+      <!-- End Skip 10-->
 
       <div class="pagination" *ngIf="!skipts[9].active">
         <div class="pages">
@@ -301,12 +330,11 @@
 
   </div>
   <img
+    id="person"
     src="assets/imgs/Personaje.png"
     style="position: absolute"
     [style.left]="imgPosition.left"
     [style.right]="imgPosition.right"
     [style.bottom]="imgPosition.bottom"
-    [style.transform]="imgPosition.scale"
-    width="500"
-    height="1000">
+    [style.transform]="imgPosition.scale">
 </div>
