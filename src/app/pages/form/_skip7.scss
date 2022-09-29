@@ -1,3 +1,5 @@
+@import "../../../assets/scss/breakpoint";
+
 .input {
   width: 60rem;
   display: flex;
@@ -7,10 +9,22 @@
   background-color: white;
   border-radius: 5px;
 
+  @media (max-width: $md) {
+    padding: 7px;
+    width: 100%;
+  }
+
   & h4 {
     font-weight: 200;
     font-size: 24px;
     margin: 0;
+  }
+
+  & small {
+
+    @media (max-width: $md) {
+      padding: 7px;
+    }
   }
 
   & .btn_file {
@@ -24,6 +38,10 @@
     width: 15rem;
     border-radius: 5px;
     cursor: pointer;
+
+    @media (max-width: $md) {
+      font-size: 12px;
+    }
 
     &:hover {
       opacity: .9;

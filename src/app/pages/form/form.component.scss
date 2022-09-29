@@ -5,12 +5,18 @@
 @import "skip7";
 @import "skip8";
 @import "skip9";
+@import "../../../assets/scss/breakpoint";
 
 .options {
   display: flex;
   flex-wrap: wrap;
   width: 600px;
   gap: 10px;
+  justify-content: center;
+
+  @media (max-width: $md) {
+    width: auto;
+  }
 }
 
 .item {
@@ -28,5 +34,25 @@
 
   &.active {
     background-color: #1f4998;
+  }
+}
+
+#person {
+  width: 350px;
+  height: 700px;
+
+  @media (max-width: 895px) {
+    display: none;
+  }
+}
+
+.body_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+
+  @media (max-width: $md) {
+    height: 500px
   }
 }
