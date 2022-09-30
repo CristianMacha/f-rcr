@@ -1,0 +1,50 @@
+<div class="container_main">
+  <div class="progress_bar">
+    <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+  </div>
+
+    <div class="content_form" [style.top.px]="panels.skipFullName.top">
+      <div class="w-full mx-5">
+        <h1 class="title"><span>1.</span> {{panels.skipFullName.title}}</h1>
+        <mat-form-field appearance="standard" class="w-full">
+          <input type="text" matInput autocomplete="off" class="input_text">
+        </mat-form-field>
+        <button mat-flat-button color="primary" (click)="handleNext()">OK <mat-icon>check</mat-icon></button>
+      </div>
+      <img src="assets/imgs/Personaje.png" class="personaje">
+    </div>
+
+    <div class="content_form" [style.top.px]="panels.skipEmail.top">
+        <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
+          <h1 class="title"><span>2.</span> {{panels.skipEmail.title}}</h1>
+          <mat-form-field appearance="standard" class="w-full">
+            <input type="email" matInput autocomplete="off" class="input_text w-full">
+          </mat-form-field>
+          <button mat-flat-button color="primary" (click)="handleNext()">OK <mat-icon>check</mat-icon></button>
+        </div>
+    </div>
+
+    <div class="content_form" [style.top.px]="panels.skipOne.top">
+      <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
+        <h1 class="title"><span>3.</span> {{panels.skipOne.title}}</h1>
+        <small>{{panels.skipOne.subTitle}}</small>
+        <div class="s1_content_option">
+          <div *ngFor="let option of panels.skipOne.options" class="s1_option">
+            {{option.name}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <div class="fixed flex gap-1 justify-end bottom-2 right-3">
+      <button mat-fab color="primary" (click)="handlePrevious()" [disabled]="progress == 0">
+        <mat-icon>expand_less</mat-icon>
+      </button>
+      <button mat-fab color="primary" (click)="handleNext()" [disabled]="progress == 100">
+        <mat-icon>expand_more</mat-icon>
+      </button>
+    </div>
+
+    <!--<img src="assets/imgs/logo.png" alt="logo" class="w-24 absolute bottom-2 left-3">-->
+</div>

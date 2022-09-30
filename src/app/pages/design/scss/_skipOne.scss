@@ -1,0 +1,25 @@
+@import "../../../../assets/scss/color";
+
+.s1_content_option {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: 1rem;
+}
+
+.s1_option {
+  padding: 10px 12px 10px 12px;
+  border: 1px solid $primary;
+  border-radius: 5px;
+  color: $primary;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #c5cae9;
+  }
+
+  &.s1_active {
+    background-color: $primary;
+    color: white;
+  }
+}

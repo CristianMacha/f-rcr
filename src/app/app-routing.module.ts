@@ -5,6 +5,7 @@ import {CheckoutComponent} from "./pages/checkout/checkout.component";
 import {AngularFireAuthGuard} from "@angular/fire/compat/auth-guard";
 import {redirectUnauthorizedTo} from "@angular/fire/auth-guard";
 import { FormComponent } from './pages/form/form.component';
+import { DesignComponent } from './pages/design/design.component';
 
 const redirectUnauthorizedToCart = () => redirectUnauthorizedTo(['cart']);
 
@@ -23,6 +24,11 @@ const routes: Routes = [
     path: 'form',
     component: FormComponent,
     title: 'form'
+  },
+  {
+    path: 'design',
+    component: DesignComponent,
+    title: 'design'
   },
   {
     path: 'backoffice',
