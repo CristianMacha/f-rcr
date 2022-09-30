@@ -1,6 +1,11 @@
 <h1 mat-dialog-title>{{data.skipNine.fistName | uppercase}} {{data.skipNine.lastName | uppercase}}</h1>
 <div mat-dialog-content>
   <div class="skip_content">
+    <h3>EMAIL</h3>
+    <div>{{data.skipNine.email}}</div>
+  </div>
+
+  <div class="skip_content">
     <h3>{{data.skipOne.title}}</h3>
     <div>
       <div *ngFor="let option of data.skipOne.options">

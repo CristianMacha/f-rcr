@@ -36,7 +36,7 @@ export class FormComponent implements OnInit {
   s9InfoFormGroup = new UntypedFormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
-
+    email: new FormControl('', [Validators.required, Validators.email])
   })
 
   skipts = [
@@ -342,6 +342,7 @@ export class FormComponent implements OnInit {
       nextPage: 10,
       firstName: '',
       lastName: '',
+      email: '',
     },
     skipTen: {
       title: `RECEIVE A QUOTE IN LESS THAN 24HRS`,
@@ -360,6 +361,7 @@ export class FormComponent implements OnInit {
     this.s9InfoFormGroup.valueChanges.subscribe((resp: any) => {
       this.skipNine.firstName = resp.firstName;
       this.skipNine.lastName = resp.lastName;
+      this.skipNine.email = resp.email;
     })
    }
 
