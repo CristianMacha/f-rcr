@@ -1,0 +1,41 @@
+@import "../../../../assets/scss/color";
+.s1_content_option {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+.s1_option {
+    align-items: center;
+    padding: 10px 12px 10px 12px;
+    border: 1px solid $primary;
+    border-radius: 5px;
+    color: $primary;
+    cursor: pointer;
+    &:hover {
+        background-color: #c5cae9;
+    }
+    &.s1_active {
+        background-color: $primary;
+        color: white;
+    }
+}
+
+.item {
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 12px 14px 12px 14px;
+    text-align: center;
+    width: 180px;
+    cursor: pointer;
+    &:hover {
+        background-color: #1f4998b8;
+        ;
+    }
+    &.active {
+        background-color: #1f4998;
+    }
+}

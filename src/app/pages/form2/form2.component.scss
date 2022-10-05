@@ -1,0 +1,160 @@
+@import "../../../assets/scss/breakpoint";
+@import "../../../assets/scss/color";
+@import "./scss/skipOne";
+@import "./scss/skipOne";
+@import "./scss/skipThree";
+@import "./scss/skipFour";
+@import "./scss/skipSix";
+@import "./scss/skipSeven";
+@import "./scss/skipNine";
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../../../assets/scss/Montserrat-VariableFont_wght.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+
+.container_main {
+    background-image: url("https://rcr-flooring.com/wp-content/uploads/2021/09/4.7-arctic-white-ledger-panels_concrete-dimensions-porcelain_calacatta-vagli-marble_khaki-loft-porcelain_venetian-cafe-1x4x8mm-a.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transition: bottom 5s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.containerForm {
+    padding: 0;
+    max-height: 482px;
+    background-color: #fff;
+    -webkit-box-shadow: -1px 15px 33px 4px rgb(0 0 0 / 15%);
+    box-shadow: -1px 15px 33px 4px rgb(0 0 0 / 15%);
+    border-radius: 6px;
+    border: none;
+    & .header {
+        padding: 10px;
+        text-align: center;
+        align-items: center;
+    }
+}
+
+.bodyContainer {
+    padding: 20px;
+}
+
+.progress_bar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+
+.content_form {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    position: absolute;
+    transition: all .5s;
+    @media (max-width: $md) {
+        justify-content: center;
+    }
+}
+
+.body {
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255);
+    max-height: 423.703px;
+}
+
+.title {
+    font-size: 1.4em;
+    & span {
+        color: $primary;
+    }
+}
+
+.header small {
+    font-size: 0.9em;
+}
+
+.input_text {
+    font-size: 24px;
+    color: $primary;
+}
+
+.personaje {
+    height: 100%;
+    @media (max-width: $md) {
+        display: none;
+    }
+}
+
+.body_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    @media (max-width: $md) {
+        max-height: 500px;
+        min-height: 200px;
+    }
+}
+
+.s01pagiatios {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    & .is-pagination {
+        position: absolute;
+        z-index: 5;
+        margin: 5px;
+        & li a {
+            padding: 10px;
+            width: 10px;
+            height: 10px;
+        }
+        & li a:before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 0, 0, 0.85);
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+        }
+    }
+}
+
+.footerContainer {
+    width: 100%;
+    border-radius: 0px 0px 5px 5px;
+    background-color: $primary;
+    padding: 10px;
+    position: relative;
+    & .btn1 {
+        width: 50%;
+        color: white;
+        & mat-icon {
+            color: white;
+            font-size: 27px;
+            padding: 2px;
+        }
+    }
+    & .btn2 {
+        width: 50%;
+        color: white;
+        & mat-icon {
+            padding: 2px;
+            color: white;
+            font-size: 27px;
+        }
+    }
+}

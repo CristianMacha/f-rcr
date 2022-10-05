@@ -1,0 +1,226 @@
+<div class="container_main">
+    <div class="progress_bar">
+        <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+    </div>
+
+
+    <div class="content_form" [style.top.px]="panels.skipFullName.top">
+        <div class="mx-5 w-full md:w-3/4 lg:w-1/2 m-2">
+            <div class="body">
+                <div class="containerForm">
+                    <div class="header">
+                        <h1 class="title"><span>1.</span> {{panels.skipFullName.title}}</h1>
+                        <small>{{panels.skipFour.subTitle}}</small>
+                    </div>
+                    <div class="bodyContainer">
+                        <mat-form-field appearance="standard" class="w-full">
+                            <input type="text" matInput autocomplete="off" class="input_text w-full">
+                        </mat-form-field>
+                        <button mat-flat-button color="primary" (click)="handleNext()">OK <mat-icon>check</mat-icon>
+                        </button>
+                    </div>
+                    <div class="footerContainer">
+                        <button class="btn1" (click)="handlePrevious()">
+                            </button>
+                        <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
+                                NEXT
+                                <mat-icon>start</mat-icon>
+                            </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content_form" [style.top.px]="panels.skipEmail.top">
+        <div class="mx-5 w-full md:w-3/4 lg:w-1/2 m-2">
+            <div class="body">
+                <div class="containerForm">
+                    <div class="header">
+                        <h1 class="title"><span>2.</span> {{panels.skipEmail.title}}</h1>
+                        <small>{{panels.skipFour.subTitle}}</small>
+                    </div>
+                    <div class="bodyContainer">
+                        <mat-form-field appearance="standard" class="w-full">
+                            <input type="email" matInput autocomplete="off" class="input_text w-full">
+                        </mat-form-field>
+                        <button mat-flat-button color="primary" (click)="handleNext()">OK <mat-icon>check</mat-icon>
+                        </button>
+                    </div>
+                    <div class="footerContainer">
+                        <button class="btn1" (click)="handlePrevious()">
+                            <mat-icon>west</mat-icon>
+                                PREVIOUS
+                            </button>
+                        <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
+                                NEXT
+                                <mat-icon>start</mat-icon>
+                            </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content_form" [style.top.px]="panels.skipOne.top">
+        <div class="mx-5 w-full md:w-3/4 lg:w-1/2 m-2">
+            <div class="body">
+                <div class="containerForm">
+                    <div class="header">
+                        <h1 class="title"><span>3.</span> {{panels.skipOne.title}}</h1>
+                        <small>{{panels.skipOne.subTitle}}</small>
+                    </div>
+                    <div class="bodyContainer">
+                        <div class="s1_content_option ">
+                            <div class="s1_option" *ngFor="let option of panels.skipOne.options" [class.active]="option.selected">
+                                {{option.name}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footerContainer">
+                        <button class="btn1" (click)="handlePrevious()">
+                            <mat-icon>west</mat-icon>
+                                PREVIOUS
+                            </button>
+                        <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
+                                NEXT
+                                <mat-icon>start</mat-icon>
+                            </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content_form" [style.top.px]="panels.skipTwo.top">
+        <div class="mx-5 w-full md:w-3/4 lg:w-1/2 m-2">
+            <div class="body">
+                <div class="containerForm">
+                    <div class="header">
+                        <h1 class="title"><span>4.</span> {{panels.skipTwo.title}}</h1>
+                        <small>{{panels.skipTwo.subTitle}}</small>
+                    </div>
+                    <div class="bodyContainer">
+                        <div class="s1_content_option">
+                            <div *ngFor="let option of panels.skipTwo.options" class="s1_option">
+                                <img src="{{option.src}}" alt="" width="100px" style="float: inline-start;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footerContainer">
+                        <button class="btn1" (click)="handlePrevious()">
+                            <mat-icon>west</mat-icon>
+                                PREVIOUS
+                            </button>
+                        <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
+                                NEXT
+                                <mat-icon>start</mat-icon>
+                            </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="content_form" [style.top.px]="panels.skipThree.top">
+        <div class="mx-5 w-full md:w-3/4 lg:w-1/2 m-2">
+            <div class="body">
+                <div class="containerForm">
+                    <div class="header">
+                        <h1 class="title"><span>5.</span> {{panels.skipThree.title}}</h1>
+                        <small>{{panels.skipThree.subTitle}}</small>
+                    </div>
+                    <div class="bodyContainer">
+                        <div class="s3_content_option">
+                            <div *ngFor="let option of panels.skipThree.options" class="s3_option">
+                                {{option.name}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footerContainer">
+                        <button class="btn1" (click)="handlePrevious()">
+                            <mat-icon>west</mat-icon>
+                                PREVIOUS
+                            </button>
+                        <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
+                                NEXT
+                                <mat-icon>start</mat-icon>
+                            </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content_form" [style.top.px]="panels.skipFour.top">
+        <div class="mx-5 w-full md:w-3/4 lg:w-1/2 m-2">
+            <div class="body">
+                <div class="containerForm">
+                    <div class="header">
+                        <h1 class="title"><span>5.</span> {{panels.skipFour.title}}</h1>
+                        <small>{{panels.skipFour.subTitle}}</small>
+                    </div>
+                    <div class="bodyContainer">
+                        <div class="s3_content_option">
+                            <div class="s4_options">
+                                <div *ngFor="let option of panels.skipFour.options">
+
+                                    <div class="s4_item">
+
+                                        <div class="s4_name name_item">{{option.name}}</div>
+                                        <div class="s4_materials ">
+                                            <div class="option_selectable snap-center" *ngFor="let material of option.materials" [class.active]="material.selected">
+                                                {{material.name}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footerContainer">
+                        <button class="btn1" (click)="handlePrevious()">
+                            <mat-icon>west</mat-icon>
+                                PREVIOUS
+                            </button>
+                        <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
+                                NEXT
+                                <mat-icon>start</mat-icon>
+                            </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="s01pagiatios pt-9" [style.top.px]="panels.skipFullName.top">
+        <ul class="is-pagination">
+            <li>
+                <a class="is-page" href="#"></a>
+            </li>
+            <li>
+                <a class="is-page" href="#"></a>
+            </li>
+            <li>
+                <a class="is-page" href="#"></a>
+            </li>
+            <li>
+                <a class="is-page" href="#"></a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="fixed flex gap-1 justify-end bottom-2 right-3">
+        <button mat-fab color="primary" (click)="handlePrevious()" [disabled]="progress == 0">
+            <mat-icon>expand_less</mat-icon>
+        </button>
+        <button mat-fab color="primary" (click)="handleNext()" [disabled]="progress == 100">
+            <mat-icon>expand_more</mat-icon>
+        </button>
+    </div>
+    <img src="assets/imgs/logo.png" alt="logo" class="w-24 absolute top-6 right-5">
+
+</div>
