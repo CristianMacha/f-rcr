@@ -321,7 +321,7 @@ export class FormComponent implements OnInit {
       size: '',
     },
     skipSeven: {
-      title: 'PICTURE OF YOU PROJECT',
+      title: 'PICTURE OF YOUR PROJECT',
       subTitle: 'OPTIONAL',
       selected: false,
       previusPage: 6,
@@ -336,7 +336,7 @@ export class FormComponent implements OnInit {
       address: ''
     },
     skipNine: {
-      title: `LET'S GET YOU A QUOTE!`,
+      title: `LET'S GET YOUR A QUOTE!`,
       selected: false,
       previusPage: 8,
       nextPage: 10,
