@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { FormService, StorageService } from '@core/services';
+import * as moment from 'moment';
 
 @Component({
   selector: 'vs-design',
@@ -7,8 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DesignComponent implements OnInit {
   progress = 0;
-
+  hours = moment().hour(23).minutes(59).second(59);
+  finalHour = '';
+  finalMinute = '';
+  finalsecond = '';
   heightVH = window.innerHeight;
+  s1FullNameFormGroup = new FormControl('');
+  s2EmailFormGroup = new FormControl('');
 
   panels = {
     id: '',
@@ -226,7 +234,7 @@ export class DesignComponent implements OnInit {
       ]
     },
     skipFive: {
-      title: 'DO YOU WANT ANY SPECIAL DESIGN OR PATTERN',
+      title: 'DO YOU WANT ANY SPECIAL DESIGN OR PATTERN?',
       top: this.heightVH * 6,
       options: [
         {
@@ -257,21 +265,43 @@ export class DesignComponent implements OnInit {
       selected: false,
       previusPage: 7,
       nextPage: 9,
-      top: this.heightVH * 7,
+      top: this.heightVH * 9,
       address: ''
     },
     skipNine: {
       title: `RECEIVE A QUOTE IN LESS THAN 24HRS`,
       subTitle: 'THANK YOU!',
       selected: false,
-      previusPage: 9,
+      top: this.heightVH * 10,
+
     },
   }
 
-  constructor() {
+  constructor(private storageService: StorageService,
+    private formService: FormService,) {
+    this.s1FullNameFormGroup.valueChanges.subscribe((resp: any) => this.skipFullName.fullName = resp);
+    this.s2EmailFormGroup.valueChanges.subscribe((resp: any) => this.skipEmail.email = resp);
+
+
   }
 
   ngOnInit(): void {
+    this.timeRecorsive();
+  }
+
+  get skipFullName() {
+    return this.panels.skipFullName;
+  }
+
+  get skipEmail() {
+    return this.panels.skipEmail;
+  }
+
+  handleSelectOptionSkipOne(optionId: number) {
+    const index = this.panels.skipOne.options.findIndex((o) => o.id == optionId);
+    this.panels.skipOne.options[index].selected = !this.panels.skipOne.options[index].selected
+    console.log(this.panels.skipOne.options[index].selected);
+    ;
   }
 
   handleNext(): void {
@@ -286,6 +316,8 @@ export class DesignComponent implements OnInit {
     this.panels.skipSix.top -= window.innerHeight;
     this.panels.skipSeven.top -= window.innerHeight;
     this.panels.skipEight.top -= window.innerHeight;
+    this.panels.skipNine.top -= window.innerHeight;
+
   }
 
   handlePrevious(): void {
@@ -300,5 +332,15 @@ export class DesignComponent implements OnInit {
     this.panels.skipSix.top += window.innerHeight;
     this.panels.skipSeven.top += window.innerHeight;
     this.panels.skipEight.top += window.innerHeight;
+    this.panels.skipNine.top += window.innerHeight;
+
+  }
+  timeRecorsive() {
+    setInterval(() => {
+      this.hours.subtract(1, 'second');
+      this.finalHour = this.hours.format('HH');
+      this.finalMinute = this.hours.format('MM');
+      this.finalsecond = this.hours.format('ss');
+    }, 1000);
   }
 }

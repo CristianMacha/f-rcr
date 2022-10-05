@@ -1,50 +1,190 @@
 <div class="container_main">
-  <div class="progress_bar">
-    <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
-  </div>
+    <div class="progress_bar">
+        <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+    </div>
 
     <div class="content_form" [style.top.px]="panels.skipFullName.top">
-      <div class="w-full mx-5">
-        <h1 class="title"><span>1.</span> {{panels.skipFullName.title}}</h1>
-        <mat-form-field appearance="standard" class="w-full">
-          <input type="text" matInput autocomplete="off" class="input_text">
-        </mat-form-field>
-        <button mat-flat-button color="primary" (click)="handleNext()">OK <mat-icon>check</mat-icon></button>
-      </div>
-      <img src="assets/imgs/Personaje.png" class="personaje">
+        <div class="w-full mx-5 ">
+            <h1 class="title"><span>1.</span> {{panels.skipFullName.title}}</h1>
+            <mat-form-field appearance="standard" class="w-full">
+                <input type="text" matInput autocomplete="off" class="input_text" [formControl]="s1FullNameFormGroup">
+            </mat-form-field>
+            <button mat-flat-button color="primary" (click)="handleNext()">OK <mat-icon>check</mat-icon></button>
+        </div>
+        <img src="assets/imgs/Personaje.png" class="personaje">
     </div>
 
     <div class="content_form" [style.top.px]="panels.skipEmail.top">
         <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
-          <h1 class="title"><span>2.</span> {{panels.skipEmail.title}}</h1>
-          <mat-form-field appearance="standard" class="w-full">
-            <input type="email" matInput autocomplete="off" class="input_text w-full">
-          </mat-form-field>
-          <button mat-flat-button color="primary" (click)="handleNext()">OK <mat-icon>check</mat-icon></button>
+            <h1 class="title"><span>2.</span> {{panels.skipEmail.title}}</h1>
+            <mat-form-field appearance="standard" class="w-full">
+                <input type="email" matInput autocomplete="off" class="input_text w-full" [formControl]="s2EmailFormGroup">
+            </mat-form-field>
+            <button mat-flat-button color="primary" (click)="handleNext()">OK <mat-icon>check</mat-icon></button>
         </div>
     </div>
 
     <div class="content_form" [style.top.px]="panels.skipOne.top">
-      <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
-        <h1 class="title"><span>3.</span> {{panels.skipOne.title}}</h1>
-        <small>{{panels.skipOne.subTitle}}</small>
-        <div class="s1_content_option">
-          <div *ngFor="let option of panels.skipOne.options" class="s1_option">
-            {{option.name}}
-          </div>
+        <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
+            <h1 class="title"><span>3.</span> {{panels.skipOne.title}}</h1>
+            <small>{{panels.skipOne.subTitle}}</small>
+            <div class="s1_content_option ">
+                <div class="s1_option" *ngFor="let option of panels.skipOne.options" [class.active]="option.selected" (click)="handleSelectOptionSkipOne(option.id)">
+                    {{option.name}}
+                </div>
+            </div>
         </div>
-      </div>
+    </div>
+    <div class="content_form" [style.top.px]="panels.skipTwo.top">
+        <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
+            <h1 class="title"><span>4.</span> {{panels.skipTwo.title}}</h1>
+            <small>{{panels.skipTwo.subTitle}}</small>
+            <div class="s1_content_option">
+                <div *ngFor="let option of panels.skipTwo.options" class="s1_option">
+                    <img src="{{option.src}}" alt="" width="100px" style="float: inline-start;">
+                </div>
+            </div>
+        </div>
     </div>
 
 
-  <div class="fixed flex gap-1 justify-end bottom-2 right-3">
-      <button mat-fab color="primary" (click)="handlePrevious()" [disabled]="progress == 0">
-        <mat-icon>expand_less</mat-icon>
-      </button>
-      <button mat-fab color="primary" (click)="handleNext()" [disabled]="progress == 100">
-        <mat-icon>expand_more</mat-icon>
-      </button>
+    <div class="content_form" [style.top.px]="panels.skipThree.top">
+        <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
+            <h1 class="title"><span>5.</span> {{panels.skipThree.title}}</h1>
+            <small>{{panels.skipThree.subTitle}}</small>
+            <div class="s3_content_option">
+                <div *ngFor="let option of panels.skipThree.options" class="s3_option">
+                    {{option.name}}
+                </div>
+            </div>
+        </div>
     </div>
 
+    <div class="content_form" [style.top.px]="panels.skipFour.top">
+        <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
+            <h1 class="title"><span>6.</span> {{panels.skipFour.title}}</h1>
+            <small>{{panels.skipFour.subTitle}}</small>
+            <div class="s3_content_option">
+                <div class="s4_options">
+                    <div *ngFor="let option of panels.skipFour.options">
+
+                        <div class="s4_item">
+
+                            <div class="s4_name name_item">{{option.name}}</div>
+                            <div class="s4_materials ">
+                                <div class="option_selectable snap-center" *ngFor="let material of option.materials" [class.active]="material.selected">
+                                    {{material.name}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="content_form" [style.top.px]="panels.skipFive.top">
+        <div class="mx-5 w-full md:w-3/4 lg:w-1/2 ">
+            <h1 class="title"><span>7.</span> {{panels.skipFive.title}}</h1>
+            <div class="s4_content_option">
+                <div *ngFor="let option of panels.skipFive.options" class="s4_option">
+                    {{option.name}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content_form" [style.top.px]="panels.skipSix.top">
+        <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
+            <h1 class="title"><span>8.</span> {{panels.skipSix.title}}</h1>
+            <div class="s6_content">
+                <select class="s6_select">
+                        <option value="LESS THAN 25 (SMALL)" style="color: #2f68db;">LESS THAN 25 (SMALL)</option>
+                        <option value="LESS THAN 50 (MEDIUM)" style="color: #2f68db;">LESS THAN 50 (MEDIUM)</option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+    <div class="content_form" [style.top.px]="panels.skipSeven.top">
+        <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
+            <h1 class="title"><span>9.</span> {{panels.skipSeven.title}}</h1>
+            <div class="s7_content">
+                <div class="input">
+                    <div>
+                        <h4>No file selected</h4>
+                        <small>MAX. FILE SIZE: 10.6MB</small>
+                    </div>
+                    <div class="btn_file">BROWSE FILES</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="content_form" [style.top.px]="panels.skipEight.top">
+        <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
+            <h1 class="title"><span>10.</span> {{panels.skipEight.title}}</h1>
+            <mat-form-field appearance="standard" class="w-full">
+                <input type="text" matInput autocomplete="off" class="input_text" placeholder="ENTER A LOCATION">
+            </mat-form-field>
+
+        </div>
+
+    </div>
+    <div class="content_form" [style.top.px]="panels.skipNine.top">
+        <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
+            <h1 class="title"><span>11.</span> {{panels.skipNine.title}}</h1>
+            <small>{{panels.skipFour.subTitle}}</small>
+
+            <div class=" body_content">
+                <div id="countdown">
+                    <div id='tiles'>
+                        <span>
+                            {{finalHour}}
+                        </span>
+                        <span>
+                            {{finalMinute}}
+                        </span>
+                        <span>
+                            {{finalsecond}}
+                        </span>
+                    </div>
+                    <div class="labels">
+                        <li>HRS</li>
+                        <li>MINS</li>
+                        <li>SECS</li>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="fixed flex gap-1 justify-end bottom-2 right-3">
+        <button mat-fab color="primary" (click)="handlePrevious()" [disabled]="progress == 0">
+            <mat-icon>expand_less</mat-icon>
+        </button>
+        <button mat-fab color="primary" (click)="handleNext()" [disabled]="progress == 100">
+            <mat-icon>expand_more</mat-icon>
+        </button>
+    </div>
+    <div>
+        <ul class="is-pagination">
+            <li>
+                <a class="is-page" href=""></a>
+            </li>
+            <li>
+                <a class="is-page" href=""></a>
+            </li>
+            <li>
+                <a class="is-page" href=""></a>
+            </li>
+            <li>
+                <a class="is-page" href=""></a>
+            </li>
+        </ul>
+    </div>
     <!--<img src="assets/imgs/logo.png" alt="logo" class="w-24 absolute bottom-2 left-3">-->
 </div>
