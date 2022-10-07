@@ -4,7 +4,7 @@
     </div>
 
 
-    <div class="content_form" [style.top.px]="panels.skipFullName.top">
+    <div class="content_form s_1" [style.top.px]="panels.skipFullName.top" id="s_1">
         <div class="mx-5 w-full md:w-3/4 lg:w-1/2 m-2">
             <div class="body">
                 <div class="containerForm">
@@ -21,11 +21,11 @@
                     </div>
                     <div class="footerContainer">
                         <button class="btn1" (click)="handlePrevious()">
-                            </button>
+                        </button>
                         <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
-                                NEXT
-                                <mat-icon>start</mat-icon>
-                            </button>
+                            NEXT
+                            <mat-icon>start</mat-icon>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -50,12 +50,12 @@
                     <div class="footerContainer">
                         <button class="btn1" (click)="handlePrevious()">
                             <mat-icon>west</mat-icon>
-                                PREVIOUS
-                            </button>
+                            PREVIOUS
+                        </button>
                         <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
-                                NEXT
-                                <mat-icon>start</mat-icon>
-                            </button>
+                            NEXT
+                            <mat-icon>start</mat-icon>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -80,12 +80,12 @@
                     <div class="footerContainer">
                         <button class="btn1" (click)="handlePrevious()">
                             <mat-icon>west</mat-icon>
-                                PREVIOUS
-                            </button>
+                            PREVIOUS
+                        </button>
                         <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
-                                NEXT
-                                <mat-icon>start</mat-icon>
-                            </button>
+                            NEXT
+                            <mat-icon>start</mat-icon>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -110,12 +110,12 @@
                     <div class="footerContainer">
                         <button class="btn1" (click)="handlePrevious()">
                             <mat-icon>west</mat-icon>
-                                PREVIOUS
-                            </button>
+                            PREVIOUS
+                        </button>
                         <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
-                                NEXT
-                                <mat-icon>start</mat-icon>
-                            </button>
+                            NEXT
+                            <mat-icon>start</mat-icon>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -141,12 +141,12 @@
                     <div class="footerContainer">
                         <button class="btn1" (click)="handlePrevious()">
                             <mat-icon>west</mat-icon>
-                                PREVIOUS
-                            </button>
+                            PREVIOUS
+                        </button>
                         <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
-                                NEXT
-                                <mat-icon>start</mat-icon>
-                            </button>
+                            NEXT
+                            <mat-icon>start</mat-icon>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -158,7 +158,7 @@
             <div class="body">
                 <div class="containerForm">
                     <div class="header">
-                        <h1 class="title"><span>5.</span> {{panels.skipFour.title}}</h1>
+                        <h1 class="title"><span>6.</span> {{panels.skipFour.title}}</h1>
                         <small>{{panels.skipFour.subTitle}}</small>
                     </div>
                     <div class="bodyContainer">
@@ -182,12 +182,134 @@
                     <div class="footerContainer">
                         <button class="btn1" (click)="handlePrevious()">
                             <mat-icon>west</mat-icon>
-                                PREVIOUS
-                            </button>
+                            PREVIOUS
+                        </button>
                         <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
-                                NEXT
-                                <mat-icon>start</mat-icon>
-                            </button>
+                            NEXT
+                            <mat-icon>start</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content_form" [style.top.px]="panels.skipFive.top">
+        <div class="mx-5 w-full md:w-3/4 lg:w-1/2 m-2">
+            <div class="body">
+                <div class="containerForm">
+                    <div class="header">
+                        <h1 class="title"><span>7.</span> {{panels.skipFive.title}}</h1>
+                    </div>
+                    <div class="bodyContainer">
+                        <div class="s3_content_option">
+                            <div *ngFor="let option of panels.skipFive.options" class="s3_option">
+                                {{option.name}}
+                                <!-- <input type="button" value="{{option.name}}"> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footerContainer">
+                        <button class="btn1" (click)="handlePrevious()">
+                            <mat-icon>west</mat-icon>
+                            PREVIOUS
+                        </button>
+                        <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
+                            NEXT
+                            <mat-icon>start</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content_form" [style.top.px]="panels.skipSix.top">
+        <div class="mx-5 w-full md:w-3/4 lg:w-1/2 m-2">
+            <div class="body">
+                <div class="containerForm">
+                    <div class="header">
+                        <h1 class="title"><span>8.</span> {{panels.skipSix.title}}</h1>
+                    </div>
+                    <div class="bodyContainer">
+                        <div class="s6_content">
+                            <select class="s6_select">
+                                <option value="LESS THAN 25 (SMALL)" style="color: #2f68db;">LESS THAN 25 (SMALL)
+                                </option>
+                                <option value="LESS THAN 50 (MEDIUM)" style="color: #2f68db;">LESS THAN 50 (MEDIUM)
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="footerContainer">
+                        <button class="btn1" (click)="handlePrevious()">
+                            <mat-icon>west</mat-icon>
+                            PREVIOUS
+                        </button>
+                        <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
+                            NEXT
+                            <mat-icon>start</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content_form" [style.top.px]="panels.skipSeven.top">
+        <div class="mx-5 w-full md:w-3/4 lg:w-1/2 m-2">
+            <div class="body">
+                <div class="containerForm">
+                    <div class="header">
+                        <h1 class="title"><span>9.</span> {{panels.skipSeven.title}}</h1>
+                    </div>
+                    <div class="bodyContainer">
+                        <div class="s7_content">
+                            <div class="input">
+                                <div>
+                                    <h4>No file selected</h4>
+                                    <small>MAX. FILE SIZE: 10.6MB</small>
+                                </div>
+                                <div class="btn_file">BROWSE FILES</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footerContainer">
+                        <button class="btn1" (click)="handlePrevious()">
+                            <mat-icon>west</mat-icon>
+                            PREVIOUS
+                        </button>
+                        <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
+                            NEXT
+                            <mat-icon>start</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content_form" [style.top.px]="panels.skipEight.top">
+        <div class="mx-5 w-full md:w-3/4 lg:w-1/2 m-2">
+            <div class="body">
+                <div class="containerForm">
+                    <div class="header">
+                        <h1 class="title"><span>10.</span> {{panels.skipEight.title}}</h1>
+                    </div>
+                    <div class="bodyContainer">
+                        <mat-form-field appearance="standard" class="w-full">
+                            <input type="text" matInput autocomplete="off" class="input_text" placeholder="ENTER A LOCATION">
+                        </mat-form-field>
+                    </div>
+                    <div class="footerContainer">
+                        <button class="btn1" (click)="handlePrevious()">
+                            <mat-icon>west</mat-icon>
+                            PREVIOUS
+                        </button>
+                        <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
+                            NEXT
+                            <mat-icon>start</mat-icon>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -195,21 +317,14 @@
     </div>
 
 
-
     <div class="s01pagiatios pt-9" [style.top.px]="panels.skipFullName.top">
         <ul class="is-pagination">
-            <li>
-                <a class="is-page" href="#"></a>
+            <li *ngFor="let pagination of skipts">
+                <button class="btn1" (click)="topSli1(pagination.skip)">
+               </button>
             </li>
-            <li>
-                <a class="is-page" href="#"></a>
-            </li>
-            <li>
-                <a class="is-page" href="#"></a>
-            </li>
-            <li>
-                <a class="is-page" href="#"></a>
-            </li>
+
+
         </ul>
     </div>
 

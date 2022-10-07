@@ -9,6 +9,53 @@ export class Form2Component implements OnInit {
   progress = 0;
   heightVH = window.innerHeight;
 
+  skipts = [
+    {
+      skip: 0,
+      active: true,
+    },
+    {
+      skip: 1,
+      active: true,
+    },
+    {
+      skip: 2,
+      active: false,
+    },
+    {
+      skip: 3,
+      active: false,
+    },
+    {
+      skip: 4,
+      active: false,
+    },
+    {
+      skip: 5,
+      active: false,
+    },
+    {
+      skip: 6,
+      active: false,
+    },
+    {
+      skip: 7,
+      active: false,
+    },
+    {
+      skip: 8,
+      active: false,
+    },
+    {
+      skip: 9,
+      active: false,
+    },
+    {
+      skip: 10,
+      active: false,
+    },
+  ];
+
   panels = {
     id: '',
     createdAt: '',
@@ -275,6 +322,7 @@ export class Form2Component implements OnInit {
 
   handleNext(): void {
     this.progress += 10;
+
     this.panels.skipFullName.top -= window.innerHeight;
     this.panels.skipEmail.top -= window.innerHeight;
     this.panels.skipOne.top -= window.innerHeight;
@@ -304,13 +352,177 @@ export class Form2Component implements OnInit {
     this.panels.skipNine.top += window.innerHeight;
 
   }
+
+  topSli1(progreso: number): void {
+    switch (progreso) {
+      case progreso = 0:
+        this.progress = 10;
+        this.panels.skipFullName.top = (window.innerHeight * 0);
+        this.panels.skipEmail.top = (window.innerHeight * 1);
+        this.panels.skipOne.top = (window.innerHeight * 2);
+        this.panels.skipTwo.top = (window.innerHeight * 3);
+        this.panels.skipThree.top = (window.innerHeight * 4);
+        this.panels.skipFour.top = (window.innerHeight * 5);
+        this.panels.skipFive.top = (window.innerHeight * 6);
+        this.panels.skipSix.top = (window.innerHeight * 7);
+        this.panels.skipSeven.top = (window.innerHeight * 8);
+        this.panels.skipEight.top = (window.innerHeight * 9);
+        this.panels.skipNine.top = (window.innerHeight * 10);
+
+        break;
+      case progreso = 1:
+        this.progress = 20;
+        this.panels.skipFullName.top = (-window.innerHeight);
+        this.panels.skipEmail.top = (window.innerHeight * 0);
+        this.panels.skipOne.top = (window.innerHeight * 1);
+        this.panels.skipTwo.top = (window.innerHeight * 2);
+        this.panels.skipThree.top = (window.innerHeight * 3);
+        this.panels.skipFour.top = (window.innerHeight * 4);
+        this.panels.skipFive.top = (window.innerHeight * 5);
+        this.panels.skipSix.top = (window.innerHeight * 6);
+        this.panels.skipSeven.top = (window.innerHeight * 7);
+        this.panels.skipEight.top = (window.innerHeight * 8);
+        this.panels.skipNine.top = (window.innerHeight * 9);
+        break;
+      case progreso = 2:
+
+        this.progress = progreso;
+        this.panels.skipFullName.top = (-window.innerHeight * 2);
+        this.panels.skipEmail.top = (-window.innerHeight * 1);
+        this.panels.skipOne.top = (window.innerHeight * 0);
+        this.panels.skipTwo.top = (window.innerHeight * 1);
+        this.panels.skipThree.top = (window.innerHeight * 2);
+        this.panels.skipFour.top = (window.innerHeight * 3);
+        this.panels.skipFive.top = (window.innerHeight * 4);
+        this.panels.skipSix.top = (window.innerHeight * 5);
+        this.panels.skipSeven.top = (window.innerHeight * 6);
+        this.panels.skipEight.top = (window.innerHeight * 7);
+        this.panels.skipNine.top = (window.innerHeight * 8);
+        break;
+      case progreso = 3:
+        this.progress = 30;
+        this.panels.skipFullName.top = (-window.innerHeight * 3);
+        this.panels.skipEmail.top = (-window.innerHeight * 2);
+        this.panels.skipOne.top = (-window.innerHeight * 1);
+        this.panels.skipTwo.top = (window.innerHeight * 0);
+        this.panels.skipThree.top = (window.innerHeight * 1);
+        this.panels.skipFour.top = (window.innerHeight * 2);
+        this.panels.skipFive.top = (window.innerHeight * 3);
+        this.panels.skipSix.top = (window.innerHeight * 4);
+        this.panels.skipSeven.top = (window.innerHeight * 5);
+        this.panels.skipEight.top = (window.innerHeight * 6);
+        this.panels.skipNine.top = (window.innerHeight * 7);
+        break;
+      case progreso = 4:
+        this.progress = 40;
+        this.panels.skipFullName.top = (-window.innerHeight * 4);
+        this.panels.skipEmail.top = (-window.innerHeight * 3);
+        this.panels.skipOne.top = (-window.innerHeight * 2);
+        this.panels.skipTwo.top = (-window.innerHeight * 1);
+        this.panels.skipThree.top = (window.innerHeight * 0);
+        this.panels.skipFour.top = (window.innerHeight * 1);
+        this.panels.skipFive.top = (window.innerHeight * 2);
+        this.panels.skipSix.top = (window.innerHeight * 3);
+        this.panels.skipSeven.top = (window.innerHeight * 4);
+        this.panels.skipEight.top = (window.innerHeight * 5);
+        this.panels.skipNine.top = (window.innerHeight * 6);
+        break;
+      case progreso = 5:
+        this.progress = 50;
+        this.panels.skipFullName.top = (-window.innerHeight * 5);
+        this.panels.skipEmail.top = (-window.innerHeight * 4);
+        this.panels.skipOne.top = (-window.innerHeight * 3);
+        this.panels.skipTwo.top = (-window.innerHeight * 2);
+        this.panels.skipThree.top = (-window.innerHeight * 1);
+        this.panels.skipFour.top = (window.innerHeight * 0);
+        this.panels.skipFive.top = (window.innerHeight * 1);
+        this.panels.skipSix.top = (window.innerHeight * 2);
+        this.panels.skipSeven.top = (window.innerHeight * 3);
+        this.panels.skipEight.top = (window.innerHeight * 4);
+        this.panels.skipNine.top = (window.innerHeight * 5);
+        break;
+      case progreso = 6:
+        this.progress = 60;
+        this.panels.skipFullName.top = (-window.innerHeight * 6);
+        this.panels.skipEmail.top = (-window.innerHeight * 5);
+        this.panels.skipOne.top = (-window.innerHeight * 4);
+        this.panels.skipTwo.top = (-window.innerHeight * 3);
+        this.panels.skipThree.top = (-window.innerHeight * 2);
+        this.panels.skipFour.top = (-window.innerHeight * 1);
+        this.panels.skipFive.top = (window.innerHeight * 0);
+        this.panels.skipSix.top = (window.innerHeight * 1);
+        this.panels.skipSeven.top = (window.innerHeight * 2);
+        this.panels.skipEight.top = (window.innerHeight * 3);
+        this.panels.skipNine.top = (window.innerHeight * 4);
+        break;
+      case progreso = 7:
+        this.progress = 70;
+        this.panels.skipFullName.top = (-window.innerHeight * 7);
+        this.panels.skipEmail.top = (-window.innerHeight * 6);
+        this.panels.skipOne.top = (-window.innerHeight * 5);
+        this.panels.skipTwo.top = (-window.innerHeight * 4);
+        this.panels.skipThree.top = (-window.innerHeight * 3);
+        this.panels.skipFour.top = (-window.innerHeight * 2);
+        this.panels.skipFive.top = (-window.innerHeight * 1);
+        this.panels.skipSix.top = (window.innerHeight * 0);
+        this.panels.skipSeven.top = (window.innerHeight * 1);
+        this.panels.skipEight.top = (window.innerHeight * 2);
+        this.panels.skipNine.top = (window.innerHeight * 3);
+        break;
+      case progreso = 8:
+        this.progress = 80;
+        this.panels.skipFullName.top = (-window.innerHeight * 8);
+        this.panels.skipEmail.top = (-window.innerHeight * 7);
+        this.panels.skipOne.top = (-window.innerHeight * 6);
+        this.panels.skipTwo.top = (-window.innerHeight * 5);
+        this.panels.skipThree.top = (-window.innerHeight * 4);
+        this.panels.skipFour.top = (-window.innerHeight * 3);
+        this.panels.skipFive.top = (-window.innerHeight * 2);
+        this.panels.skipSix.top = (-window.innerHeight * 1);
+        this.panels.skipSeven.top = (window.innerHeight * 0);
+        this.panels.skipEight.top = (window.innerHeight * 2);
+        this.panels.skipNine.top = (window.innerHeight * 3);
+        break;
+      case progreso = 9:
+        this.progress = 90;
+        this.panels.skipFullName.top = (-window.innerHeight * 9);
+        this.panels.skipEmail.top = (-window.innerHeight * 8);
+        this.panels.skipOne.top = (-window.innerHeight * 7);
+        this.panels.skipTwo.top = (-window.innerHeight * 6);
+        this.panels.skipThree.top = (-window.innerHeight * 5);
+        this.panels.skipFour.top = (-window.innerHeight * 4);
+        this.panels.skipFive.top = (-window.innerHeight * 3);
+        this.panels.skipSix.top = (-window.innerHeight * 2);
+        this.panels.skipSeven.top = (-window.innerHeight * 1);
+        this.panels.skipEight.top = (window.innerHeight * 0);
+        this.panels.skipNine.top = (window.innerHeight * 3);
+        break;
+      case progreso = 10:
+        this.progress = 100;
+        this.panels.skipFullName.top = (-window.innerHeight * 10);
+        this.panels.skipEmail.top = (-window.innerHeight * 9);
+        this.panels.skipOne.top = (-window.innerHeight * 8);
+        this.panels.skipTwo.top = (-window.innerHeight * 7);
+        this.panels.skipThree.top = (-window.innerHeight * 6);
+        this.panels.skipFour.top = (-window.innerHeight * 5);
+        this.panels.skipFive.top = (-window.innerHeight * 4);
+        this.panels.skipSix.top = (-window.innerHeight * 3);
+        this.panels.skipSeven.top = (-window.innerHeight * 2);
+        this.panels.skipEight.top = (-window.innerHeight * 1);
+        this.panels.skipNine.top = (window.innerHeight * 0);
+        break;
+    }
+
+  }
+
+
   timeRecorsive() {
- /*    setInterval(() => {
-      this.hours.subtract(1, 'second');
-      this.finalHour = this.hours.format('HH');
-      this.finalMinute = this.hours.format('MM');
-      this.finalsecond = this.hours.format('ss');
-    }, 1000); */
+    /*    setInterval(() => {
+         this.hours.subtract(1, 'second');
+         this.finalHour = this.hours.format('HH');
+         this.finalMinute = this.hours.format('MM');
+         this.finalsecond = this.hours.format('ss');
+       }, 1000); */
   }
 
 }
