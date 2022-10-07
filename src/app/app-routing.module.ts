@@ -6,6 +6,7 @@ import {AngularFireAuthGuard} from "@angular/fire/compat/auth-guard";
 import {redirectUnauthorizedTo} from "@angular/fire/auth-guard";
 import { FormComponent } from './pages/form/form.component';
 import { DesignComponent } from './pages/design/design.component';
+import { Form2Component } from './pages/form2/form2.component';
 
 const redirectUnauthorizedToCart = () => redirectUnauthorizedTo(['cart']);
 
@@ -24,6 +25,11 @@ const routes: Routes = [
     path: 'form',
     component: FormComponent,
     title: 'form'
+  },
+  {
+    path: 'form2',
+    component: Form2Component,
+    title: 'form2'
   },
   {
     path: 'design',

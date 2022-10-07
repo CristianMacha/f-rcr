@@ -18,6 +18,7 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import {SharedModule} from "./shared/shared.module";
 import { FormComponent } from './pages/form/form.component';
 import { DesignComponent } from './pages/design/design.component';
+import { Form2Component } from './pages/form2/form2.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DesignComponent } from './pages/design/design.component';
     CartComponent,
     CheckoutComponent,
     FormComponent,
-    DesignComponent
+    DesignComponent,
+    Form2Component
   ],
   imports: [
     BrowserModule,
