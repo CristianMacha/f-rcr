@@ -5,7 +5,7 @@
 
     <div class="content_form" [style.top.px]="panels.skipFullName.top">
         <div class="w-full mx-5 ">
-            <h1 class="title"><span>1.</span> {{panels.skipFullName.title}}</h1>
+            <h1 class="title"><span>1.</span> {{panels.skipFullName.title | uppercase}}</h1>
             <mat-form-field appearance="standard" class="w-full">
                 <input type="text" matInput autocomplete="off" class="input_text" [formControl]="s1FullNameFormGroup">
             </mat-form-field>
@@ -16,7 +16,7 @@
 
     <div class="content_form" [style.top.px]="panels.skipEmail.top">
         <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
-            <h1 class="title"><span>2.</span> {{panels.skipEmail.title}}</h1>
+            <h1 class="title"><span>2.</span> {{panels.skipEmail.title | uppercase}}</h1>
             <mat-form-field appearance="standard" class="w-full">
                 <input type="email" matInput autocomplete="off" class="input_text w-full" [formControl]="s2EmailFormGroup">
             </mat-form-field>
@@ -87,8 +87,8 @@
     <div class="content_form" [style.top.px]="panels.skipFive.top">
         <div class="mx-5 w-full md:w-3/4 lg:w-1/2 ">
             <h1 class="title"><span>7.</span> {{panels.skipFive.title}}</h1>
-            <div class="s4_content_option">
-                <div *ngFor="let option of panels.skipFive.options" class="s4_option">
+            <div class="s3_content_option">
+                <div *ngFor="let option of panels.skipFive.options" class="s3_option">
                     {{option.name}}
                 </div>
             </div>

@@ -3,6 +3,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: .4rem;
+    justify-content: center;
     margin-top: 1rem;
     @media (max-width: $md) {
         display: grid;
