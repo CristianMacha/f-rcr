@@ -6,6 +6,7 @@
     @import "./scss/skipSix";
     @import "./scss/skipSeven";
     @import "./scss/skipNine";
+
     .container_main {
         position: relative;
         width: 100%;
@@ -13,46 +14,41 @@
         overflow: hidden;
         transition: bottom 5s;
     }
-    
+
     .progress_bar {
         width: 100%;
         position: fixed;
         top: 0;
         z-index: 1;
     }
-    
+
     .content_form {
-        display: flex;
-        align-items: center;
-        height: 100%;
+        overflow: hidden;
+        height: 100vh;
         width: 100%;
-        justify-content: center;
         position: absolute;
         transition: all .5s;
-        @media (max-width: $md) {
-            justify-content: center;
-        }
     }
-    
+
     .title {
         font-size: 24px;
         & span {
             color: $primary;
         }
     }
-    
+
     .input_text {
         font-size: 24px;
         color: $primary;
     }
-    
+
     .personaje {
         height: 100%;
         @media (max-width: $md) {
             display: none;
         }
     }
-    
+
     .body_content {
         display: flex;
         justify-content: center;
@@ -62,4 +58,13 @@
             max-height: 500px;
             min-height: 200px;
         }
+    }
+
+    .active_selectable {
+      color: white;
+      background: $primary;
+    }
+
+    .active_selectable_with_image {
+      border: 4px solid $primary;
     }

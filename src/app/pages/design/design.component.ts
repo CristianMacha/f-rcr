@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FormService, StorageService } from '@core/services';
 import * as moment from 'moment';
+import { nanoid } from 'nanoid';
 
 @Component({
   selector: 'vs-design',
@@ -15,326 +16,949 @@ export class DesignComponent implements OnInit {
   finalMinute = '';
   finalsecond = '';
   heightVH = window.innerHeight;
-  s1FullNameFormGroup = new FormControl('');
-  s2EmailFormGroup = new FormControl('');
 
-  panels = {
-    id: '',
-    createdAt: '',
-    skipFullName: {
-      title: "Hello, what's your name?",
-      fullName: '',
+  s1FullNameFormControl = new FormControl('');
+  s2EmailFormControl = new FormControl('');
+  s6formControl = new FormControl('LESS THAN 25 (SMALL)');
+  s8locationFormControl = new FormControl('');
+
+  inputFile = 'No file selected';
+  file!: File;
+
+  validation = [false, false, false, false, false, false, false, false, false, false];
+
+  formData = {
+    oneStep: {
+      title: `HELLO, WHAT'S YOUR NAME?`,
+      id: 1,
+      name: '',
+      filled: false,
       top: 0,
+      order: 1,
     },
-    skipEmail: {
-      title: "what's your email?",
+    twoStep: {
+      id: 2,
+      title: `WHAT'S YOUR EMAIL?`,
       email: '',
+      filled: false,
       top: this.heightVH,
+      order: 2,
     },
-    skipOne: {
-      title: 'WHERE DO YOU NEED TILE?',
-      subTitle: 'PICK ONE OR MANY AREAS',
+    threeStep: {
+      id: 3,
+      title: `WHERE DO YOU NEED TILE?`,
+      description: `PICK ONE OR MANY AREAS`,
+      filled: false,
       top: this.heightVH * 2,
-      options: [
+      order: 3,
+      areas: [
         {
           id: 1,
           name: 'BATHROOM',
           selected: false,
+          areas: [
+            {
+              id: 1,
+              name: 'bathroom_1',
+              image: 'assets/imgs/bathroom_1.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            },
+            {
+              id: 2,
+              name: 'bathroom_2',
+              image: 'assets/imgs/bathroom_2.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            },
+            {
+              id: 3,
+              name: 'bathroom_3',
+              image: 'assets/imgs/bathroom_3.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            },
+            {
+              id: 4,
+              name: 'bathroom_4',
+              image: 'assets/imgs/bathroom_4.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            },
+            {
+              id: 5,
+              name: 'other',
+              description: '',
+              image: 'assets/imgs/other.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            }
+          ]
         },
         {
           id: 2,
           name: 'KITCHEN',
           selected: false,
+          areas: [
+            {
+              id: 1,
+              name: 'kitchen_1',
+              image: 'assets/imgs/kitchen_1.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            },
+            {
+              id: 2,
+              name: 'kitchen_2',
+              image: 'assets/imgs/kitchen_2.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            },
+            {
+              id: 3,
+              name: 'kitchen_3',
+              image: 'assets/imgs/kitchen_3.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            },
+            {
+              id: 4,
+              name: 'kitchen_4',
+              image: 'assets/imgs/kitchen_4.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            },
+            {
+              id: 5,
+              name: 'other',
+              description: '',
+              image: 'assets/imgs/other.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            }
+          ]
         },
         {
           id: 3,
           name: 'EXTERIOR',
           selected: false,
+          areas: [
+            {
+              id: 1,
+              name: 'exterior_1',
+              image: 'assets/imgs/exterior_1.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            },
+            {
+              id: 2,
+              name: 'exterior_2',
+              image: 'assets/imgs/exterior_2.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            },
+            {
+              id: 3,
+              name: 'exterior_3',
+              image: 'assets/imgs/exterior_3.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            },
+            {
+              id: 4,
+              name: 'other',
+              description: '',
+              image: 'assets/imgs/other.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            }
+          ]
         },
         {
           id: 4,
           name: 'DINNING ROOM',
           selected: false,
+          areas: [
+            {
+              id: 1,
+              name: 'dinning_room_1',
+              image: 'assets/imgs/dinning_room_1.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            },
+            {
+              id: 2,
+              name: 'dinning_room_2',
+              image: 'assets/imgs/dinning_room_2.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            },
+            {
+              id: 3,
+              name: 'dinning_room_3',
+              image: 'assets/imgs/dinning_room_3.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            },
+            {
+              id: 4,
+              name: 'other',
+              description: '',
+              image: 'assets/imgs/other.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            }
+          ]
         },
         {
           id: 5,
           name: 'HALLWAY',
           selected: false,
+          areas: [
+            {
+              id: 1,
+              name: 'hallway_1',
+              image: 'assets/imgs/hallway_1.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            },
+            {
+              id: 2,
+              name: 'hallway_2',
+              image: 'assets/imgs/hallway_2.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            },
+            {
+              id: 3,
+              name: 'hallway_3',
+              image: 'assets/imgs/hallway_3.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            },
+            {
+              id: 4,
+              name: 'hallway_4',
+              image: 'assets/imgs/hallway_4.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            },
+            {
+              id: 5,
+              name: 'other',
+              description: '',
+              image: 'assets/imgs/other.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            }
+          ]
         },
         {
           id: 6,
           name: 'OTHER',
           selected: false,
-        }
+          description: '',
+          areas: [
+            {
+              id: 1,
+              name: 'other',
+              description: '',
+              image: 'assets/imgs/other.jpg',
+              selected: false,
+              tiles: [
+                {
+                  id: 1,
+                  name: 'CERAMIC',
+                  selected: false,
+                },
+                {
+                  id: 2,
+                  name: 'PORCELAIN',
+                  selected: false,
+                },
+                {
+                  id: 3,
+                  name: 'NATURE STONE',
+                  selected: false,
+                },
+                {
+                  id: 4,
+                  name: 'GLASS',
+                  selected: false,
+                }
+              ]
+            }
+          ]
+        },
       ]
     },
-    skipTwo: {
+    fourStep: {
+      id: 4,
       title: 'WHAT AREAS NEED TILING WORK?',
-      subTitle: 'PICK ONE OR MANY AREAS',
+      description: 'PICK ONE OR MANY AREAS',
       top: this.heightVH * 3,
-      options: [
-        {
-          id: 1,
-          name: 'FLOOR',
-          src: 'assets/imgs/Mesa_de_trabajo_18.jpg',
-          selected: false,
-        },
-        {
-          id: 2,
-          name: 'BACKSPLASH',
-          src: 'assets/imgs/Mesa_de_trabajo_19.jpg',
-          selected: false,
-        },
-        {
-          id: 3,
-          name: 'TUB/SHOWER ENCLOSURE',
-          src: 'assets/imgs/Mesa_de_trabajo_16.jpg',
-          selected: false,
-        },
-        {
-          id: 4,
-          name: 'WALL',
-          src: 'assets/imgs/Mesa_de_trabajo_17.jpg',
-          selected: false,
-        },
-        {
-          id: 5,
-          name: 'OTHER',
-          src: 'assets/imgs/LAPIZ.jpg',
-          selected: false,
-        }
-      ]
+      order: 4,
     },
-    skipThree: {
+    fiveStep: {
+      id: 5,
       title: 'HAVE YOU ALREADY PURCHASED THE TILE FOR YOUR PROJECT?',
-      subTitle: 'BATHROOM',
+      description: '',
+      haveTile: false,
       top: this.heightVH * 4,
-      options: [
-        {
-          id: 1,
-          name: 'YES',
-          selected: false,
-        },
-        {
-          id: 2,
-          name: 'NO',
-          selected: false,
-        }
-      ]
+      order: 5,
     },
-    skipFour: {
-      title: 'TYPE OF TILE ARE YPU PLANNING TO INSTALL FOR YOUR BATHROOM?',
-      subTitle: 'PICK ONE OR MANY AREAS',
+    sixStep: {
+      id: 6,
+      title: 'HAVE YOU ALREADY PURCHASED THE TILE FOR YOUR PROJECT?',
+      description: 'PICK ONE OR MANY AREAS',
       top: this.heightVH * 5,
-      options: [
-        {
-          id: 1,
-          name: 'BATHROOM FLOOR',
-          materials: [
-            {
-              id: 1,
-              name: 'CERAMIC',
-              selected: false
-            },
-            {
-              id: 2,
-              name: 'PORCELAIN',
-              selected: false
-            },
-            {
-              id: 3,
-              name: 'NATURE STONE',
-              selected: false
-            },
-            {
-              id: 4,
-              name: 'GLASS',
-              selected: false
-            },
-          ], // CERAMIC, PORCELAIN, NATURAL STONE AND GLASS
-        },
-        {
-          id: 2,
-          name: 'BATHROOM BACKSPLASH',
-          materials: [
-            {
-              id: 1,
-              name: 'CERAMIC',
-              selected: false
-            },
-            {
-              id: 2,
-              name: 'PORCELAIN',
-              selected: false
-            },
-            {
-              id: 3,
-              name: 'NATURE STONE',
-              selected: false
-            },
-            {
-              id: 4,
-              name: 'GLASS',
-              selected: false
-            },
-          ],
-        },
-        {
-          id: 3,
-          name: 'BATHROOM WALL',
-          materials: [
-            {
-              id: 1,
-              name: 'CERAMIC',
-              selected: false
-            },
-            {
-              id: 2,
-              name: 'PORCELAIN',
-              selected: false
-            },
-            {
-              id: 3,
-              name: 'NATURE STONE',
-              selected: false
-            },
-            {
-              id: 4,
-              name: 'GLASS',
-              selected: false
-            },
-          ],
-        },
-        {
-          id: 4,
-          name: 'BATHROOM TUB/SHOWER',
-          materials: [
-            {
-              id: 1,
-              name: 'CERAMIC',
-              selected: false
-            },
-            {
-              id: 2,
-              name: 'PORCELAIN',
-              selected: false
-            },
-            {
-              id: 3,
-              name: 'NATURE STONE',
-              selected: false
-            },
-            {
-              id: 4,
-              name: 'GLASS',
-              selected: false
-            },
-          ],
-        }
-      ]
+      order: 6,
     },
-    skipFive: {
+    sevenStep: {
+      id: 7,
       title: 'DO YOU WANT ANY SPECIAL DESIGN OR PATTERN?',
+      hasDesign: false,
       top: this.heightVH * 6,
-      options: [
-        {
-          id: 1,
-          name: 'YES',
-          selected: false,
-        },
-        {
-          id: 2,
-          name: 'NO',
-          selected: false,
-        }
-      ]
+      order: 8,
     },
-    skipSix: {
+    eightStep: {
+      id: 8,
       title: 'APPROXIMATE SQUARE FOOTAGE OF THE AREAS TO BE TILED?',
+      value: '',
       top: this.heightVH * 7,
-      size: '',
+      order: 9,
     },
-    skipSeven: {
+    nineStep: {
+      id: 9,
       title: 'PICTURE OF YOU PROJECT',
-      subTitle: 'OPTIONAL',
+      image: '',
       top: this.heightVH * 8,
-      fileName: '',
+      order: 10,
     },
-    skipEight: {
+    tenStep: {
+      id: 10,
       title: 'ONE MORE THING - WHERE WILL THE PROJECT BE?',
-      selected: false,
-      previusPage: 7,
-      nextPage: 9,
+      address: '',
       top: this.heightVH * 9,
-      address: ''
+      order: 11,
     },
-    skipNine: {
+    finalStep: {
       title: `RECEIVE A QUOTE IN LESS THAN 24HRS`,
       subTitle: 'THANK YOU!',
-      selected: false,
       top: this.heightVH * 10,
-
-    },
+      order: 12,
+    }
   }
 
-  constructor(private storageService: StorageService,
-    private formService: FormService,) {
-    this.s1FullNameFormGroup.valueChanges.subscribe((resp: any) => this.skipFullName.fullName = resp);
-    this.s2EmailFormGroup.valueChanges.subscribe((resp: any) => this.skipEmail.email = resp);
-
-
+  constructor(
+    private storageService: StorageService,
+    private formService: FormService,
+  ) {
+    this.s1FullNameFormControl.valueChanges.subscribe((resp: any) => this.oneStep.name = resp);
+    this.s2EmailFormControl.valueChanges.subscribe((resp: any) => this.twoStep.email = resp);
+    this.s6formControl.valueChanges.subscribe((resp: any) => this.eightStep.value = resp);
+    this.s8locationFormControl.valueChanges.subscribe((resp: any) => this.tenStep.address = resp);
   }
 
   ngOnInit(): void {
     this.timeRecorsive();
   }
 
-  get skipFullName() {
-    return this.panels.skipFullName;
+  get oneStep() {
+    return this.formData.oneStep;
   }
 
-  get skipEmail() {
-    return this.panels.skipEmail;
+  get twoStep() {
+    return this.formData.twoStep;
+  }
+
+  get threeStep() {
+    return this.formData.threeStep;
+  }
+
+  get fourStep() {
+    return this.formData.fourStep;
+  }
+
+  get fiveStep() {
+    return this.formData.fiveStep;
+  }
+
+  get sixStep() {
+    return this.formData.sixStep;
+  }
+
+  get sevenStep() {
+    return this.formData.sevenStep;
+  }
+
+  get eightStep() {
+    return this.formData.eightStep;
+  }
+
+  get nineStep() {
+    return this.formData.nineStep;
+  }
+
+  get tenStep() {
+    return this.formData.tenStep;
+  }
+
+  get finalStep() {
+    return this.formData.finalStep;
   }
 
   handleSelectOptionSkipOne(optionId: number) {
-    const index = this.panels.skipOne.options.findIndex((o) => o.id == optionId);
-    this.panels.skipOne.options[index].selected = !this.panels.skipOne.options[index].selected
-    console.log(this.panels.skipOne.options[index].selected);
-    ;
+    const index = this.threeStep.areas.findIndex((area) => area.id == optionId);
+    this.threeStep.areas[index].selected = !this.threeStep.areas[index].selected;
+  }
+
+  handleSelectOptionArea(areaId: number, tileId: number) {
+    const areaIndex = this.threeStep.areas.findIndex((a) => a.id == areaId);
+    const index = this.threeStep.areas[areaIndex].areas.findIndex((a) => a.id == tileId);
+    this.threeStep.areas[areaIndex].areas[index].selected = !this.threeStep.areas[areaIndex].areas[index].selected;
+  }
+
+  fiveHandleClick(active: boolean) {
+    this.fiveStep.haveTile = active;
+  }
+
+  handleSelectTile(areaId: number, subAreaId: number, tileId: number) {
+    const areaIndex = this.threeStep.areas.findIndex((a) => a.id == areaId);
+    const subAreaIndex = this.threeStep.areas[areaIndex].areas.findIndex((a) => a.id == subAreaId);
+    const tileIndex = this.threeStep.areas[areaIndex].areas[subAreaIndex].tiles.findIndex((m) => m.id == tileId);
+    this.threeStep.areas[areaIndex].areas[subAreaIndex].tiles[tileIndex].selected = !this.threeStep.areas[areaIndex].areas[subAreaIndex].tiles[tileIndex].selected;
+  }
+
+  seventHandleClick(active: boolean) {
+    this.sevenStep.hasDesign = !this.sevenStep.hasDesign;
+  }
+
+  selectFile(event: any) {
+    if (event.target.files.length > 0) {
+      const fileTem = (event.target.files[0] as File);
+      const size = (fileTem.size / 1024) / 1024;
+      if (size > 10.6) { return }
+
+      this.file = fileTem;
+      this.inputFile = this.file.name;
+      this.nineStep.image = nanoid();
+    }
   }
 
   handleNext(): void {
     this.progress += 10;
-    this.panels.skipFullName.top -= window.innerHeight;
-    this.panels.skipEmail.top -= window.innerHeight;
-    this.panels.skipOne.top -= window.innerHeight;
-    this.panels.skipTwo.top -= window.innerHeight;
-    this.panels.skipThree.top -= window.innerHeight;
-    this.panels.skipFour.top -= window.innerHeight;
-    this.panels.skipFive.top -= window.innerHeight;
-    this.panels.skipSix.top -= window.innerHeight;
-    this.panels.skipSeven.top -= window.innerHeight;
-    this.panels.skipEight.top -= window.innerHeight;
-    this.panels.skipNine.top -= window.innerHeight;
-
+    this.formData.oneStep.top -= this.heightVH;
+    this.formData.twoStep.top -= this.heightVH;
+    this.formData.threeStep.top -= this.heightVH;
+    this.formData.fourStep.top -= this.heightVH;
+    this.formData.fiveStep.top -= this.heightVH;
+    this.formData.sixStep.top -= this.heightVH;
+    this.formData.sevenStep.top -= this.heightVH;
+    this.formData.eightStep.top -= this.heightVH;
+    this.formData.nineStep.top -= this.heightVH;
+    this.formData.tenStep.top -= this.heightVH;
+    this.formData.finalStep.top -= this.heightVH;
   }
 
   handlePrevious(): void {
     this.progress -= 10;
-    this.panels.skipFullName.top += window.innerHeight;
-    this.panels.skipEmail.top += window.innerHeight;
-    this.panels.skipOne.top += window.innerHeight;
-    this.panels.skipTwo.top += window.innerHeight;
-    this.panels.skipThree.top += window.innerHeight;
-    this.panels.skipFour.top += window.innerHeight;
-    this.panels.skipFive.top += window.innerHeight;
-    this.panels.skipSix.top += window.innerHeight;
-    this.panels.skipSeven.top += window.innerHeight;
-    this.panels.skipEight.top += window.innerHeight;
-    this.panels.skipNine.top += window.innerHeight;
-
+    this.formData.oneStep.top += this.heightVH;
+    this.formData.twoStep.top += this.heightVH;
+    this.formData.threeStep.top += this.heightVH;
+    this.formData.fourStep.top += this.heightVH;
+    this.formData.fiveStep.top += this.heightVH;
+    this.formData.sixStep.top += this.heightVH;
+    this.formData.sevenStep.top += this.heightVH;
+    this.formData.eightStep.top += this.heightVH;
+    this.formData.nineStep.top += this.heightVH;
+    this.formData.tenStep.top += this.heightVH;
+    this.formData.finalStep.top += this.heightVH;
   }
+
   timeRecorsive() {
     setInterval(() => {
       this.hours.subtract(1, 'second');
@@ -342,5 +966,9 @@ export class DesignComponent implements OnInit {
       this.finalMinute = this.hours.format('MM');
       this.finalsecond = this.hours.format('ss');
     }, 1000);
+  }
+
+  setValidation(index: number) {
+
   }
 }

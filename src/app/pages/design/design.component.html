@@ -1,175 +1,227 @@
 <div class="container_main">
-    <div class="progress_bar">
-        <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
-    </div>
+  <div class="progress_bar">
+    <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+  </div>
 
-    <div class="content_form" [style.top.px]="panels.skipFullName.top">
-        <div class="w-full mx-5 ">
-            <h1 class="title"><span>1.</span> {{panels.skipFullName.title | uppercase}}</h1>
-            <mat-form-field appearance="standard" class="w-full">
-                <input type="text" matInput autocomplete="off" class="input_text" [formControl]="s1FullNameFormGroup">
-            </mat-form-field>
-            <button mat-flat-button color="primary" (click)="handleNext()">OK <mat-icon>check</mat-icon></button>
+  <div class="content_form" [style.top.px]="oneStep.top">
+    <div class="px-2 md:mx-0 flex items-center justify-between content-center h-full w-full">
+      <div class="w-full flex justify-center flex-col px-5">
+        <h1 class="title"><span>1.</span> {{oneStep.title | uppercase}}</h1>
+        <mat-form-field appearance="standard" class="w-full">
+          <input type="text" matInput autocomplete="off" class="input_text" [formControl]="s1FullNameFormControl">
+        </mat-form-field>
+        <div>
+          <button mat-flat-button color="primary" (click)="handleNext()">OK <mat-icon>check</mat-icon></button>
         </div>
-        <img src="assets/imgs/Personaje.png" class="personaje">
+      </div>
+      <img src="assets/imgs/Personaje.png" class="personaje">
     </div>
+  </div>
 
-    <div class="content_form" [style.top.px]="panels.skipEmail.top">
-        <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
-            <h1 class="title"><span>2.</span> {{panels.skipEmail.title | uppercase}}</h1>
-            <mat-form-field appearance="standard" class="w-full">
-                <input type="email" matInput autocomplete="off" class="input_text w-full" [formControl]="s2EmailFormGroup">
-            </mat-form-field>
-            <button mat-flat-button color="primary" (click)="handleNext()">OK <mat-icon>check</mat-icon></button>
+  <div class="content_form" [style.top.px]="twoStep.top">
+    <div class="px-2 md:mx-0 flex items-center justify-center content-center h-full w-full">
+      <div class="w-3/4">
+        <h1 class="title"><span>2.</span> {{twoStep.title | uppercase}}</h1>
+        <mat-form-field appearance="standard" class="w-full">
+          <input type="email" matInput autocomplete="off" class="input_text w-full" [formControl]="s2EmailFormControl">
+        </mat-form-field>
+        <button mat-flat-button color="primary" (click)="handleNext()">OK <mat-icon>check</mat-icon></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="content_form" [style.top.px]="threeStep.top">
+    <div class="px-2 md:mx-0 flex items-center justify-center content-center h-full w-full">
+      <div class="w-3/4">
+        <h1 class="title"><span>3.</span> {{threeStep.title}}</h1>
+        <small>{{threeStep.description}}</small>
+        <div class="flex gap-2 flex-wrap">
+          <div class="py-2 px-3 text-primary border border-primary rounded-md hover:text-slate-100 hover:bg-primary cursor-pointer"
+            *ngFor="let area of threeStep.areas" [class.active]="area.selected"
+            [class.active_selectable]="area.selected"
+            (click)="handleSelectOptionSkipOne(area.id)">
+            {{area.name}}
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
-    <div class="content_form" [style.top.px]="panels.skipOne.top">
-        <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
-            <h1 class="title"><span>3.</span> {{panels.skipOne.title}}</h1>
-            <small>{{panels.skipOne.subTitle}}</small>
-            <div class="s1_content_option ">
-                <div class="s1_option" *ngFor="let option of panels.skipOne.options" [class.active]="option.selected" (click)="handleSelectOptionSkipOne(option.id)">
-                    {{option.name}}
+  <div class="content_form" [style.top.px]="fourStep.top">
+    <div class="px-2 md:mx-0 block md:flex items-center justify-center content-center h-full w-full">
+      <div class="w-full md:w-3/4">
+        <h1 class="title"><span>4.</span> {{fourStep.title}}</h1>
+        <small>{{fourStep.description}}</small>
+        <div class="overflow-auto h-[80vh]">
+          <div *ngFor="let area of threeStep.areas">
+            <div *ngIf="area.selected">
+              <div class="mt-2">{{area.name}}</div>
+              <small>{{area.description}}</small>
+              <div class="overflow-auto flex gap-2">
+                <div
+                  *ngFor="let subArea of area.areas"
+                  class="box-border border border-primary cursor-pointer hover:border-4 transition-all"
+                  [class.active_selectable_with_image]="subArea.selected"
+                  (click)="handleSelectOptionArea(area.id, subArea.id)">
+                  <img [src]="subArea.image" style="width: 96px; min-width: 96px;">
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-    <div class="content_form" [style.top.px]="panels.skipTwo.top">
-        <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
-            <h1 class="title"><span>4.</span> {{panels.skipTwo.title}}</h1>
-            <small>{{panels.skipTwo.subTitle}}</small>
-            <div class="s1_content_option">
-                <div *ngFor="let option of panels.skipTwo.options" class="s1_option">
-                    <img src="{{option.src}}" alt="" width="100px" style="float: inline-start;">
-                </div>
-            </div>
+  </div>
+
+  <div class="content_form" [style.top.px]="fiveStep.top">
+    <div class="px-2 md:mx-0 flex items-center justify-center content-center h-full w-full">
+      <div class="w-3/4">
+        <h1 class="title"><span>5.</span> {{fiveStep.title}}</h1>
+        <small>{{fiveStep.description}}</small>
+        <div class="flex gap-2 flex-wrap">
+          <div
+            class="py-2 px-5 text-primary border border-primary rounded-md hover:text-slate-100 hover:bg-primary cursor-pointer"
+            [class.active_selectable]="fiveStep.haveTile"
+            (click)="fiveHandleClick(true)">YES</div>
+          <div
+            class="py-2 px-5 text-primary border border-primary rounded-md hover:text-slate-100 hover:bg-primary cursor-pointer"
+            [class.active_selectable]="!fiveStep.haveTile"
+            (click)="fiveHandleClick(false)">NO</div>
         </div>
+      </div>
     </div>
+  </div>
 
-
-    <div class="content_form" [style.top.px]="panels.skipThree.top">
-        <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
-            <h1 class="title"><span>5.</span> {{panels.skipThree.title}}</h1>
-            <small>{{panels.skipThree.subTitle}}</small>
-            <div class="s3_content_option">
-                <div *ngFor="let option of panels.skipThree.options" class="s3_option">
-                    {{option.name}}
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="content_form" [style.top.px]="panels.skipFour.top">
-        <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
-            <h1 class="title"><span>6.</span> {{panels.skipFour.title}}</h1>
-            <small>{{panels.skipFour.subTitle}}</small>
-            <div class="s3_content_option">
-                <div class="s4_options">
-                    <div *ngFor="let option of panels.skipFour.options">
-
-                        <div class="s4_item">
-
-                            <div class="s4_name name_item">{{option.name}}</div>
-                            <div class="s4_materials ">
-                                <div class="option_selectable snap-center" *ngFor="let material of option.materials" [class.active]="material.selected">
-                                    {{material.name}}
-                                </div>
-                            </div>
-                        </div>
+  <div class="content_form" [style.top.px]="sixStep.top">
+    <div class="px-2 md:mx-0 block md:flex items-center justify-center content-center h-full w-full">
+      <div class="w-full md:w-3/4">
+        <h1 class="title"><span>6.</span> {{sixStep.title}}</h1>
+        <small>{{sixStep.description}}</small>
+        <div class="overflow-auto h-[80vh] flex flex-col gap-8">
+          <div *ngFor="let option of threeStep.areas" class="flex flex-col gap-8 md:gap-4">
+            <div *ngIf="option.selected">
+              <div>{{option.name}}</div>
+              <div *ngFor="let area of option.areas" class="mt-2">
+                <div *ngIf="area.selected">
+                  <div class="grid grid-rows-2 grid-cols-4 gap-2 md:grid-cols-6 md:grid-rows-1">
+                    <div class="col-span-4 md:col-span-2 text-primary border border-b-4 md:border-b md:border-x-2 border-primary rounded-md p-2 text-center">{{area.name}}</div>
+                    <div
+                      class="col-span-1 md:col-span-1 text-primary border border-primary rounded-md p-2 text-center cursor-pointer hover:bg-primary hover:text-slate-100 break-words"
+                      *ngFor="let material of area.tiles"
+                      [class.active_selectable]="material.selected"
+                      (click)="handleSelectTile(option.id, area.id, material.id)">
+                        {{material.name}}
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content_form" [style.top.px]="sevenStep.top">
+    <div class="px-2 md:mx-0 flex items-center justify-center content-center h-full w-full">
+      <div class="w-3/4">
+        <h1 class="title"><span>7.</span> {{sevenStep.title}}</h1>
+        <div class="flex gap-2">
+          <div
+            class="py-2 px-5 text-primary border border-primary rounded-md hover:text-slate-100 hover:bg-primary cursor-pointer"
+            (click)="seventHandleClick(true)"
+            [class.active_selectable]="sevenStep.hasDesign">YES</div>
+          <div
+            class="py-2 px-5 text-primary border border-primary rounded-md hover:text-slate-100 hover:bg-primary cursor-pointer"
+            (click)="seventHandleClick(false)"
+            [class.active_selectable]="!sevenStep.hasDesign">NO</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content_form" [style.top.px]="eightStep.top">
+    <div class="px-2 md:mx-0 flex items-center justify-center content-center h-full w-full">
+      <div class="w-3/4">
+        <h1 class="title"><span>8.</span> {{eightStep.title}}</h1>
+        <div class="s6_content">
+          <select class="s6_select" [formControl]="s6formControl">
+            <option value="LESS THAN 25 (SMALL)" style="color: #2f68db;">LESS THAN 25 (SMALL)</option>
+            <option value="LESS THAN 50 (MEDIUM)" style="color: #2f68db;">LESS THAN 50 (MEDIUM)</option>
+          </select>
+        </div>
+      </div>
     </div>
 
+  </div>
 
-    <div class="content_form" [style.top.px]="panels.skipFive.top">
-        <div class="mx-5 w-full md:w-3/4 lg:w-1/2 ">
-            <h1 class="title"><span>7.</span> {{panels.skipFive.title}}</h1>
-            <div class="s3_content_option">
-                <div *ngFor="let option of panels.skipFive.options" class="s3_option">
-                    {{option.name}}
-                </div>
+  <div class="content_form" [style.top.px]="nineStep.top">
+    <div class="px-2 md:mx-0 flex items-center justify-center content-center h-full w-full">
+      <div class="w-3/4">
+        <h1 class="title"><span>9.</span> {{nineStep.title}}</h1>
+        <div class="">
+          <div class="input">
+            <div>
+              <h4>{{inputFile}}</h4>
+              <small>MAX. FILE SIZE: 10.6MB</small>
             </div>
+            <div class="btn_file" (click)="fileProject.click()">BROWSE FILES</div>
+          </div>
+          <input #fileProject type="file" hidden (change)="selectFile($event)">
         </div>
+      </div>
     </div>
+  </div>
 
-    <div class="content_form" [style.top.px]="panels.skipSix.top">
-        <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
-            <h1 class="title"><span>8.</span> {{panels.skipSix.title}}</h1>
-            <div class="s6_content">
-                <select class="s6_select">
-                        <option value="LESS THAN 25 (SMALL)" style="color: #2f68db;">LESS THAN 25 (SMALL)</option>
-                        <option value="LESS THAN 50 (MEDIUM)" style="color: #2f68db;">LESS THAN 50 (MEDIUM)</option>
-                </select>
+  <div class="content_form" [style.top.px]="tenStep.top">
+    <div class="px-2 md:mx-0 flex items-center justify-center content-center h-full w-full">
+      <div class="w-3/4">
+        <h1 class="title"><span>10.</span> {{tenStep.title}}</h1>
+        <mat-form-field appearance="standard" class="w-full">
+          <input type="text" matInput autocomplete="off" class="input_text" placeholder="ENTER A LOCATION">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="content_form" [style.top.px]="finalStep.top">
+    <div class="px-2 md:mx-0 flex items-center justify-center content-center h-full w-full">
+      <div class="w-3/4">
+        <h1 class="title"><span>11.</span> {{finalStep.title}}</h1>
+        <small>{{finalStep.subTitle}}</small>
+        <div class=" body_content">
+          <div id="countdown">
+            <div id='tiles'>
+              <span>
+                {{finalHour}}
+              </span>
+              <span>
+                {{finalMinute}}
+              </span>
+              <span>
+                {{finalsecond}}
+              </span>
             </div>
-        </div>
-
-    </div>
-    <div class="content_form" [style.top.px]="panels.skipSeven.top">
-        <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
-            <h1 class="title"><span>9.</span> {{panels.skipSeven.title}}</h1>
-            <div class="s7_content">
-                <div class="input">
-                    <div>
-                        <h4>No file selected</h4>
-                        <small>MAX. FILE SIZE: 10.6MB</small>
-                    </div>
-                    <div class="btn_file">BROWSE FILES</div>
-                </div>
+            <div class="labels">
+              <li>HRS</li>
+              <li>MINS</li>
+              <li>SECS</li>
             </div>
-
+          </div>
         </div>
+      </div>
     </div>
 
+  </div>
 
-    <div class="content_form" [style.top.px]="panels.skipEight.top">
-        <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
-            <h1 class="title"><span>10.</span> {{panels.skipEight.title}}</h1>
-            <mat-form-field appearance="standard" class="w-full">
-                <input type="text" matInput autocomplete="off" class="input_text" placeholder="ENTER A LOCATION">
-            </mat-form-field>
+  <div class="fixed flex gap-1 justify-end bottom-2 right-3">
+    <button mat-fab color="primary" (click)="handlePrevious()" [disabled]="progress == 0 || progress == 100">
+      <mat-icon>expand_less</mat-icon>
+    </button>
+    <button mat-fab color="primary" (click)="handleNext()" [disabled]="progress == 100">
+      <mat-icon>expand_more</mat-icon>
+    </button>
+  </div>
 
-        </div>
-
-    </div>
-    <div class="content_form" [style.top.px]="panels.skipNine.top">
-        <div class="mx-5 w-full md:w-3/4 lg:w-1/2">
-            <h1 class="title"><span>11.</span> {{panels.skipNine.title}}</h1>
-            <small>{{panels.skipFour.subTitle}}</small>
-
-            <div class=" body_content">
-                <div id="countdown">
-                    <div id='tiles'>
-                        <span>
-                            {{finalHour}}
-                        </span>
-                        <span>
-                            {{finalMinute}}
-                        </span>
-                        <span>
-                            {{finalsecond}}
-                        </span>
-                    </div>
-                    <div class="labels">
-                        <li>HRS</li>
-                        <li>MINS</li>
-                        <li>SECS</li>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="fixed flex gap-1 justify-end bottom-2 right-3">
-        <button mat-fab color="primary" (click)="handlePrevious()" [disabled]="progress == 0">
-            <mat-icon>expand_less</mat-icon>
-        </button>
-        <button mat-fab color="primary" (click)="handleNext()" [disabled]="progress == 100">
-            <mat-icon>expand_more</mat-icon>
-        </button>
-    </div>
-
-    <!--<img src="assets/imgs/logo.png" alt="logo" class="w-24 absolute bottom-2 left-3">-->
+  <!--<img src="assets/imgs/logo.png" alt="logo" class="w-24 absolute bottom-2 left-3">-->
 </div>

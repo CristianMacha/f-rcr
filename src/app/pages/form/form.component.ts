@@ -443,7 +443,6 @@ export class FormComponent implements OnInit {
       this.inputFile = this.file.name;
       this.skipSeven.fileName = nanoid();
     }
-
   }
 
   handleSelectOptionSkipFive(optionId: number) {
