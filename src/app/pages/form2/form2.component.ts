@@ -8,51 +8,62 @@ import { Component, OnInit } from '@angular/core';
 export class Form2Component implements OnInit {
   progress = 0;
   heightVH = window.innerHeight;
-
+  background:string="";
   skipts = [
     {
       skip: 0,
       active: true,
+      background: '#ffb800'
     },
     {
       skip: 1,
-      active: true,
+      active: false,
+      background: '#ffb800'
     },
     {
       skip: 2,
       active: false,
+      background: '#ffb800'
     },
     {
       skip: 3,
       active: false,
+      background: '#ffb800'
     },
     {
       skip: 4,
       active: false,
+      background: '#ffb800'
     },
     {
       skip: 5,
       active: false,
+      background: '#ffb800'
     },
     {
       skip: 6,
       active: false,
+      background: '#ffb800'
     },
     {
       skip: 7,
       active: false,
+      background: '#ffb800'
     },
     {
       skip: 8,
       active: false,
+      background: '#ffb800'
     },
     {
       skip: 9,
       active: false,
+      background: '#ffb800'
     },
     {
       skip: 10,
       active: false,
+      background: '#ffb800'
     },
   ];
 
@@ -353,10 +364,11 @@ export class Form2Component implements OnInit {
 
   }
 
-  topSli1(progreso: number): void {
+  topSli1(progreso: number|string): void {
     switch (progreso) {
       case progreso = 0:
-        this.progress = 10;
+        this.progress = 0;
+     
         this.panels.skipFullName.top = (window.innerHeight * 0);
         this.panels.skipEmail.top = (window.innerHeight * 1);
         this.panels.skipOne.top = (window.innerHeight * 2);
@@ -371,7 +383,7 @@ export class Form2Component implements OnInit {
 
         break;
       case progreso = 1:
-        this.progress = 20;
+        this.progress = 10;
         this.panels.skipFullName.top = (-window.innerHeight);
         this.panels.skipEmail.top = (window.innerHeight * 0);
         this.panels.skipOne.top = (window.innerHeight * 1);
@@ -386,7 +398,7 @@ export class Form2Component implements OnInit {
         break;
       case progreso = 2:
 
-        this.progress = progreso;
+        this.progress = 20;
         this.panels.skipFullName.top = (-window.innerHeight * 2);
         this.panels.skipEmail.top = (-window.innerHeight * 1);
         this.panels.skipOne.top = (window.innerHeight * 0);

@@ -14,17 +14,15 @@
                     </div>
                     <div class="bodyContainer">
                         <mat-form-field appearance="standard" class="w-full">
-                            <input type="text" matInput autocomplete="off" class="input_text w-full">
+                            <input type="text" matInput autocomplete="off" class="input_text w-full" placeholder="Full Name">
                         </mat-form-field>
-                        <button mat-flat-button color="primary" (click)="handleNext()">OK <mat-icon>check</mat-icon>
-                        </button>
                     </div>
                     <div class="footerContainer">
                         <button class="btn1" (click)="handlePrevious()">
                         </button>
                         <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
                             NEXT
-                            <mat-icon>start</mat-icon>
+                            <mat-icon>arrow_forward</mat-icon>
                         </button>
                     </div>
                 </div>
@@ -42,19 +40,17 @@
                     </div>
                     <div class="bodyContainer">
                         <mat-form-field appearance="standard" class="w-full">
-                            <input type="email" matInput autocomplete="off" class="input_text w-full">
+                            <input type="email" matInput autocomplete="off" class="input_text w-full" placeholder="Email">
                         </mat-form-field>
-                        <button mat-flat-button color="primary" (click)="handleNext()">OK <mat-icon>check</mat-icon>
-                        </button>
                     </div>
                     <div class="footerContainer">
                         <button class="btn1" (click)="handlePrevious()">
-                            <mat-icon>west</mat-icon>
+                            <mat-icon>arrow_back</mat-icon>
                             PREVIOUS
                         </button>
                         <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
                             NEXT
-                            <mat-icon>start</mat-icon>
+                            <mat-icon>arrow_forward</mat-icon>
                         </button>
                     </div>
                 </div>
@@ -79,12 +75,12 @@
                     </div>
                     <div class="footerContainer">
                         <button class="btn1" (click)="handlePrevious()">
-                            <mat-icon>west</mat-icon>
+                            <mat-icon>arrow_back</mat-icon>
                             PREVIOUS
                         </button>
                         <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
                             NEXT
-                            <mat-icon>start</mat-icon>
+                            <mat-icon>arrow_forward</mat-icon>
                         </button>
                     </div>
                 </div>
@@ -100,7 +96,7 @@
                         <h1 class="title"><span>4.</span> {{panels.skipTwo.title}}</h1>
                         <small>{{panels.skipTwo.subTitle}}</small>
                     </div>
-                    <div class="bodyContainer">
+                    <div class="bodyContainer2">
                         <div class="s1_content_option">
                             <div *ngFor="let option of panels.skipTwo.options" class="s1_option">
                                 <img src="{{option.src}}" alt="" width="100px" style="float: inline-start;">
@@ -109,12 +105,12 @@
                     </div>
                     <div class="footerContainer">
                         <button class="btn1" (click)="handlePrevious()">
-                            <mat-icon>west</mat-icon>
+                            <mat-icon>arrow_back</mat-icon>
                             PREVIOUS
                         </button>
                         <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
                             NEXT
-                            <mat-icon>start</mat-icon>
+                            <mat-icon>arrow_forward</mat-icon>
                         </button>
                     </div>
                 </div>
@@ -140,12 +136,12 @@
                     </div>
                     <div class="footerContainer">
                         <button class="btn1" (click)="handlePrevious()">
-                            <mat-icon>west</mat-icon>
+                            <mat-icon>arrow_back</mat-icon>
                             PREVIOUS
                         </button>
                         <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
                             NEXT
-                            <mat-icon>start</mat-icon>
+                            <mat-icon>arrow_forward</mat-icon>
                         </button>
                     </div>
                 </div>
@@ -161,7 +157,7 @@
                         <h1 class="title"><span>6.</span> {{panels.skipFour.title}}</h1>
                         <small>{{panels.skipFour.subTitle}}</small>
                     </div>
-                    <div class="bodyContainer">
+                    <div class="bodyContainer2">
                         <div class="s3_content_option">
                             <div class="s4_options">
                                 <div *ngFor="let option of panels.skipFour.options">
@@ -181,12 +177,12 @@
                     </div>
                     <div class="footerContainer">
                         <button class="btn1" (click)="handlePrevious()">
-                            <mat-icon>west</mat-icon>
+                            <mat-icon>arrow_back</mat-icon>
                             PREVIOUS
                         </button>
                         <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
                             NEXT
-                            <mat-icon>start</mat-icon>
+                            <mat-icon>arrow_forward</mat-icon>
                         </button>
                     </div>
                 </div>
@@ -205,18 +201,17 @@
                         <div class="s3_content_option">
                             <div *ngFor="let option of panels.skipFive.options" class="s3_option">
                                 {{option.name}}
-                                <!-- <input type="button" value="{{option.name}}"> -->
                             </div>
                         </div>
                     </div>
                     <div class="footerContainer">
                         <button class="btn1" (click)="handlePrevious()">
-                            <mat-icon>west</mat-icon>
+                            <mat-icon>arrow_back</mat-icon>
                             PREVIOUS
                         </button>
                         <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
                             NEXT
-                            <mat-icon>start</mat-icon>
+                            <mat-icon>arrow_forward</mat-icon>
                         </button>
                     </div>
                 </div>
@@ -243,12 +238,12 @@
                     </div>
                     <div class="footerContainer">
                         <button class="btn1" (click)="handlePrevious()">
-                            <mat-icon>west</mat-icon>
+                            <mat-icon>arrow_back</mat-icon>
                             PREVIOUS
                         </button>
                         <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
                             NEXT
-                            <mat-icon>start</mat-icon>
+                            <mat-icon>arrow_forward</mat-icon>
                         </button>
                     </div>
                 </div>
@@ -276,12 +271,12 @@
                     </div>
                     <div class="footerContainer">
                         <button class="btn1" (click)="handlePrevious()">
-                            <mat-icon>west</mat-icon>
+                            <mat-icon>arrow_back</mat-icon>
                             PREVIOUS
                         </button>
                         <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
                             NEXT
-                            <mat-icon>start</mat-icon>
+                            <mat-icon>arrow_forward</mat-icon>
                         </button>
                     </div>
                 </div>
@@ -303,12 +298,12 @@
                     </div>
                     <div class="footerContainer">
                         <button class="btn1" (click)="handlePrevious()">
-                            <mat-icon>west</mat-icon>
+                            <mat-icon>arrow_back</mat-icon>
                             PREVIOUS
                         </button>
                         <button class="btn2" (click)="handleNext()" [disabled]="progress == 100">
                             NEXT
-                            <mat-icon>start</mat-icon>
+                            <mat-icon>arrow_forward</mat-icon>
                         </button>
                     </div>
                 </div>
@@ -323,8 +318,6 @@
                 <button class="btn1" (click)="topSli1(pagination.skip)">
                </button>
             </li>
-
-
         </ul>
     </div>
 
