@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, UntypedFormControl } from '@angular/forms';
+import { FormControl, UntypedFormControl, Validators } from '@angular/forms';
 import { IOption } from '@core/interfaces';
 
 
@@ -18,7 +18,7 @@ export class StepThreeComponent implements OnInit {
 
   otherActive = false;
 
-  otherControl = new UntypedFormControl('');
+  otherControl = new UntypedFormControl('', [Validators.required, Validators.minLength(3)]);
   constructor() { }
 
   ngOnInit(): void {
@@ -34,6 +34,8 @@ export class StepThreeComponent implements OnInit {
   }
 
   handleCheckOther() {
+    console.log(this.otherControl.invalid);
+
     if (this.otherControl.invalid) {
       return
     }

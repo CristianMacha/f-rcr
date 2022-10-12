@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormControl, UntypedFormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 import { IArea } from '@core/interfaces';
 
 @Component({
@@ -11,7 +11,7 @@ export class StepFourAreaComponent implements OnInit, OnChanges {
   @Input() areas!: IArea[];
 
   otherActive = false;
-  otherControl = new UntypedFormControl('', Validators.minLength(3));
+  otherControl = new UntypedFormControl('', [Validators.required, Validators.minLength(3)]);
 
   constructor() { }
 
