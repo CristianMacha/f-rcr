@@ -2,6 +2,8 @@
 module.exports = {
   content: [
     "./src/**/*.{html,ts}",
+    "./src/backoffice/**/*.{html,ts}",
+    "./src/backoffice/**/**/*.{html,ts}",
   ],
   presets: [],
   darkMode: 'media', // or 'class'
@@ -16,6 +18,8 @@ module.exports = {
     colors: ({ colors }) => ({
       primary: {
         DEFAULT: '#3f51b5',
+        light: '#757de8',
+        dark: '#002984',
       },
       accent: {
         DEFAULT: '#e91e63',

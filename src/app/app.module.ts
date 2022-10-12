@@ -19,6 +19,11 @@ import {SharedModule} from "./shared/shared.module";
 import { FormComponent } from './pages/form/form.component';
 import { DesignComponent } from './pages/design/design.component';
 import { Form2Component } from './pages/form2/form2.component';
+import { StepOneComponent } from './pages/design/step-one/step-one.component';
+import { StepTwoComponent } from './pages/design/step-two/step-two.component';
+import { StepThreeComponent } from './pages/design/step-three/step-three.component';
+import { StepFourComponent } from './pages/design/step-four/step-four.component';
+import { StepFourAreaComponent } from './pages/design/step-four/step-four-area/step-four-area.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +32,12 @@ import { Form2Component } from './pages/form2/form2.component';
     CheckoutComponent,
     FormComponent,
     DesignComponent,
-    Form2Component
+    Form2Component,
+    StepOneComponent,
+    StepTwoComponent,
+    StepThreeComponent,
+    StepFourComponent,
+    StepFourAreaComponent,
   ],
   imports: [
     BrowserModule,

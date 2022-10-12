@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { IOption } from '@core/interfaces';
 import { FormService, StorageService } from '@core/services';
 import * as moment from 'moment';
 import { nanoid } from 'nanoid';
@@ -10,6 +11,7 @@ import { nanoid } from 'nanoid';
   styleUrls: ['./design.component.scss']
 })
 export class DesignComponent implements OnInit {
+
   progress = 0;
   hours = moment().hour(23).minutes(59).second(59);
   finalHour = '';
@@ -17,17 +19,17 @@ export class DesignComponent implements OnInit {
   finalsecond = '';
   heightVH = window.innerHeight;
 
-  s1FullNameFormControl = new FormControl('');
-  s2EmailFormControl = new FormControl('');
   s6formControl = new FormControl('LESS THAN 25 (SMALL)');
   s8locationFormControl = new FormControl('');
 
   inputFile = 'No file selected';
   file!: File;
 
-  validation = [false, false, false, false, false, false, false, false, false, false];
+  loadingSend: boolean = false;
 
   formData = {
+    id: '',
+    createdAt: '',
     oneStep: {
       title: `HELLO, WHAT'S YOUR NAME?`,
       id: 1,
@@ -59,7 +61,7 @@ export class DesignComponent implements OnInit {
           areas: [
             {
               id: 1,
-              name: 'bathroom_1',
+              name: 'floor',
               image: 'assets/imgs/bathroom_1.jpg',
               selected: false,
               tiles: [
@@ -87,7 +89,7 @@ export class DesignComponent implements OnInit {
             },
             {
               id: 2,
-              name: 'bathroom_2',
+              name: 'backsplash',
               image: 'assets/imgs/bathroom_2.jpg',
               selected: false,
               tiles: [
@@ -115,7 +117,7 @@ export class DesignComponent implements OnInit {
             },
             {
               id: 3,
-              name: 'bathroom_3',
+              name: 'tub/shower',
               image: 'assets/imgs/bathroom_3.jpg',
               selected: false,
               tiles: [
@@ -143,7 +145,7 @@ export class DesignComponent implements OnInit {
             },
             {
               id: 4,
-              name: 'bathroom_4',
+              name: 'wall',
               image: 'assets/imgs/bathroom_4.jpg',
               selected: false,
               tiles: [
@@ -169,35 +171,6 @@ export class DesignComponent implements OnInit {
                 }
               ]
             },
-            {
-              id: 5,
-              name: 'other',
-              description: '',
-              image: 'assets/imgs/other.jpg',
-              selected: false,
-              tiles: [
-                {
-                  id: 1,
-                  name: 'CERAMIC',
-                  selected: false,
-                },
-                {
-                  id: 2,
-                  name: 'PORCELAIN',
-                  selected: false,
-                },
-                {
-                  id: 3,
-                  name: 'NATURE STONE',
-                  selected: false,
-                },
-                {
-                  id: 4,
-                  name: 'GLASS',
-                  selected: false,
-                }
-              ]
-            }
           ]
         },
         {
@@ -317,35 +290,6 @@ export class DesignComponent implements OnInit {
                 }
               ]
             },
-            {
-              id: 5,
-              name: 'other',
-              description: '',
-              image: 'assets/imgs/other.jpg',
-              selected: false,
-              tiles: [
-                {
-                  id: 1,
-                  name: 'CERAMIC',
-                  selected: false,
-                },
-                {
-                  id: 2,
-                  name: 'PORCELAIN',
-                  selected: false,
-                },
-                {
-                  id: 3,
-                  name: 'NATURE STONE',
-                  selected: false,
-                },
-                {
-                  id: 4,
-                  name: 'GLASS',
-                  selected: false,
-                }
-              ]
-            }
           ]
         },
         {
@@ -437,35 +381,6 @@ export class DesignComponent implements OnInit {
                 }
               ]
             },
-            {
-              id: 4,
-              name: 'other',
-              description: '',
-              image: 'assets/imgs/other.jpg',
-              selected: false,
-              tiles: [
-                {
-                  id: 1,
-                  name: 'CERAMIC',
-                  selected: false,
-                },
-                {
-                  id: 2,
-                  name: 'PORCELAIN',
-                  selected: false,
-                },
-                {
-                  id: 3,
-                  name: 'NATURE STONE',
-                  selected: false,
-                },
-                {
-                  id: 4,
-                  name: 'GLASS',
-                  selected: false,
-                }
-              ]
-            }
           ]
         },
         {
@@ -557,35 +472,6 @@ export class DesignComponent implements OnInit {
                 }
               ]
             },
-            {
-              id: 4,
-              name: 'other',
-              description: '',
-              image: 'assets/imgs/other.jpg',
-              selected: false,
-              tiles: [
-                {
-                  id: 1,
-                  name: 'CERAMIC',
-                  selected: false,
-                },
-                {
-                  id: 2,
-                  name: 'PORCELAIN',
-                  selected: false,
-                },
-                {
-                  id: 3,
-                  name: 'NATURE STONE',
-                  selected: false,
-                },
-                {
-                  id: 4,
-                  name: 'GLASS',
-                  selected: false,
-                }
-              ]
-            }
           ]
         },
         {
@@ -705,72 +591,6 @@ export class DesignComponent implements OnInit {
                 }
               ]
             },
-            {
-              id: 5,
-              name: 'other',
-              description: '',
-              image: 'assets/imgs/other.jpg',
-              selected: false,
-              tiles: [
-                {
-                  id: 1,
-                  name: 'CERAMIC',
-                  selected: false,
-                },
-                {
-                  id: 2,
-                  name: 'PORCELAIN',
-                  selected: false,
-                },
-                {
-                  id: 3,
-                  name: 'NATURE STONE',
-                  selected: false,
-                },
-                {
-                  id: 4,
-                  name: 'GLASS',
-                  selected: false,
-                }
-              ]
-            }
-          ]
-        },
-        {
-          id: 6,
-          name: 'OTHER',
-          selected: false,
-          description: '',
-          areas: [
-            {
-              id: 1,
-              name: 'other',
-              description: '',
-              image: 'assets/imgs/other.jpg',
-              selected: false,
-              tiles: [
-                {
-                  id: 1,
-                  name: 'CERAMIC',
-                  selected: false,
-                },
-                {
-                  id: 2,
-                  name: 'PORCELAIN',
-                  selected: false,
-                },
-                {
-                  id: 3,
-                  name: 'NATURE STONE',
-                  selected: false,
-                },
-                {
-                  id: 4,
-                  name: 'GLASS',
-                  selected: false,
-                }
-              ]
-            }
           ]
         },
       ]
@@ -807,7 +627,7 @@ export class DesignComponent implements OnInit {
     eightStep: {
       id: 8,
       title: 'APPROXIMATE SQUARE FOOTAGE OF THE AREAS TO BE TILED?',
-      value: '',
+      value: 'LESS THAN 25 (SMALL)',
       top: this.heightVH * 7,
       order: 9,
     },
@@ -837,8 +657,6 @@ export class DesignComponent implements OnInit {
     private storageService: StorageService,
     private formService: FormService,
   ) {
-    this.s1FullNameFormControl.valueChanges.subscribe((resp: any) => this.oneStep.name = resp);
-    this.s2EmailFormControl.valueChanges.subscribe((resp: any) => this.twoStep.email = resp);
     this.s6formControl.valueChanges.subscribe((resp: any) => this.eightStep.value = resp);
     this.s8locationFormControl.valueChanges.subscribe((resp: any) => this.tenStep.address = resp);
   }
@@ -929,34 +747,34 @@ export class DesignComponent implements OnInit {
     }
   }
 
-  handleNext(): void {
-    this.progress += 10;
-    this.formData.oneStep.top -= this.heightVH;
-    this.formData.twoStep.top -= this.heightVH;
-    this.formData.threeStep.top -= this.heightVH;
-    this.formData.fourStep.top -= this.heightVH;
-    this.formData.fiveStep.top -= this.heightVH;
-    this.formData.sixStep.top -= this.heightVH;
-    this.formData.sevenStep.top -= this.heightVH;
-    this.formData.eightStep.top -= this.heightVH;
-    this.formData.nineStep.top -= this.heightVH;
-    this.formData.tenStep.top -= this.heightVH;
-    this.formData.finalStep.top -= this.heightVH;
+  handleNext(pages: number = 1): void {
+    this.progress += (10 * pages);
+    this.formData.oneStep.top -= (this.heightVH * pages);
+    this.formData.twoStep.top -= (this.heightVH * pages);
+    this.formData.threeStep.top -= (this.heightVH * pages);
+    this.formData.fourStep.top -= (this.heightVH * pages);
+    this.formData.fiveStep.top -= (this.heightVH * pages);
+    this.formData.sixStep.top -= (this.heightVH * pages);
+    this.formData.sevenStep.top -= (this.heightVH * pages);
+    this.formData.eightStep.top -= (this.heightVH * pages);
+    this.formData.nineStep.top -= (this.heightVH * pages);
+    this.formData.tenStep.top -= (this.heightVH * pages);
+    this.formData.finalStep.top -= (this.heightVH * pages);
   }
 
-  handlePrevious(): void {
-    this.progress -= 10;
-    this.formData.oneStep.top += this.heightVH;
-    this.formData.twoStep.top += this.heightVH;
-    this.formData.threeStep.top += this.heightVH;
-    this.formData.fourStep.top += this.heightVH;
-    this.formData.fiveStep.top += this.heightVH;
-    this.formData.sixStep.top += this.heightVH;
-    this.formData.sevenStep.top += this.heightVH;
-    this.formData.eightStep.top += this.heightVH;
-    this.formData.nineStep.top += this.heightVH;
-    this.formData.tenStep.top += this.heightVH;
-    this.formData.finalStep.top += this.heightVH;
+  handlePrevious(pages: number = 1): void {
+    this.progress -= (10 * pages);
+    this.formData.oneStep.top += (this.heightVH * pages);
+    this.formData.twoStep.top += (this.heightVH * pages);
+    this.formData.threeStep.top += (this.heightVH * pages);
+    this.formData.fourStep.top += (this.heightVH * pages);
+    this.formData.fiveStep.top += (this.heightVH * pages);
+    this.formData.sixStep.top += (this.heightVH * pages);
+    this.formData.sevenStep.top += (this.heightVH * pages);
+    this.formData.eightStep.top += (this.heightVH * pages);
+    this.formData.nineStep.top += (this.heightVH * pages);
+    this.formData.tenStep.top += (this.heightVH * pages);
+    this.formData.finalStep.top += (this.heightVH * pages);
   }
 
   timeRecorsive() {
@@ -968,7 +786,42 @@ export class DesignComponent implements OnInit {
     }, 1000);
   }
 
-  setValidation(index: number) {
+  handleSendForm() {
+    this.loadingSend = true;
+    if (this.formData.oneStep.name.length == 0) {
+      alert('Incomplete information');
+      this.handlePrevious(9);
+      this.loadingSend = false;
+      return;
+    }
+    if (this.formData.twoStep.email.length == 0) {
+      alert('Incomplete information');
+      this.handlePrevious(8)
+      this.loadingSend = false;
+      return;
+    }
+    if (this.formData.tenStep.address.length == 0) {
+      alert('Incomplete information');
+      this.loadingSend = false;
+      return;
+    }
 
+    this.formData.id = nanoid();
+    this.formData.createdAt = moment().format().toString(),
+      this.formService.createForm(this.formData)
+        .then(() => {
+          this.loadingSend = false;
+          this.uploadFile();
+        })
+  }
+
+  uploadFile() {
+    this.loadingSend = true;
+    this.storageService.uploadFormFile(this.nineStep.image, this.file)
+      .then(() => this.handleNext())
+      .catch((e) => console.error(e))
+      .finally(() => {
+        this.loadingSend = false;
+      });
   }
 }

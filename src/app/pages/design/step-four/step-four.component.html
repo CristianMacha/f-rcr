@@ -1,0 +1,18 @@
+<div class="px-2 py-2 md:py-0 md:mx-0 flex items-center justify-center content-center h-full w-full">
+  <div class="w-full md:w-3/4">
+    <h1 class="text-2xl"><span class="text-primary">4.</span> {{title | uppercase}}</h1>
+    <small>{{subTitle | uppercase}}</small>
+
+    <div class="overflow-auto max-h-[80vh]">
+      <div class="my-3" *ngFor="let option of optionsSelected">
+        <ng-container *ngIf="option.selected">
+          <div>{{option.name}}</div>
+          <div class="overflow-x-auto h-[111px] md:h-[100px]">
+            <vs-step-four-area [areas]="option.areas"></vs-step-four-area>
+          </div>
+        </ng-container>
+      </div>
+      <!--<button mat-flat-button color="primary" (click)="handleSubmit()">Submit</button>-->
+    </div>
+  </div>
+</div>

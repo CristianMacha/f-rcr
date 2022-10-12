@@ -11,7 +11,7 @@ import { DetailComponent } from './detail/detail.component';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
-  columnsToDisplay = ['created', 'fullName', 'location', 'option'];
+  columnsToDisplay = ['created', 'fullName', 'email', 'location', 'option'];
   dataSource = new MatTableDataSource<any>([]);
 
   loading = false;

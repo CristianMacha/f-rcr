@@ -1,0 +1,10 @@
+<div class="px-2 md:mx-0 flex items-center justify-center content-center h-full w-full">
+  <div class="w-3/4">
+    <h1 class="text-2xl"><span class="text-primary">2.</span> {{title | uppercase}}</h1>
+    <mat-form-field appearance="standard" class="w-full">
+      <input type="email" matInput autocomplete="off" class="w-full" [formControl]="emailControl">
+      <mat-error>Is required.</mat-error>
+    </mat-form-field>
+    <!--<button mat-flat-button color="primary" (click)="handleSubmit()">Submit</button>-->
+  </div>
+</div>

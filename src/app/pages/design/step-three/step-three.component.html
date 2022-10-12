@@ -1,0 +1,41 @@
+<div class="px-2 md:mx-0 flex items-center justify-center content-center h-full w-full">
+  <div class="w-3/4">
+    <h1 class="text-2xl"><span class="text-primary">3.</span> {{title | uppercase}}</h1>
+    <small>{{subtitle | uppercase}}</small>
+    <div class="flex gap-2 flex-wrap my-3">
+      <div
+        class="py-2 px-3 text-primary border border-primary rounded-md hover:text-slate-100 hover:bg-primary-light cursor-pointer"
+        *ngFor="let option of options" [class.active]="option.selected"
+        (click)="handleSelect(option.id)">
+        {{option.name}}
+      </div>
+      <div
+        class="py-2 px-3 text-primary border border-primary rounded-md hover:text-slate-100 hover:bg-primary-light cursor-pointer"
+        *ngIf="!otherActive"
+        (click)="handleOther()">
+        OTHER
+      </div>
+      <div class="relative py-2 px-3 border border-primary rounded-md" *ngIf="otherActive">
+        <input
+          type="text"
+          placeholder="OTHER"
+          class="text-primary bg-slate-100 outline-none"
+          [formControl]="otherControl">
+        <div class="absolute right-1 top-2">
+          <svg
+            (click)="handleCheckOther()"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6 text-primary cursor-pointer hover:text-primary-dark">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <!--<button mat-flat-button color="primary" (click)="handleSubmit()">Submit</button>-->
+  </div>
+</div>
+
