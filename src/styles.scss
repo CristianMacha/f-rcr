@@ -1,6 +1,7 @@
 @use '@angular/material' as mat;
 @include mat.core();
 @import "./assets/scss/breakpoint";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -69,6 +70,9 @@ $f-cart-page-theme: mat.define-light-theme((
     primary: $f-cart-page-primary,
     accent: $f-cart-page-accent,
     warn: $f-cart-page-warn,
+  ),
+  typography: mat.define-typography-config(
+    $font-family: 'Montserrat',
   )
 ));
 
@@ -81,6 +85,9 @@ $dashboard-dark-theme: mat.define-dark-theme(
       accent: $f-cart-page-dark-accent,
       warn: $f-cart-page-warn,
     ),
+    typography: mat.define-typography-config(
+    $font-family: 'Montserrat',
+    )
   )
 );
 
@@ -104,7 +111,7 @@ html, body {
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: 'Montserrat', sans-serif; }
 
 .secction {
   width: 100%;
