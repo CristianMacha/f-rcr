@@ -12,6 +12,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 // CDK
 import {LayoutModule} from '@angular/cdk/layout';
@@ -28,6 +29,7 @@ const MATERIAL_MODULES = [
   MatSelectModule,
   MatSidenavModule,
   MatProgressBarModule,
+  MatTooltipModule,
   // CDK
   LayoutModule,
   MatListModule

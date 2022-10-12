@@ -48,7 +48,7 @@ export class DesignComponent implements OnInit {
     },
     threeStep: {
       id: 3,
-      title: `WHERE DO YOU NEED TILE?`,
+      title: `WHERE DO YOUR NEED TILE?`,
       description: `PICK ONE OR MANY AREAS`,
       filled: false,
       top: this.heightVH * 2,
@@ -236,7 +236,7 @@ export class DesignComponent implements OnInit {
             },
             {
               id: 3,
-              name: 'kitchen_3',
+              name: 'floor',
               image: 'assets/imgs/kitchen_3.jpg',
               selected: false,
               tiles: [
@@ -390,7 +390,7 @@ export class DesignComponent implements OnInit {
           areas: [
             {
               id: 1,
-              name: 'dinning_room_1',
+              name: 'table',
               image: 'assets/imgs/dinning_room_1.jpg',
               selected: false,
               tiles: [
@@ -446,7 +446,7 @@ export class DesignComponent implements OnInit {
             },
             {
               id: 3,
-              name: 'dinning_room_3',
+              name: 'floor',
               image: 'assets/imgs/dinning_room_3.jpg',
               selected: false,
               tiles: [
@@ -509,7 +509,7 @@ export class DesignComponent implements OnInit {
             },
             {
               id: 2,
-              name: 'hallway_2',
+              name: 'wall',
               image: 'assets/imgs/hallway_2.jpg',
               selected: false,
               tiles: [
@@ -565,7 +565,7 @@ export class DesignComponent implements OnInit {
             },
             {
               id: 4,
-              name: 'hallway_4',
+              name: 'floor',
               image: 'assets/imgs/hallway_4.jpg',
               selected: false,
               tiles: [
@@ -604,7 +604,7 @@ export class DesignComponent implements OnInit {
     },
     fiveStep: {
       id: 5,
-      title: 'HAVE YOU ALREADY PURCHASED THE TILE FOR YOUR PROJECT?',
+      title: 'HAVE YOUR ALREADY PURCHASED THE TILE FOR YOUR PROJECT?',
       description: '',
       haveTile: false,
       top: this.heightVH * 4,
@@ -612,14 +612,14 @@ export class DesignComponent implements OnInit {
     },
     sixStep: {
       id: 6,
-      title: 'HAVE YOU ALREADY PURCHASED THE TILE FOR YOUR PROJECT?',
+      title: 'HAVE YOUR ALREADY PURCHASED THE TILE FOR YOUR PROJECT?',
       description: 'PICK ONE OR MANY AREAS',
       top: this.heightVH * 5,
       order: 6,
     },
     sevenStep: {
       id: 7,
-      title: 'DO YOU WANT ANY SPECIAL DESIGN OR PATTERN?',
+      title: 'DO YOUR WANT ANY SPECIAL DESIGN OR PATTERN?',
       hasDesign: false,
       top: this.heightVH * 6,
       order: 8,
@@ -633,7 +633,7 @@ export class DesignComponent implements OnInit {
     },
     nineStep: {
       id: 9,
-      title: 'PICTURE OF YOU PROJECT',
+      title: 'PICTURE OF YOUR PROJECT',
       image: '',
       top: this.heightVH * 8,
       order: 10,

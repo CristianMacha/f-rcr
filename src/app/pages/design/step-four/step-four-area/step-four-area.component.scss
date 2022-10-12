@@ -2,6 +2,6 @@
 
 @layer components {
   .active {
-    @apply border-4;
+    @apply border-4 border-b-[10px];
   }
 }

@@ -3,7 +3,9 @@
     <div class="flex flex-row gap-2 box-border">
       <div *ngFor="let option of areas"
         class="border border-primary hover:border-2 transition-all cursor-pointer rounded-md w-[96px] h-[96px] box-border flex items-center"
-        [class.active]="option.selected" (click)="handleSelect(option.id)">
+        [class.active]="option.selected" (click)="handleSelect(option.id)"
+        [matTooltip]="option.name"
+        matTooltipPosition="above">
         <img [src]="option.image" class="w-full h-full rounded-md" *ngIf="option.image">
         <div *ngIf="!option.image" class="break-words p-1">{{option.name | slice:0:30}}</div>
       </div>
