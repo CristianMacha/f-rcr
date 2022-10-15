@@ -3,11 +3,11 @@
     <h1 class="text-2xl"><span class="text-primary">4.</span> {{title | uppercase}}</h1>
     <small>{{subTitle | uppercase}}</small>
 
-    <div class="overflow-auto max-h-[80vh]">
+    <div class="max-h-[80vh]">
       <div class="my-3" *ngFor="let option of optionsSelected">
         <ng-container *ngIf="option.selected">
           <div>{{option.name}}</div>
-          <div class="overflow-x-auto h-[111px] md:h-[100px]">
+          <div class="overflow-y-auto">
             <vs-step-four-area [areas]="option.areas"></vs-step-four-area>
           </div>
         </ng-container>

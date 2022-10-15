@@ -18,6 +18,8 @@ export class StepFourComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.optionsSelected);
+
   }
 
   handleSubmit() {

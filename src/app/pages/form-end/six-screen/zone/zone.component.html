@@ -1,0 +1,46 @@
+<div class="w-full">
+  <ng-container *ngFor="let zone of zonesSelected; let i = index">
+    <ng-container *ngIf="zone.selected && zoneIndexActive == i">
+      <div class="my-2 flex flex-col gap-3">
+        <div class="flex justify-between">
+          <div *ngIf="i != 0">
+            <svg
+              (click)="handlePrevious()"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 text-primary hover:text-primary-dark cursor-pointer">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
+            </svg>
+          </div>
+          <div *ngIf="i == 0"></div>
+          <div class="text-primary font-medium text-xl">{{zone.name}}</div>
+          <div *ngIf="zoneIndexActive == (zonesSelected.length - 1)"></div>
+          <div *ngIf="zoneIndexActive != (zonesSelected.length - 1)">
+            <svg
+              (click)="handleNext()"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 text-primary hover:text-primary-dark cursor-pointer">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+            </svg>
+          </div>
+        </div>
+        <div class="grid grid-rows-4 grid-cols-1 gap-2 md:grid-rows-2 md:grid-cols-2 lg:grid-rows-1 lg:grid-cols-4">
+          <div
+            *ngFor="let tile of zone.tiles"
+            (click)="handleSelectTile(zone.id, tile.id)"
+            [class.active]="tile.selected"
+            class="py-2 px-3 border border-primary rounded-md text-primary hover:bg-primary-light hover:text-slate-100 cursor-pointer">
+            {{tile.name}}
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

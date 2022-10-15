@@ -7,6 +7,7 @@ import {redirectUnauthorizedTo} from "@angular/fire/auth-guard";
 import { FormComponent } from './pages/form/form.component';
 import { DesignComponent } from './pages/design/design.component';
 import { Form2Component } from './pages/form2/form2.component';
+import { FormEndComponent } from './pages/form-end/form-end.component';
 
 const redirectUnauthorizedToCart = () => redirectUnauthorizedTo(['cart']);
 
@@ -33,7 +34,7 @@ const routes: Routes = [
   },
   {
     path: 'design',
-    component: DesignComponent,
+    component: FormEndComponent,
     title: 'design'
   },
   {

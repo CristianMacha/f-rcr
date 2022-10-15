@@ -1,0 +1,53 @@
+<div class="relative overflow-hidden">
+  <div class="relative h-screen overflow-hidden">
+    <div class="fixed top-0 z-20 w-full">
+      <mat-progress-bar value="30"></mat-progress-bar>
+    </div>
+    <vs-one-screen
+      class="absolute w-full transition-all"
+      [dataForm]="dataForm"
+      (goToPage)="goToPage($event)"
+      [style.top.px]="pages[0].top">
+    </vs-one-screen>
+
+    <vs-two-screen
+      class="absolute w-full transition-all"
+      [dataForm]="dataForm"
+      (goToPage)="goToPage($event)"
+      [style.top.px]="pages[1].top">
+    </vs-two-screen>
+
+    <vs-three-screen
+      class="absolute w-full transition-all"
+      [dataForm]="dataForm"
+      (goToPage)="goToPage($event)"
+      (selectedOption)="setAreaSelected($event)"
+      [style.top.px]="pages[2].top">
+    </vs-three-screen>
+
+    <vs-four-screen
+      class="absolute w-full transition-all"
+      [dataForm]="dataForm"
+      [areaSelected]="areaSelected"
+      (zoneSelected)="setZoneSelected($event)"
+      (goToPage)="goToPage($event)"
+      [style.top.px]="pages[3].top">
+    </vs-four-screen>
+
+    <vs-five-screen
+      class="absolute w-full transition-all"
+      [dataForm]="dataForm"
+      (goToPage)="goToPage($event)"
+      [style.top.px]="pages[4].top">
+    </vs-five-screen>
+
+    <vs-six-screen
+      class="absolute w-full transition-all"
+      [dataForm]="dataForm"
+      [areaSelected]="areaSelected"
+      [zoneSelected]="zoneSelected"
+      [style.top.px]="pages[5].top"
+      (goToPage)="goToPage($event)">
+    </vs-six-screen>
+  </div>
+</div>

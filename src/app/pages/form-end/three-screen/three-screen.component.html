@@ -1,0 +1,63 @@
+<div class="overflow-hidden relative h-screen box-border">
+  <div class="flex items-center py-4 px-4 md:px-10 lg:px-60 box-border h-full">
+    <div class="w-full">
+      <div class="text-2xl"><span class="text-primary">3. </span>{{title}}</div>
+      <small>{{subTitle}}</small>
+      <div class="flex gap-2 flex-wrap mt-2">
+          <div
+            *ngFor="let option of dataForm.areas"
+            class="py-2 px-3 border border-primary rounded-md text-primary hover:bg-primary-light hover:text-slate-100 cursor-pointer"
+            [class.active]="option.selected"
+            (click)="handleSelected(option.id)">
+            {{option.name}}
+          </div>
+          <div
+            class="py-2 px-3 border border-primary rounded-md text-primary hover:bg-primary-light hover:text-slate-100 cursor-pointer"
+            *ngIf="!otherActive"
+            (click)="handleOther()">
+            OTHER
+          </div>
+          <div *ngIf="otherActive" class="py-2 px-3 border border-primary rounded-md">
+            <div class="relative pr-7">
+              <input
+                type="text"
+                placeholder="OTHER"
+                class="bg-slate-100 outline-none text-primary"
+                [formControl]="otherControl">
+                <svg
+                  *ngIf="!otherControl.invalid"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  (click)="addNewOption()"
+                  class="w-6 h-6 text-primary cursor-pointer hover:text-primary-dark absolute right-0 top-0">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <svg
+                  *ngIf="otherControl.invalid"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  (click)="handleCloseInputOther()"
+                  class="w-6 h-6 text-primary cursor-pointer hover:text-primary-dark absolute right-0 top-0">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute z-10 bottom-4 md:bottom-4 right-4 md:right-4">
+    <button mat-fab color="primary" (click)="goToBackPage()">
+      <mat-icon>expand_less</mat-icon>
+    </button>
+    <button mat-fab color="primary" (click)="goToNextPage()">
+      <mat-icon>expand_more</mat-icon>
+    </button>
+  </div>
+</div>

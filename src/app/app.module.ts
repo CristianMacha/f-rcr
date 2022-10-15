@@ -24,6 +24,17 @@ import { StepTwoComponent } from './pages/design/step-two/step-two.component';
 import { StepThreeComponent } from './pages/design/step-three/step-three.component';
 import { StepFourComponent } from './pages/design/step-four/step-four.component';
 import { StepFourAreaComponent } from './pages/design/step-four/step-four-area/step-four-area.component';
+import { FormEndComponent } from './pages/form-end/form-end.component';
+import { OneScreenComponent } from './pages/form-end/one-screen/one-screen.component';
+import { TwoScreenComponent } from './pages/form-end/two-screen/two-screen.component';
+import { ThreeScreenComponent } from './pages/form-end/three-screen/three-screen.component';
+import { FourScreenComponent } from './pages/form-end/four-screen/four-screen.component';
+import { FiveScreenComponent } from './pages/form-end/five-screen/five-screen.component';
+import { SixScreenComponent } from './pages/form-end/six-screen/six-screen.component';
+import { SevenScreenComponent } from './pages/form-end/seven-screen/seven-screen.component';
+import { EightScreenComponent } from './pages/form-end/eight-screen/eight-screen.component';
+import { NineScreenComponent } from './pages/form-end/nine-screen/nine-screen.component';
+import { ZoneComponent } from './pages/form-end/six-screen/zone/zone.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +49,17 @@ import { StepFourAreaComponent } from './pages/design/step-four/step-four-area/s
     StepThreeComponent,
     StepFourComponent,
     StepFourAreaComponent,
+    FormEndComponent,
+    OneScreenComponent,
+    TwoScreenComponent,
+    ThreeScreenComponent,
+    FourScreenComponent,
+    FiveScreenComponent,
+    SixScreenComponent,
+    SevenScreenComponent,
+    EightScreenComponent,
+    NineScreenComponent,
+    ZoneComponent,
   ],
   imports: [
     BrowserModule,

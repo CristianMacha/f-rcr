@@ -111,7 +111,7 @@ html, body {
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: 'Montserrat', sans-serif; }
+body { margin: 0; font-family: 'Montserrat', sans-serif; box-sizing: border-box; }
 
 .secction {
   width: 100%;
