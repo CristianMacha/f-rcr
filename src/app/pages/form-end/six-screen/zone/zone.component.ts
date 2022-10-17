@@ -1,22 +1,28 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { IFZone } from '@core/interfaces';
+import { Component, Input, OnInit } from '@angular/core';
+import { IFArea, IFZone } from '@core/interfaces';
+import { FormEndService } from '../../form-end.service';
 
 @Component({
   selector: 'vs-zone',
   templateUrl: './zone.component.html',
   styleUrls: ['./zone.component.scss']
 })
-export class ZoneComponent implements OnInit, OnChanges {
-  @Input() zoneSelected!: IFZone;
-  @Input() zones!: IFZone[];
+export class ZoneComponent implements OnInit {
+  @Input() area!: IFArea;
 
   zoneIndexActive = 0;
   zonesSelected: IFZone[] = [];
 
-  constructor() { }
+  constructor(
+    private formEndService: FormEndService,
+  ) { }
 
   ngOnInit(): void {
-    this.zonesSelected = this.zones.filter((z) => z.selected);
+    this.zonesSelected = this.area.zones.filter((z) => z.selected);
+    this.formEndService.getUpdateZone$().subscribe((resp) => {
+      console.log('change');
+      this.zonesSelected = this.area.zones.filter((z) => z.selected);
+    })
   }
 
   handleSelectTile(zoneId: number, tileId: number) {
@@ -28,10 +34,6 @@ export class ZoneComponent implements OnInit, OnChanges {
 
     const tileCurrentIndex = this.zonesSelected[zoneIndex].tiles.findIndex((t) => t.id == tileId);
     this.zonesSelected[zoneIndex].tiles[tileCurrentIndex].selected = true;
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.zonesSelected = this.zones.filter((z) => z.selected);
   }
 
   handleNext() {

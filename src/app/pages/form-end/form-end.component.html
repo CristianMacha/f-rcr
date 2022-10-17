@@ -21,15 +21,12 @@
       class="absolute w-full transition-all"
       [dataForm]="dataForm"
       (goToPage)="goToPage($event)"
-      (selectedOption)="setAreaSelected($event)"
       [style.top.px]="pages[2].top">
     </vs-three-screen>
 
     <vs-four-screen
       class="absolute w-full transition-all"
       [dataForm]="dataForm"
-      [areaSelected]="areaSelected"
-      (zoneSelected)="setZoneSelected($event)"
       (goToPage)="goToPage($event)"
       [style.top.px]="pages[3].top">
     </vs-four-screen>
@@ -44,10 +41,43 @@
     <vs-six-screen
       class="absolute w-full transition-all"
       [dataForm]="dataForm"
-      [areaSelected]="areaSelected"
-      [zoneSelected]="zoneSelected"
       [style.top.px]="pages[5].top"
       (goToPage)="goToPage($event)">
     </vs-six-screen>
+
+    <vs-seven-screen
+      class="absolute w-full transition-all"
+      [dataForm]="dataForm"
+      [style.top.px]="pages[6].top"
+      (goToPage)="goToPage($event)">
+    </vs-seven-screen>
+
+    <vs-eight-screen
+      class="absolute w-full transition-all"
+      [dataForm]="dataForm"
+      [style.top.px]="pages[7].top"
+      (goToPage)="goToPage($event)">
+    </vs-eight-screen>
+
+    <vs-nine-screen
+      class="absolute w-full transition-all"
+      [dataForm]="dataForm"
+      [style.top.px]="pages[8].top"
+      (goToPage)="goToPage($event)"
+      (file)="setFile($event)">
+    </vs-nine-screen>
+
+    <vs-ten-screen
+      class="absolute w-full transition-all"
+      [dataForm]="dataForm"
+      [style.top.px]="pages[9].top"
+      [file]="file"
+      (goToPage)="goToPage($event)">
+    </vs-ten-screen>
+
+    <vs-eleven-screen
+      class="absolute w-full transition-all"
+      [style.top.px]="pages[10].top">
+    </vs-eleven-screen>
   </div>
 </div>

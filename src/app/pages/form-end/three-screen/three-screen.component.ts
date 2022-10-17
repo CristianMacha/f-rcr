@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 import { UntypedFormControl, Validators } from '@angular/forms';
 import { IFArea, IFormData } from '@core/interfaces';
+import { FormEndService } from '../form-end.service';
 
 @Component({
   selector: 'vs-three-screen',
@@ -19,7 +20,10 @@ export class ThreeScreenComponent implements OnInit {
 
   @ViewChild('otherOption') inputOther!: ElementRef;
 
-  constructor(private renderer: Renderer2) { }
+  constructor(
+    private renderer: Renderer2,
+    private formEndService: FormEndService,
+    ) { }
 
   ngOnInit(): void {
   }
@@ -32,7 +36,8 @@ export class ThreeScreenComponent implements OnInit {
   handleSelected(optionId: number) {
     const optionIndex = this.dataForm.areas.findIndex((area) => area.id == optionId);
     this.dataForm.areas[optionIndex].selected = !this.dataForm.areas[optionIndex].selected;
-    this.selectedOption.emit(this.dataForm.areas[optionIndex]);
+    this.formEndService.emitUpdateOption();
+    //this.selectedOption.emit(this.dataForm.areas[optionIndex]);
   }
 
   addNewOption() {
@@ -46,7 +51,8 @@ export class ThreeScreenComponent implements OnInit {
     this.dataForm.areas.push(newArea);
     this.otherActive = false;
     this.otherControl.reset('');
-    this.selectedOption.emit(newArea);
+    this.formEndService.emitUpdateOption();
+    //this.selectedOption.emit(newArea);
   }
 
   goToNextPage() {

@@ -1,30 +1,27 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IFArea, IFormData, IFZone } from '@core/interfaces';
+import { FormEndService } from '../form-end.service';
 
 @Component({
   selector: 'vs-six-screen',
   templateUrl: './six-screen.component.html',
   styleUrls: ['./six-screen.component.scss']
 })
-export class SixScreenComponent implements OnInit, OnChanges {
+export class SixScreenComponent implements OnInit {
   @Output() goToPage = new EventEmitter<number>();
   @Input() dataForm!: IFormData;
-  @Input() areaSelected!: IFArea;
-  @Input() zoneSelected!: IFZone;
 
   title = 'TYPE OF TILE ARE YOU PLANNING TO INSTALL?';
 
   areaIndexActive = 0;
   areasSelected: IFArea[] = [];
 
-  constructor() { }
+  constructor(private formEndService: FormEndService) { }
 
   ngOnInit(): void {
-    this.areasSelected = this.dataForm.areas.filter((area) => area.selected)
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.areasSelected = this.dataForm.areas.filter((area) => area.selected);
+    this.formEndService.getUpdateOption$().subscribe((resp) => {
+      this.areasSelected = this.dataForm.areas.filter((area) => area.selected);
+    })
   }
 
   handleNext() {
@@ -40,6 +37,7 @@ export class SixScreenComponent implements OnInit, OnChanges {
   }
 
   goToBackPage() {
+    this.areaIndexActive = 0;
     this.goToPage.emit(5);
   }
 

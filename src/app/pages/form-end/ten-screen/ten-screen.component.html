@@ -1,0 +1,20 @@
+<div class="overflow-hidden relative h-screen box-border">
+  <div class="flex items-center py-4 px-4 md:px-10 lg:px-60 box-border h-full w-full">
+    <div class="w-full">
+      <div class="text-2xl"><span class="text-primary">10. </span>{{title}}</div>
+      <mat-form-field appearance="standard" class="w-full">
+        <input type="text" matInput [formControl]="locationControl">
+        <mat-error>Is required.</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="absolute z-10 bottom-4 md:bottom-4 right-4 md:right-4">
+    <button mat-fab color="primary" [disabled]="loading" (click)="goToBackPage()">
+      <mat-icon>expand_less</mat-icon>
+    </button>
+    <button mat-fab color="primary" [disabled]="loading" (click)="finishedForm()">
+      <mat-icon>send</mat-icon>
+    </button>
+  </div>
+</div>

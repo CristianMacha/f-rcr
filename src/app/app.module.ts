@@ -35,6 +35,8 @@ import { SevenScreenComponent } from './pages/form-end/seven-screen/seven-screen
 import { EightScreenComponent } from './pages/form-end/eight-screen/eight-screen.component';
 import { NineScreenComponent } from './pages/form-end/nine-screen/nine-screen.component';
 import { ZoneComponent } from './pages/form-end/six-screen/zone/zone.component';
+import { TenScreenComponent } from './pages/form-end/ten-screen/ten-screen.component';
+import { ElevenScreenComponent } from './pages/form-end/eleven-screen/eleven-screen.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { ZoneComponent } from './pages/form-end/six-screen/zone/zone.component';
     EightScreenComponent,
     NineScreenComponent,
     ZoneComponent,
+    TenScreenComponent,
+    ElevenScreenComponent,
   ],
   imports: [
     BrowserModule,

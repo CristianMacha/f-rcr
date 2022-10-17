@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormControl, Validators } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { IFormData } from '@core/interfaces';
 
 @Component({
@@ -31,5 +31,4 @@ export class TwoScreenComponent implements OnInit {
   goToBackPage() {
     this.goToPage.emit(1);
   }
-
 }

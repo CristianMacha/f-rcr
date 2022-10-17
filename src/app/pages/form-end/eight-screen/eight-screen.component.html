@@ -1,1 +1,23 @@
-<p>eight-screen works!</p>
+<div class="overflow-hidden relative h-screen box-border">
+  <div class="flex items-center py-4 px-4 md:px-10 lg:px-60 box-border h-full w-full">
+    <div class="w-full">
+      <div class="text-2xl"><span class="text-primary">8. </span>{{title}}</div>
+      <div class="flex gap-2 flex-wrap mt-2">
+        <select class="border-2 border-primary py-2 px-4 rounded-md text-primary w-96" [formControl]="sizeControl">
+          <option value="LESS THAN 25 (SMALL)" class="text-primary">LESS THAN 25 (SMALL)</option>
+          <option value="25-150 (Medium)" class="text-primary">25-150 (Medium)</option>
+          <option value="More than 150 (Large)" class="text-primary">More than 150 (Large)</option>
+          <option value="Don't know" class="text-primary">Don't know</option>
+        </select>
+    </div>
+  </div>
+
+  <div class="absolute z-10 bottom-4 md:bottom-4 right-4 md:right-4">
+    <button mat-fab color="primary" (click)="goToBackPage()">
+      <mat-icon>expand_less</mat-icon>
+    </button>
+    <button mat-fab color="primary" (click)="goToNextPage()">
+      <mat-icon>expand_more</mat-icon>
+    </button>
+  </div>
+</div>

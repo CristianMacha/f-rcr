@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IFArea, IFormData, IFZone } from '@core/interfaces';
+import { IFormData } from '@core/interfaces';
+import { nanoid } from 'nanoid';
 
 interface IPage {
   id: number
@@ -15,6 +16,7 @@ interface IPage {
 export class FormEndComponent implements OnInit {
   innerHeight = window.innerHeight;
 
+  file!: File;
   dataForm: IFormData = {
     id: '',
     createdAt: '',
@@ -568,10 +570,6 @@ export class FormEndComponent implements OnInit {
     ]
   }
 
-  // Para controlar los cambios
-  areaSelected!: IFArea;
-  zoneSelected!: IFZone;
-
   pagesA = {
     'one': `${window.innerHeight * 0}`,
     'two': `${window.innerHeight * 1}`,
@@ -587,12 +585,11 @@ export class FormEndComponent implements OnInit {
     this.goToPage(1);
   }
 
-  setAreaSelected(area: IFArea) {
-    this.areaSelected = area;
-  }
-
-  setZoneSelected(zone: IFZone) {
-    this.zoneSelected = zone;
+  setFile(file: File) {
+    this.file = file;
+    if(this.file) {
+      this.dataForm.image = nanoid();
+    }
   }
 
   goToPage(page: number) {
@@ -623,7 +620,7 @@ export class FormEndComponent implements OnInit {
   }
 
   generatePages() {
-    for (let index = 0; index < 10; index++) {
+    for (let index = 0; index < 11; index++) {
       this.pages.push({ id: (index + 1), top: this.innerHeight * index, active: (index == 0) })
     }
   }

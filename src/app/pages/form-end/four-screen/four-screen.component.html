@@ -8,7 +8,7 @@
           <ng-container *ngFor="let option of areasSelected; let i = index;">
             <ng-container *ngIf="areaIndexActive == i">
               <div class="my-2 flex flex-col gap-3">
-                <div class="flex justify-between border-b border-primary">
+                <div class="flex justify-between border-b border-primary box-border">
                   <div *ngIf="i!=0">
                     <svg
                       (click)="handlePrevious()"
@@ -43,14 +43,15 @@
                     (click)="handleSelectZone(option.id, zone.id)"
                     [matTooltip]="zone.name"
                     matTooltipPosition="above"
-                    class="rounded-md w-[120px] h-[120px] overflow-hidden border border-primary box-border hover:p-2 transition-all cursor-pointer relative"
+                    class="border-4 border-gray-200 rounded-md hover:border-primary-light cursor-pointer box-border hover:bg-primary"
                     [class.active_zone]="zone.selected">
-                    <img [src]="zone.image" [alt]="zone.name" class="">
+                    <img [src]="zone.image" [alt]="zone.name" class="w-[120px] h-[120px] rounded-t-md">
+                    <div class="bg-primary-dark text-slate-100 p-1 rounded-b-md">{{zone.name}}</div>
                   </div>
                   <div
                     (click)="handleOtherSelect()"
                     *ngIf="!otherActive"
-                    class="rounded-md w-[120px] h-[120px] overflow-hidden border border-dashed border-primary-light box-border cursor-pointer flex items-center justify-center text-primary-light hover:text-primary hover:border-primary">
+                    class="rounded-md w-[120px] h-[156px] overflow-hidden border border-dashed border-primary-light box-border cursor-pointer flex items-center justify-center text-primary-light hover:text-primary hover:border-primary">
                     <div>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IFormData } from '@core/interfaces';
 
 @Component({
   selector: 'vs-nine-screen',
@@ -6,10 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nine-screen.component.scss']
 })
 export class NineScreenComponent implements OnInit {
+  @Output() goToPage = new EventEmitter<number>();
+  @Output() file = new EventEmitter<File>();
+  @Input() dataForm!: IFormData;
 
+  title = 'PICTURE OF YOU PROJECT';
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  selectFile(event: any) {
+    this.file.emit(event.target.files[0]);
+  }
+
+  goToNextPage() {
+    this.goToPage.emit(10);
+  }
+
+  goToBackPage() {
+    this.goToPage.emit(8);
+  }
 }

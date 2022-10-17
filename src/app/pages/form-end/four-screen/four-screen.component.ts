@@ -1,17 +1,16 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormControl, Validators } from '@angular/forms';
 import { IFArea, IFormData, IFZone } from '@core/interfaces';
+import { FormEndService } from '../form-end.service';
 
 @Component({
   selector: 'vs-four-screen',
   templateUrl: './four-screen.component.html',
   styleUrls: ['./four-screen.component.scss']
 })
-export class FourScreenComponent implements OnInit, OnChanges {
+export class FourScreenComponent implements OnInit {
   @Output() goToPage = new EventEmitter<number>();
-  @Output() zoneSelected = new EventEmitter<IFZone>();
   @Input() dataForm!: IFormData;
-  @Input() areaSelected!: IFArea;
 
   title = 'WHAT AREAS NEED TILING WORK?';
   subTitle = 'PICK ONE OR MANY AREAS';
@@ -19,25 +18,24 @@ export class FourScreenComponent implements OnInit, OnChanges {
   areasSelected: IFArea[] = [];
 
   areaIndexActive = 0;
-  //areasSelected = 0;
 
   otherActive = false;
 
-  constructor() { }
+  constructor(
+    private formEndService: FormEndService,
+  ) { }
 
   ngOnInit(): void {
-    this.areasSelected = this.dataForm.areas.filter((area) => area.selected);
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.areasSelected = this.dataForm.areas.filter((area) => area.selected);
+    this.formEndService.getUpdateOption$().subscribe((resp) => {
+      this.areasSelected = this.dataForm.areas.filter((area) => area.selected);
+    })
   }
 
   handleSelectZone(areaId: number, zoneId: number) {
     const areaIndex = this.dataForm.areas.findIndex((area) => area.id == areaId);
     const zoneIndex = this.dataForm.areas[areaIndex].zones.findIndex((zone) => zone.id == zoneId);
     this.dataForm.areas[areaIndex].zones[zoneIndex].selected = !this.dataForm.areas[areaIndex].zones[zoneIndex].selected;
-    this.zoneSelected.emit(this.dataForm.areas[areaIndex].zones[zoneIndex]);
+    this.formEndService.emitUpdateZone();
   }
 
   handleCheck(areaId: number) {
@@ -75,7 +73,7 @@ export class FourScreenComponent implements OnInit, OnChanges {
 
     this.otherActive = false;
     this.otherControl.reset('');
-    this.zoneSelected.emit(newZone);
+    this.formEndService.emitUpdateZone();
   }
 
   handleOtherSelect() {
@@ -87,10 +85,6 @@ export class FourScreenComponent implements OnInit, OnChanges {
     this.otherActive = false;
   }
 
-  goToNextPage() {
-    this.goToPage.emit(5);
-  }
-
   handleNext() {
     this.areaIndexActive++;
   }
@@ -99,7 +93,12 @@ export class FourScreenComponent implements OnInit, OnChanges {
     this.areaIndexActive--;
   }
 
+  goToNextPage() {
+    this.goToPage.emit(5);
+  }
+
   goToBackPage() {
+    this.areaIndexActive = 0;
     this.goToPage.emit(3);
   }
 
