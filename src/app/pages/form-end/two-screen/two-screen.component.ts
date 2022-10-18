@@ -5,7 +5,7 @@ import { IFormData } from '@core/interfaces';
 @Component({
   selector: 'vs-two-screen',
   templateUrl: './two-screen.component.html',
-  styleUrls: ['./two-screen.component.scss']
+  styleUrls: ['./two-screen.component.scss'],
 })
 export class TwoScreenComponent implements OnInit {
   @Output() goToPage = new EventEmitter<number>();
@@ -17,6 +17,7 @@ export class TwoScreenComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.emailControl.patchValue(this.dataForm.email);
     this.emailControl.valueChanges.subscribe((resp) => this.dataForm.email = resp);
   }
 

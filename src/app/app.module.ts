@@ -53,6 +53,7 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
@@ -61,7 +62,6 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-    BrowserAnimationsModule,
     SharedModule
   ],
   providers: [

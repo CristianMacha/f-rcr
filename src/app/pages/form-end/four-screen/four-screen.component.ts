@@ -27,9 +27,7 @@ export class FourScreenComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.formEndService.getUpdateOption$().subscribe(() => {
-      this.areasSelected = this.dataForm.areas.filter((area) => area.selected);
-    })
+    this.areasSelected = this.dataForm.areas.filter((area) => area.selected);
   }
 
   verifyZonesSelected() {

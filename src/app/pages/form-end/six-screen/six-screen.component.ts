@@ -27,9 +27,7 @@ export class SixScreenComponent implements OnInit {
   constructor(private formEndService: FormEndService) { }
 
   ngOnInit(): void {
-    this.formEndService.getUpdateOption$().subscribe((resp) => {
-      this.areasSelected = this.dataForm.areas.filter((area) => area.selected);
-    })
+    this.areasSelected = this.dataForm.areas.filter((area) => area.selected);
   }
 
   setHasError() {

@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { IFormData } from '@core/interfaces';
 import { nanoid } from 'nanoid';
@@ -11,7 +12,26 @@ interface IPage {
 @Component({
   selector: 'vs-form-end',
   templateUrl: './form-end.component.html',
-  styleUrls: ['./form-end.component.scss']
+  styleUrls: ['./form-end.component.scss'],
+  animations: [
+    trigger(
+      'animate',[
+        transition(':enter', [
+          style({
+            opacity: 0
+          }),
+          animate('300ms', style({
+            opacity: 1
+           })),
+        ]),
+        transition(':leave', [
+          animate('200ms', style({
+            opacity: 0
+           })),
+        ])
+      ]
+    )
+  ]
 })
 export class FormEndComponent implements OnInit {
   innerHeight = window.innerHeight;

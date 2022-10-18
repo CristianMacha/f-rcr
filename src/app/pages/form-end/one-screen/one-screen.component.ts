@@ -15,9 +15,11 @@ export class OneScreenComponent implements OnInit {
 
   nameControl = new UntypedFormControl('', Validators.required);
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
+    this.nameControl.patchValue(this.dataForm.fullName);
     this.nameControl.valueChanges.subscribe((name) => {
       this.dataForm.fullName = name;
     });
