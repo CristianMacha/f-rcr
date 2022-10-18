@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IFormData } from '@core/interfaces';
-import { FormEndService } from '../form-end.service';
 
 @Component({
   selector: 'vs-five-screen',
@@ -13,7 +12,6 @@ export class FiveScreenComponent implements OnInit {
 
   title = 'HAVE YOUR ALREADY PURCHASED THE TILE FOR YOUR PROJECT?';
   constructor(
-    private formEndService: FormEndService
   ) { }
 
   ngOnInit(): void {

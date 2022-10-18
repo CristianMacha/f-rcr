@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 import { IFormData } from '@core/interfaces';
 import { FormService, StorageService } from '@core/services';
 import * as moment from 'moment';
@@ -17,7 +17,7 @@ export class TenScreenComponent implements OnInit {
   @Input() dataForm!: IFormData;
 
   title = 'ONE MORE THING - WHERE WILL THE PROJECT BE?';
-  locationControl = new UntypedFormControl('');
+  locationControl = new UntypedFormControl('', Validators.required);
   loading = false;
 
   constructor(
@@ -35,6 +35,10 @@ export class TenScreenComponent implements OnInit {
 
   goToBackPage() {
     this.goToPage.emit(9);
+  }
+
+  validatePage() {
+    this.locationControl.invalid ? this.locationControl.markAsTouched() : this.finishedForm();
   }
 
   finishedForm() {

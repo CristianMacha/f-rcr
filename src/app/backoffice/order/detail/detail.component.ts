@@ -22,7 +22,7 @@ export class DetailComponent implements OnInit {
     @Inject(DOCUMENT) private document: Document,
     private storageService: StorageService,
   ) {
-    this.dataSource.data = this.data.products;
+    //this.dataSource.data = this.data.products;
   }
 
   ngOnInit(): void {

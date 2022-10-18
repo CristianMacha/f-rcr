@@ -15,6 +15,7 @@ interface IPage {
 })
 export class FormEndComponent implements OnInit {
   innerHeight = window.innerHeight;
+  progress = 10;
 
   file!: File;
   dataForm: IFormData = {
@@ -606,6 +607,7 @@ export class FormEndComponent implements OnInit {
       });
       this.pages[(page - 1)].active = true;
       currentPage.active = false;
+      this.progress -= 10;
     }
 
     if (currentPage.id < page) {
@@ -616,6 +618,7 @@ export class FormEndComponent implements OnInit {
       });
       this.pages[page-1].active = true;
       currentPage.active = false;
+      this.progress += 10;
     }
   }
 

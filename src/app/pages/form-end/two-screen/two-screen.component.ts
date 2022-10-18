@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 import { IFormData } from '@core/interfaces';
 
 @Component({
@@ -12,7 +12,7 @@ export class TwoScreenComponent implements OnInit {
   @Input() dataForm!: IFormData;
 
   title = `WHAT'S YOUR EMAIL?`;
-  emailControl = new UntypedFormControl('');
+  emailControl = new UntypedFormControl('', [Validators.required, Validators.email]);
 
   constructor() { }
 

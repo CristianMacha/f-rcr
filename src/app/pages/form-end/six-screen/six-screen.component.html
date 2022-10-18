@@ -37,8 +37,12 @@
                   </div>
                 </div>
                 <div class="w-full">
-                  <vs-zone [area]="option"></vs-zone>
+                  <vs-zone
+                    [area]="option"
+                    [zoneId]="zoneIdInvalid"
+                    (selectedOneOption)="setHasError()"></vs-zone>
                 </div>
+                <small *ngIf="hasError" class="text-red-500">Select at least one option.</small>
               </div>
             </ng-container>
           </ng-container>
@@ -51,7 +55,7 @@
     <button mat-fab color="primary" (click)="goToBackPage()">
       <mat-icon>expand_less</mat-icon>
     </button>
-    <button mat-fab color="primary" (click)="goToNextPage()">
+    <button mat-fab color="primary" (click)="verifySelectedOption()">
       <mat-icon>expand_more</mat-icon>
     </button>
   </div>

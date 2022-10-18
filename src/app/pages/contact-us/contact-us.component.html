@@ -1,0 +1,109 @@
+<div class="w-full">
+  <div class="bg-primary rounded-b-3xl md:absolute md:top-2 md:bottom-2 md:left-2 md:rounded-t-3xl md:px-5 md:py-6 w-full md:w-[350px] overflow-hidden">
+    <div class="w-full text-center md:text-start mt-5 md:mt-0">
+      <div class="text-2xl text-slate-100 font-semibold md:text-3xl">Get in touch!</div>
+      <div class="text-sm text-slate-100">Contact us for a quote, help or to join the team.</div>
+    </div>
+    <div class="w-full mt-2 p-5 md:mt-20 z-40">
+      <div class="flex gap-5 justify-between flex-col">
+        <div class="flex gap-1 flex-col items-center text-slate-100 md:flex-row">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-[#dd9932]">
+            <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+          </svg>
+          <div>Kansas</div>
+        </div>
+
+        <div class="flex gap-1 flex-col items-center text-slate-100 md:flex-row">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-[#dd9932]">
+            <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
+          </svg>
+          <div>913-438-TILE (8453)</div>
+        </div>
+
+        <div class="flex gap-1 flex-col items-center text-slate-100 md:flex-row">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-[#dd9932]">
+            <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+            <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+          </svg>
+          <div>info@rcr-flooring.com</div>
+        </div>
+      </div>
+    </div>
+    <div class="absolute w-[300px] h-[300px] bg-[#dd9932] -bottom-20 -right-20 rounded-full hidden md:block">
+    <div class="absolute w-40 h-40 bg-primary-light -top-5 -left-5 rounded-full hidden md:block mix-blend-multiply"></div>
+    </div>
+  </div>
+
+  <div class="w-full ml-0 md:ml-[360px] box-border md:w-auto p-3 md:p-5 lg:p-10">
+    <div class="hidden md:block">
+      <div class="w-full">
+        <div class="text-center text-3xl font-bold">Contact Us</div>
+        <div class="text-center text-sm mt-2">Any question or remarks? Just write us a message!</div>
+      </div>
+    </div>
+    <div class="p-3 md:text-end">
+      <form [formGroup]="contactUsForm" class="mb-2">
+        <div class="grid grid-rows-4 grid-cols-1 lg:grid-rows-4 lg:grid-cols-2 gap-2">
+          <mat-form-field class="col-span-1 lg:col-span-2">
+            <mat-label>Full Name</mat-label>
+            <input
+              type="text"
+              matInput
+              placeholder="Full Name"
+              autocomplete="off"
+              formControlName="fullName">
+            <mat-error>Full name is required.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input
+              type="email"
+              matInput
+              placeholder="Email"
+              autocomplete="off"
+              formControlName="email">
+            <mat-error>Email is required.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>City</mat-label>
+            <input
+              type="text"
+              matInput
+              placeholder="city"
+              autocomplete="off"
+              formControlName="city">
+            <mat-error>City is required.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="col-span-1 lg:col-span-2">
+            <mat-label>Message</mat-label>
+            <input
+              type="text"
+              matInput
+              placeholder="Message"
+              autocomplete="off"
+              formControlName="message">
+          </mat-form-field>
+
+          <div class="w-full col-span-1 lg:col-span-2">
+            <p>Upload your Sketch / Layout / Drawing</p>
+            <input
+              id="fileUpload"
+              type="file"
+              class="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 w-full"
+              (change)="handleSelectFile($event)">
+          </div>
+        </div>
+      </form>
+      <button
+        mat-flat-button
+        color="primary"
+        class="w-full md:w-auto"
+        (click)="handleCheckout()"
+        [disabled]="loading">Checkout
+      </button>
+    </div>
+  </div>
+</div>

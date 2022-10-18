@@ -101,6 +101,7 @@
               </div>
             </ng-container>
           </ng-container>
+          <small *ngIf="hasError" class="text-red-500">Select at least one option.</small>
         </div>
       </div>
     </div>
@@ -110,7 +111,7 @@
     <button mat-fab color="primary" (click)="goToBackPage()">
       <mat-icon>expand_less</mat-icon>
     </button>
-    <button mat-fab color="primary" (click)="goToNextPage()">
+    <button mat-fab color="primary" (click)="verifyZonesSelected()">
       <mat-icon>expand_more</mat-icon>
     </button>
   </div>

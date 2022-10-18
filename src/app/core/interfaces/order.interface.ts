@@ -3,7 +3,7 @@ import {ProductInterface} from "./product.interface";
 export interface OrderInterface {
   code: string;
   contact: ContactInterface,
-  products: ProductInterface[],
+  products?: ProductInterface[],
   createdAt: string,
 }
 

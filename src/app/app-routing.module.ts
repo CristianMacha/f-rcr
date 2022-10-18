@@ -1,36 +1,23 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {CartComponent} from './pages/cart/cart.component';
 import {CheckoutComponent} from "./pages/checkout/checkout.component";
 import {AngularFireAuthGuard} from "@angular/fire/compat/auth-guard";
 import {redirectUnauthorizedTo} from "@angular/fire/auth-guard";
-import { FormComponent } from './pages/form/form.component';
-import { DesignComponent } from './pages/design/design.component';
-import { Form2Component } from './pages/form2/form2.component';
 import { FormEndComponent } from './pages/form-end/form-end.component';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 
 const redirectUnauthorizedToCart = () => redirectUnauthorizedTo(['cart']);
 
 const routes: Routes = [
   {
-    path: 'cart',
-    component: CartComponent,
-    title: 'Cart'
+    path: 'contact',
+    component: ContactUsComponent,
+    title: 'Contact Us'
   },
   {
     path: 'checkout',
     component: CheckoutComponent,
     title: 'Checkout',
-  },
-  {
-    path: 'form',
-    component: FormComponent,
-    title: 'form'
-  },
-  {
-    path: 'form2',
-    component: Form2Component,
-    title: 'form2'
   },
   {
     path: 'design',
@@ -49,7 +36,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'cart',
+    redirectTo: 'contact',
     pathMatch: 'full',
   }
 ];

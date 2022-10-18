@@ -13,7 +13,7 @@ export class OneScreenComponent implements OnInit {
 
   title = `HELLO, WHAT'S YOUR NAME?`;
 
-  nameControl = new UntypedFormControl('');
+  nameControl = new UntypedFormControl('', Validators.required);
 
   constructor() { }
 

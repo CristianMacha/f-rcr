@@ -49,6 +49,7 @@
             </div>
           </div>
       </div>
+      <small class="text-red-500" *ngIf="!hasOneSelected">Select at least one option.</small>
     </div>
   </div>
 
@@ -56,7 +57,7 @@
     <button mat-fab color="primary" (click)="goToBackPage()">
       <mat-icon>expand_less</mat-icon>
     </button>
-    <button mat-fab color="primary" (click)="goToNextPage()">
+    <button mat-fab color="primary" (click)="verifySomeOneSeleceted()">
       <mat-icon>expand_more</mat-icon>
     </button>
   </div>

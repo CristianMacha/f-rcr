@@ -20,15 +20,30 @@ export class FourScreenComponent implements OnInit {
   areaIndexActive = 0;
 
   otherActive = false;
+  hasError = false;
 
   constructor(
     private formEndService: FormEndService,
   ) { }
 
   ngOnInit(): void {
-    this.formEndService.getUpdateOption$().subscribe((resp) => {
+    this.formEndService.getUpdateOption$().subscribe(() => {
       this.areasSelected = this.dataForm.areas.filter((area) => area.selected);
     })
+  }
+
+  verifyZonesSelected() {
+    const areaVerify: boolean[] = [];
+    this.areasSelected.forEach((a) => {
+      const valid = a.zones.some((z) => z.selected);
+      areaVerify.push(valid);
+    })
+    this.hasError = areaVerify.some(e => e == false);
+    if (this.hasError) {
+      this.areaIndexActive = areaVerify.findIndex((e) => e == false);
+    }
+
+    !this.hasError && this.goToNextPage();
   }
 
   handleSelectZone(areaId: number, zoneId: number) {
@@ -36,6 +51,7 @@ export class FourScreenComponent implements OnInit {
     const zoneIndex = this.dataForm.areas[areaIndex].zones.findIndex((zone) => zone.id == zoneId);
     this.dataForm.areas[areaIndex].zones[zoneIndex].selected = !this.dataForm.areas[areaIndex].zones[zoneIndex].selected;
     this.formEndService.emitUpdateZone();
+    this.hasError = false;
   }
 
   handleCheck(areaId: number) {

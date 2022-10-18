@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild, ViewChildren } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormControl, Validators } from '@angular/forms';
 import { IFArea, IFormData } from '@core/interfaces';
 import { FormEndService } from '../form-end.service';
@@ -17,11 +17,9 @@ export class ThreeScreenComponent implements OnInit {
   subTitle = 'PICK ONE OR MANY AREAS';
   otherActive = false;
   otherControl = new UntypedFormControl('', Validators.required);
-
-  @ViewChild('otherOption') inputOther!: ElementRef;
+  hasOneSelected = true;
 
   constructor(
-    private renderer: Renderer2,
     private formEndService: FormEndService,
     ) { }
 
@@ -34,10 +32,10 @@ export class ThreeScreenComponent implements OnInit {
   }
 
   handleSelected(optionId: number) {
+    this.hasOneSelected = true;
     const optionIndex = this.dataForm.areas.findIndex((area) => area.id == optionId);
     this.dataForm.areas[optionIndex].selected = !this.dataForm.areas[optionIndex].selected;
     this.formEndService.emitUpdateOption();
-    //this.selectedOption.emit(this.dataForm.areas[optionIndex]);
   }
 
   addNewOption() {
@@ -52,7 +50,11 @@ export class ThreeScreenComponent implements OnInit {
     this.otherActive = false;
     this.otherControl.reset('');
     this.formEndService.emitUpdateOption();
-    //this.selectedOption.emit(newArea);
+  }
+
+  verifySomeOneSeleceted() {
+    this.hasOneSelected = this.dataForm.areas.some((a) => a.selected);
+    (this.hasOneSelected) && this.goToNextPage();
   }
 
   goToNextPage() {

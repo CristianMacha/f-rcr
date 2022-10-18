@@ -16,14 +16,6 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {FIREBASE_OPTIONS} from "@angular/fire/compat";
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import {SharedModule} from "./shared/shared.module";
-import { FormComponent } from './pages/form/form.component';
-import { DesignComponent } from './pages/design/design.component';
-import { Form2Component } from './pages/form2/form2.component';
-import { StepOneComponent } from './pages/design/step-one/step-one.component';
-import { StepTwoComponent } from './pages/design/step-two/step-two.component';
-import { StepThreeComponent } from './pages/design/step-three/step-three.component';
-import { StepFourComponent } from './pages/design/step-four/step-four.component';
-import { StepFourAreaComponent } from './pages/design/step-four/step-four-area/step-four-area.component';
 import { FormEndComponent } from './pages/form-end/form-end.component';
 import { OneScreenComponent } from './pages/form-end/one-screen/one-screen.component';
 import { TwoScreenComponent } from './pages/form-end/two-screen/two-screen.component';
@@ -37,20 +29,13 @@ import { NineScreenComponent } from './pages/form-end/nine-screen/nine-screen.co
 import { ZoneComponent } from './pages/form-end/six-screen/zone/zone.component';
 import { TenScreenComponent } from './pages/form-end/ten-screen/ten-screen.component';
 import { ElevenScreenComponent } from './pages/form-end/eleven-screen/eleven-screen.component';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CartComponent,
     CheckoutComponent,
-    FormComponent,
-    DesignComponent,
-    Form2Component,
-    StepOneComponent,
-    StepTwoComponent,
-    StepThreeComponent,
-    StepFourComponent,
-    StepFourAreaComponent,
     FormEndComponent,
     OneScreenComponent,
     TwoScreenComponent,
@@ -64,6 +49,7 @@ import { ElevenScreenComponent } from './pages/form-end/eleven-screen/eleven-scr
     ZoneComponent,
     TenScreenComponent,
     ElevenScreenComponent,
+    ContactUsComponent,
   ],
   imports: [
     BrowserModule,
