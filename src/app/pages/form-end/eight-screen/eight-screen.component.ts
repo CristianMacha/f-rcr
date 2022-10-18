@@ -15,10 +15,11 @@ export class EightScreenComponent implements OnInit {
   sizeControl = new UntypedFormControl('LESS THAN 25 (SMALL)');
 
   constructor() {
-    this.sizeControl.valueChanges.subscribe((resp) => this.dataForm.size = resp);
   }
 
   ngOnInit(): void {
+    this.sizeControl.patchValue(this.dataForm.address);
+    this.sizeControl.valueChanges.subscribe((resp) => this.dataForm.size = resp);
   }
 
   goToNextPage() {
