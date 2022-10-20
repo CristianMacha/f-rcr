@@ -1,22 +1,28 @@
-<div class="overflow-hidden relative h-screen box-border">
-  <div class="flex items-center py-4 px-4 md:px-10 lg:px-60 box-border h-full w-full">
+<div class="overflow-hidden relative box-border bg-white rounded-md min-w-full lg:min-w-[1000px]">
+  <div class="flex flex-row p-4 md:p-10 justify-between items-center gap-2 box-border h-full">
     <div class="w-full">
       <div class="text-2xl"><span class="text-primary">8. </span>{{title}}</div>
       <div class="mt-2 flex flex-col">
-        <input
-          type="file"
-          class="file:mr-4 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:text-primary file:bg-indigo-200 border-2 border-primary rounded-md p-1 hover:file:bg-indigo-300"
+        <input type="file"
+          class=" file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:text-primary file:bg-indigo-200 border-2 border-primary rounded-md p-1 hover:file:bg-indigo-300 w-auto"
           (change)="selectFile($event)">
         <small class="text-primary-dark">Max. file size: 10MB</small>
+      </div>
     </div>
   </div>
 
-  <div class="absolute z-10 bottom-4 md:bottom-4 right-4 md:right-4">
-    <button mat-fab color="primary" (click)="goToBackPage()">
-      <mat-icon>chevron_left</mat-icon>
-    </button>
-    <button mat-fab color="primary" (click)="goToNextPage()">
-      <mat-icon>chevron_right</mat-icon>
-    </button>
+  <div class="bg-primary flex">
+    <div class="w-1/2 pt-3 pl-3 pb-3 cursor-pointer hover:bg-primary-dark border-r border-gray-400"
+      (click)="goToBackPage()">
+      <div class="text-slate-100 flex items-center justify-start">
+        <mat-icon>chevron_left</mat-icon> PREVIOUS
+      </div>
+    </div>
+    <div class="w-1/2 pt-3 pr-3 pb-3 cursor-pointer hover:bg-primary-dark border-l border-gray-400"
+      (click)="goToNextPage()">
+      <div class="text-slate-100 flex items-center justify-end">
+        NEXT <mat-icon>chevron_right</mat-icon>
+      </div>
+    </div>
   </div>
 </div>
