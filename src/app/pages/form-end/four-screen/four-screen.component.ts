@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { IFArea, IFormData, IFZone } from '@core/interfaces';
 import { FormEndService } from '../form-end.service';
+import { AproxSquareComponent } from './components/aprox-square/aprox-square.component';
 
 @Component({
   selector: 'vs-four-screen',
@@ -24,10 +26,29 @@ export class FourScreenComponent implements OnInit {
 
   constructor(
     private formEndService: FormEndService,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
     this.areasSelected = this.dataForm.areas.filter((area) => area.selected);
+  }
+
+  handleSelectZoneAndOpenDialog(areaId: number, zone: IFZone) {
+    if(zone.selected) {
+      this.handleSelectZone(areaId, zone.id);
+    } else {
+      const dialogRef = this.dialog.open(AproxSquareComponent, {
+        width: '500px',
+        data: zone
+      });
+
+      dialogRef.afterClosed().subscribe((resp) => {
+        if(resp.length > 1) {
+          zone.size = resp;
+          this.handleSelectZone(areaId, zone.id)
+        }
+      })
+    }
   }
 
   verifyZonesSelected() {
@@ -58,7 +79,8 @@ export class FourScreenComponent implements OnInit {
       id: this.dataForm.areas[areaIndex].zones.length + 1,
       image: 'assets/imgs/other.png',
       name: this.otherControl.value,
-      selected: true,
+      selected: false,
+      size: '',
       tiles: [
         {
           id: 1,

@@ -26,6 +26,6 @@ export class NineScreenComponent implements OnInit {
   }
 
   goToBackPage() {
-    this.goToPage.emit(8);
+    this.goToPage.emit(7);
   }
 }

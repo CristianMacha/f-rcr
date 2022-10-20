@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>{{data.fullName | uppercase}}</h1>
+<h1 mat-dialog-title class="font-semibold">{{data.fullName | uppercase}}</h1>
 <div mat-dialog-content>
   <div class="skip_content">
     <h3>EMAIL</h3>
@@ -7,11 +7,6 @@
   <div class="skip_content">
     <h3>ADDRESS</h3>
     <div>{{data.address}}</div>
-  </div>
-
-  <div class="skip_content">
-    <h3>HAVE YOU ALREADY PURCHASED THE TILE FOR YOUR PROJECT?</h3>
-    <div>{{data.haveTile ? 'YES' : 'NO'}}</div>
   </div>
 
   <div class="skip_content">
@@ -43,8 +38,18 @@
       <div class="border-b border-primary px-3 text-primary">{{area.name | uppercase}}</div>
       <div class="py-2 px-3">
         <ng-container *ngFor="let zone of area.zones">
-          <div *ngIf="zone.selected">
-            {{zone.name | uppercase}}: <ng-container *ngFor="let tile of zone.tiles"><span *ngIf="tile.selected">{{tile.name | lowercase}}, </span></ng-container>
+          <div *ngIf="zone.selected" class="mb-4">
+            <div class="flex justify-between">
+              <div class="font-semibold">
+                {{zone.name | uppercase}}
+              </div>
+              <div class="font-semibold">
+                {{zone.size}}
+              </div>
+            </div>
+            <ng-container *ngFor="let tile of zone.tiles">
+              <div *ngIf="tile.selected">{{tile.name | lowercase}}, </div>
+            </ng-container>
           </div>
         </ng-container>
       </div>

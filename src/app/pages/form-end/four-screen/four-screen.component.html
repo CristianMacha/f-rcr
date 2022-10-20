@@ -40,13 +40,14 @@
                 <div class="flex flex-wrap gap-2 justify-center">
                   <div
                     *ngFor="let zone of option.zones;"
-                    (click)="handleSelectZone(option.id, zone.id)"
+                    (click)="handleSelectZoneAndOpenDialog(option.id, zone)"
                     [matTooltip]="zone.name"
                     matTooltipPosition="above"
-                    class="border-4 border-gray-200 rounded-md hover:border-primary-light cursor-pointer box-border hover:bg-primary"
+                    class="border-4 border-gray-200 rounded-md hover:border-primary-light cursor-pointer box-border hover:bg-primary relative"
                     [class.active_zone]="zone.selected">
+                    <div *ngIf="zone.selected" class="bg-primary-dark text-slate-100 p-1 rounded-b-md absolute top-0">{{zone.size | slice:0:12}}</div>
                     <img [src]="zone.image" [alt]="zone.name" class="w-[120px] h-[120px] rounded-t-md">
-                    <div class="bg-primary-dark text-slate-100 p-1 rounded-b-md">{{zone.name}}</div>
+                    <div class="bg-primary-dark text-slate-100 p-1 rounded-b-md">{{zone.name | slice:0:12}}</div>
                   </div>
                   <div
                     (click)="handleOtherSelect()"
@@ -109,10 +110,10 @@
 
   <div class="absolute z-10 bottom-4 md:bottom-4 right-4 md:right-4">
     <button mat-fab color="primary" (click)="goToBackPage()">
-      <mat-icon>expand_less</mat-icon>
+      <mat-icon>chevron_left</mat-icon>
     </button>
     <button mat-fab color="primary" (click)="verifyZonesSelected()">
-      <mat-icon>expand_more</mat-icon>
+      <mat-icon>chevron_right</mat-icon>
     </button>
   </div>
 </div>

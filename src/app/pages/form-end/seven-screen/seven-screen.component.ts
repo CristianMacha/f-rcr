@@ -21,7 +21,7 @@ export class SevenScreenComponent implements OnInit {
   }
 
   goToNextPage() {
-    this.goToPage.emit(8);
+    this.goToPage.emit(9);
   }
 
   goToBackPage() {

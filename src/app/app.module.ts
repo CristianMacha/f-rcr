@@ -30,6 +30,7 @@ import { ZoneComponent } from './pages/form-end/six-screen/zone/zone.component';
 import { TenScreenComponent } from './pages/form-end/ten-screen/ten-screen.component';
 import { ElevenScreenComponent } from './pages/form-end/eleven-screen/eleven-screen.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { AproxSquareComponent } from './pages/form-end/four-screen/components/aprox-square/aprox-square.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
     TenScreenComponent,
     ElevenScreenComponent,
     ContactUsComponent,
+    AproxSquareComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,16 @@
+<div mat-dialog-title>{{data.name | uppercase}}</div>
+<div mat-dialog-content>
+  <div class="text-sm">APPROXIMATE SQUARE FOOTAGE OF THE AREAS TO BE TILED?</div>
+  <div class="w-full py-5">
+    <select class="border-2 border-primary py-2 px-4 rounded-md text-primary w-full" [formControl]="sizeControl">
+      <option value="" class="text-primary">Select</option>
+      <option value="<50" class="text-primary">LESS THAN 25 (SMALL)</option>
+      <option value="25-150" class="text-primary">25-150 (Medium)</option>
+      <option value=">150" class="text-primary">More than 150 (Large)</option>
+      <option value="Don't know" class="text-primary">Don't know</option>
+    </select>
+  </div>
+</div>
+<div mat-dialog-actions [align]="'end'">
+  <button mat-flat-button color="primary" (click)="handleAccept()">ACCEPT</button>
+</div>

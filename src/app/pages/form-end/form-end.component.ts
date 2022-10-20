@@ -59,6 +59,7 @@ export class FormEndComponent implements OnInit {
             name: 'floor',
             image: 'assets/imgs/bathroom_1.jpg',
             selected: false,
+            size: '',
             tiles: [
               {
                 id: 1,
@@ -87,6 +88,7 @@ export class FormEndComponent implements OnInit {
             name: 'backsplash',
             image: 'assets/imgs/bathroom_2.jpg',
             selected: false,
+            size: '',
             tiles: [
               {
                 id: 1,
@@ -115,6 +117,7 @@ export class FormEndComponent implements OnInit {
             name: 'tub/shower',
             image: 'assets/imgs/bathroom_3.jpg',
             selected: false,
+            size: '',
             tiles: [
               {
                 id: 1,
@@ -143,6 +146,7 @@ export class FormEndComponent implements OnInit {
             name: 'wall',
             image: 'assets/imgs/bathroom_4.jpg',
             selected: false,
+            size: '',
             tiles: [
               {
                 id: 1,
@@ -178,6 +182,7 @@ export class FormEndComponent implements OnInit {
             name: 'kitchen_1',
             image: 'assets/imgs/kitchen_1.jpg',
             selected: false,
+            size: '',
             tiles: [
               {
                 id: 1,
@@ -206,6 +211,7 @@ export class FormEndComponent implements OnInit {
             name: 'kitchen_2',
             image: 'assets/imgs/kitchen_2.jpg',
             selected: false,
+            size: '',
             tiles: [
               {
                 id: 1,
@@ -234,6 +240,7 @@ export class FormEndComponent implements OnInit {
             name: 'floor',
             image: 'assets/imgs/kitchen_3.jpg',
             selected: false,
+            size: '',
             tiles: [
               {
                 id: 1,
@@ -262,6 +269,7 @@ export class FormEndComponent implements OnInit {
             name: 'kitchen_4',
             image: 'assets/imgs/kitchen_4.jpg',
             selected: false,
+            size: '',
             tiles: [
               {
                 id: 1,
@@ -297,6 +305,7 @@ export class FormEndComponent implements OnInit {
             name: 'exterior_1',
             image: 'assets/imgs/exterior_1.jpg',
             selected: false,
+            size: '',
             tiles: [
               {
                 id: 1,
@@ -325,6 +334,7 @@ export class FormEndComponent implements OnInit {
             name: 'exterior_2',
             image: 'assets/imgs/exterior_2.jpg',
             selected: false,
+            size: '',
             tiles: [
               {
                 id: 1,
@@ -353,6 +363,7 @@ export class FormEndComponent implements OnInit {
             name: 'exterior_3',
             image: 'assets/imgs/exterior_3.jpg',
             selected: false,
+            size: '',
             tiles: [
               {
                 id: 1,
@@ -388,6 +399,7 @@ export class FormEndComponent implements OnInit {
             name: 'table',
             image: 'assets/imgs/dinning_room_1.jpg',
             selected: false,
+            size: '',
             tiles: [
               {
                 id: 1,
@@ -416,6 +428,7 @@ export class FormEndComponent implements OnInit {
             name: 'dinning_room_2',
             image: 'assets/imgs/dinning_room_2.jpg',
             selected: false,
+            size: '',
             tiles: [
               {
                 id: 1,
@@ -444,6 +457,7 @@ export class FormEndComponent implements OnInit {
             name: 'floor',
             image: 'assets/imgs/dinning_room_3.jpg',
             selected: false,
+            size: '',
             tiles: [
               {
                 id: 1,
@@ -479,6 +493,7 @@ export class FormEndComponent implements OnInit {
             name: 'hallway_1',
             image: 'assets/imgs/hallway_1.jpg',
             selected: false,
+            size: '',
             tiles: [
               {
                 id: 1,
@@ -507,6 +522,7 @@ export class FormEndComponent implements OnInit {
             name: 'wall',
             image: 'assets/imgs/hallway_2.jpg',
             selected: false,
+            size: '',
             tiles: [
               {
                 id: 1,
@@ -535,6 +551,7 @@ export class FormEndComponent implements OnInit {
             name: 'hallway_3',
             image: 'assets/imgs/hallway_3.jpg',
             selected: false,
+            size: '',
             tiles: [
               {
                 id: 1,
@@ -563,6 +580,7 @@ export class FormEndComponent implements OnInit {
             name: 'floor',
             image: 'assets/imgs/hallway_4.jpg',
             selected: false,
+            size: '',
             tiles: [
               {
                 id: 1,
@@ -614,32 +632,7 @@ export class FormEndComponent implements OnInit {
   }
 
   goToPage(page: number) {
-    const currentPage = this.pages.find((p) => p.active == true);
-
-    if (!currentPage) { return }
-    if (currentPage.id == page) { return }
-
-    if (currentPage.id > page) {
-      const pagesSalt = currentPage.id - page;
-      const subtractHeight = window.innerHeight * pagesSalt;
-      this.pages.forEach((p) => {
-        p.top += subtractHeight;
-      });
-      this.pages[(page - 1)].active = true;
-      currentPage.active = false;
-      this.progress -= 10;
-    }
-
-    if (currentPage.id < page) {
-      const pagesSalt = page - currentPage.id;
-      const subtractHeight = window.innerHeight * pagesSalt;
-      this.pages.forEach((p) => {
-        p.top -= subtractHeight;
-      });
-      this.pages[page-1].active = true;
-      currentPage.active = false;
-      this.progress += 10;
-    }
+    this.progress = page * 10;
   }
 
   generatePages() {
