@@ -58,10 +58,6 @@ export class ThreeScreenComponent implements OnInit {
   }
 
   goToNextPage() {
-    this.goToPage.emit(4);
-  }
-
-  goToBackPage() {
     this.goToPage.emit(2);
   }
 

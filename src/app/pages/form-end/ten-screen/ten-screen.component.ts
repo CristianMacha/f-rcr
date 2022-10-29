@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { IFormData } from '@core/interfaces';
 import { FormService, StorageService } from '@core/services';
 import * as moment from 'moment';
@@ -17,7 +17,11 @@ export class TenScreenComponent implements OnInit {
   @Input() dataForm!: IFormData;
 
   title = 'ONE MORE THING - WHERE WILL THE PROJECT BE?';
-  locationControl = new UntypedFormControl('', Validators.required);
+  userInfoForm = new UntypedFormGroup({
+    name: new UntypedFormControl('', Validators.required),
+    email: new UntypedFormControl('', [Validators.required, Validators.email]),
+    city: new UntypedFormControl('', Validators.required),
+  })
   loading = false;
 
   constructor(
@@ -26,19 +30,23 @@ export class TenScreenComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.locationControl.valueChanges.subscribe((resp) => this.dataForm.address = resp);
+    this.userInfoForm.valueChanges.subscribe((resp) => {
+      this.dataForm.fullName = resp.name;
+      this.dataForm.email = resp.email;
+      this.dataForm.address = resp.city;
+    })
   }
 
   goToNextPage() {
-    this.goToPage.emit(11);
+    this.goToPage.emit(7);
   }
 
   goToBackPage() {
-    this.goToPage.emit(9);
+    this.goToPage.emit(5);
   }
 
   validatePage() {
-    this.locationControl.invalid ? this.locationControl.markAsTouched() : this.finishedForm();
+    this.userInfoForm.invalid ? this.userInfoForm.markAllAsTouched() : this.finishedForm();
   }
 
   finishedForm() {

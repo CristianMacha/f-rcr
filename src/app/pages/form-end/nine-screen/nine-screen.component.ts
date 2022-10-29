@@ -22,10 +22,10 @@ export class NineScreenComponent implements OnInit {
   }
 
   goToNextPage() {
-    this.goToPage.emit(10);
+    this.goToPage.emit(6);
   }
 
   goToBackPage() {
-    this.goToPage.emit(7);
+    this.goToPage.emit(4);
   }
 }

@@ -69,12 +69,12 @@ export class SixScreenComponent implements OnInit {
   }
 
   goToNextPage() {
-    this.goToPage.emit(7);
+    this.goToPage.emit(5);
   }
 
   goToBackPage() {
     this.areaIndexActive = 0;
-    this.goToPage.emit(5);
+    this.goToPage.emit(3);
   }
 
 }

@@ -20,12 +20,12 @@ interface IPage {
           style({
             opacity: 0
           }),
-          animate('300ms', style({
+          animate('100ms', style({
             opacity: 1
            })),
         ]),
         transition(':leave', [
-          animate('200ms', style({
+          animate('100ms', style({
             opacity: 0
            })),
         ])
@@ -36,6 +36,7 @@ interface IPage {
 export class FormEndComponent implements OnInit {
   innerHeight = window.innerHeight;
   progress = 10;
+  progressBar = 0;
 
   file!: File;
   dataForm: IFormData = {
@@ -45,7 +46,6 @@ export class FormEndComponent implements OnInit {
     email: '',
     address: '',
     haveTile: false,
-    hasDesign: false,
     size: 'LESS THAN 25 (SMALL)',
     image: '',
     areas: [
@@ -80,6 +80,11 @@ export class FormEndComponent implements OnInit {
                 id: 4,
                 name: 'GLASS',
                 selected: false,
+              },
+              {
+                id: 5,
+                name: 'Not Sure',
+                selected: false,
               }
             ]
           },
@@ -108,6 +113,11 @@ export class FormEndComponent implements OnInit {
               {
                 id: 4,
                 name: 'GLASS',
+                selected: false,
+              },
+              {
+                id: 5,
+                name: 'Not Sure',
                 selected: false,
               }
             ]
@@ -138,6 +148,11 @@ export class FormEndComponent implements OnInit {
                 id: 4,
                 name: 'GLASS',
                 selected: false,
+              },
+              {
+                id: 5,
+                name: 'Not Sure',
+                selected: false,
               }
             ]
           },
@@ -167,6 +182,11 @@ export class FormEndComponent implements OnInit {
                 id: 4,
                 name: 'GLASS',
                 selected: false,
+              },
+              {
+                id: 5,
+                name: 'Not Sure',
+                selected: false,
               }
             ]
           },
@@ -179,36 +199,7 @@ export class FormEndComponent implements OnInit {
         zones: [
           {
             id: 1,
-            name: 'kitchen_1',
-            image: 'assets/imgs/kitchen_1.jpg',
-            selected: false,
-            size: '',
-            tiles: [
-              {
-                id: 1,
-                name: 'CERAMIC',
-                selected: false,
-              },
-              {
-                id: 2,
-                name: 'PORCELAIN',
-                selected: false,
-              },
-              {
-                id: 3,
-                name: 'NATURE STONE',
-                selected: false,
-              },
-              {
-                id: 4,
-                name: 'GLASS',
-                selected: false,
-              }
-            ]
-          },
-          {
-            id: 2,
-            name: 'kitchen_2',
+            name: 'BACKSPLASH',
             image: 'assets/imgs/kitchen_2.jpg',
             selected: false,
             size: '',
@@ -232,12 +223,17 @@ export class FormEndComponent implements OnInit {
                 id: 4,
                 name: 'GLASS',
                 selected: false,
+              },
+              {
+                id: 5,
+                name: 'Not Sure',
+                selected: false,
               }
             ]
           },
           {
-            id: 3,
-            name: 'floor',
+            id: 2,
+            name: 'FLOOR',
             image: 'assets/imgs/kitchen_3.jpg',
             selected: false,
             size: '',
@@ -261,34 +257,10 @@ export class FormEndComponent implements OnInit {
                 id: 4,
                 name: 'GLASS',
                 selected: false,
-              }
-            ]
-          },
-          {
-            id: 4,
-            name: 'kitchen_4',
-            image: 'assets/imgs/kitchen_4.jpg',
-            selected: false,
-            size: '',
-            tiles: [
-              {
-                id: 1,
-                name: 'CERAMIC',
-                selected: false,
               },
               {
-                id: 2,
-                name: 'PORCELAIN',
-                selected: false,
-              },
-              {
-                id: 3,
-                name: 'NATURE STONE',
-                selected: false,
-              },
-              {
-                id: 4,
-                name: 'GLASS',
+                id: 5,
+                name: 'Not Sure',
                 selected: false,
               }
             ]
@@ -326,6 +298,11 @@ export class FormEndComponent implements OnInit {
                 id: 4,
                 name: 'GLASS',
                 selected: false,
+              },
+              {
+                id: 5,
+                name: 'Not Sure',
+                selected: false,
               }
             ]
           },
@@ -355,6 +332,11 @@ export class FormEndComponent implements OnInit {
                 id: 4,
                 name: 'GLASS',
                 selected: false,
+              },
+              {
+                id: 5,
+                name: 'Not Sure',
+                selected: false,
               }
             ]
           },
@@ -383,6 +365,11 @@ export class FormEndComponent implements OnInit {
               {
                 id: 4,
                 name: 'GLASS',
+                selected: false,
+              },
+              {
+                id: 5,
+                name: 'Not Sure',
                 selected: false,
               }
             ]
@@ -420,6 +407,11 @@ export class FormEndComponent implements OnInit {
                 id: 4,
                 name: 'GLASS',
                 selected: false,
+              },
+              {
+                id: 5,
+                name: 'Not Sure',
+                selected: false,
               }
             ]
           },
@@ -449,6 +441,11 @@ export class FormEndComponent implements OnInit {
                 id: 4,
                 name: 'GLASS',
                 selected: false,
+              },
+              {
+                id: 5,
+                name: 'Not Sure',
+                selected: false,
               }
             ]
           },
@@ -477,6 +474,11 @@ export class FormEndComponent implements OnInit {
               {
                 id: 4,
                 name: 'GLASS',
+                selected: false,
+              },
+              {
+                id: 5,
+                name: 'Not Sure',
                 selected: false,
               }
             ]
@@ -514,6 +516,11 @@ export class FormEndComponent implements OnInit {
                 id: 4,
                 name: 'GLASS',
                 selected: false,
+              },
+              {
+                id: 5,
+                name: 'Not Sure',
+                selected: false,
               }
             ]
           },
@@ -542,6 +549,11 @@ export class FormEndComponent implements OnInit {
               {
                 id: 4,
                 name: 'GLASS',
+                selected: false,
+              },
+              {
+                id: 5,
+                name: 'Not Sure',
                 selected: false,
               }
             ]
@@ -572,6 +584,11 @@ export class FormEndComponent implements OnInit {
                 id: 4,
                 name: 'GLASS',
                 selected: false,
+              },
+              {
+                id: 5,
+                name: 'Not Sure',
+                selected: false,
               }
             ]
           },
@@ -600,6 +617,11 @@ export class FormEndComponent implements OnInit {
               {
                 id: 4,
                 name: 'GLASS',
+                selected: false,
+              },
+              {
+                id: 5,
+                name: 'Not Sure',
                 selected: false,
               }
             ]
@@ -633,6 +655,7 @@ export class FormEndComponent implements OnInit {
 
   goToPage(page: number) {
     this.progress = page * 10;
+    this.progressBar = (this.progress / 10) * 14.28;
   }
 
   generatePages() {

@@ -2,6 +2,6 @@
 
 @layer components {
   .active {
-    @apply bg-primary text-slate-100
+    @apply bg-secondary text-primary-dark border-secondary
   }
 }

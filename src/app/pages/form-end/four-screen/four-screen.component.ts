@@ -101,6 +101,11 @@ export class FourScreenComponent implements OnInit {
           id: 4,
           name: 'GLASS',
           selected: false,
+        },
+        {
+          id: 5,
+          name: 'Not Sure',
+          selected: false,
         }
       ]
     }
@@ -110,6 +115,10 @@ export class FourScreenComponent implements OnInit {
     this.otherActive = false;
     this.otherControl.reset('');
     this.formEndService.emitUpdateZone();
+
+    const newZonePushedIndex = this.dataForm.areas[areaIndex].zones.findIndex((z) => z.id == newZone.id);
+    const zonePushed = this.dataForm.areas[areaIndex].zones[newZonePushedIndex];
+    this.handleSelectZoneAndOpenDialog(areaId, zonePushed);
   }
 
   handleOtherSelect() {
@@ -130,12 +139,12 @@ export class FourScreenComponent implements OnInit {
   }
 
   goToNextPage() {
-    this.goToPage.emit(5);
+    this.goToPage.emit(3);
   }
 
   goToBackPage() {
     this.areaIndexActive = 0;
-    this.goToPage.emit(3);
+    this.goToPage.emit(1);
   }
 
 }

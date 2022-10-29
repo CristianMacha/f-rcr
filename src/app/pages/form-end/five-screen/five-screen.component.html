@@ -1,16 +1,18 @@
 <div class="overflow-hidden relative box-border bg-white rounded-md min-w-full lg:min-w-[1000px]">
   <div class="flex flex-row p-4 md:p-10 justify-between items-center gap-2 box-border h-full">
     <div class="w-full">
-      <div class="text-2xl"><span class="text-primary">5. </span>{{title}}</div>
+      <div class="text-2xl"><span class="text-primary">3. </span>{{title}}</div>
         <div class="flex gap-2 flex-wrap mt-2">
           <div
             [class.active]="dataForm.haveTile"
+            [class.font-semibold]="dataForm.haveTile"
             (click)="handleChangeOption()"
             class="py-2 px-3 border border-primary rounded-md text-primary hover:bg-primary-light hover:text-slate-100 cursor-pointer">
             YES
           </div>
           <div
             [class.active]="!dataForm.haveTile"
+            [class.font-semibold]="!dataForm.haveTile"
             (click)="handleChangeOption()"
             class="py-2 px-3 border border-primary rounded-md text-primary hover:bg-primary-light hover:text-slate-100 cursor-pointer">
             NO
@@ -20,12 +22,15 @@
   </div>
 
   <div class="bg-primary flex">
-    <div class="w-1/2 pt-3 pl-3 pb-3 cursor-pointer hover:bg-primary-dark border-r border-gray-400" (click)="goToBackPage()">
+    <div class="w-1/2 pt-3 pl-3 pb-3 cursor-pointer hover:bg-primary-dark" (click)="goToBackPage()">
       <div class="text-slate-100 flex items-center justify-start">
         <mat-icon>chevron_left</mat-icon> PREVIOUS
       </div>
     </div>
-    <div class="w-1/2 pt-3 pr-3 pb-3 cursor-pointer hover:bg-primary-dark border-l border-gray-400" (click)="goToNextPage()">
+    <div class="bg-white rounded-full p-[2px]">
+      <img src="https://www.rcr-flooring.com/wp-content/uploads/2022/04/logonuevo.svg" class="w-[50px] h-[50px]">
+    </div>
+    <div class="w-1/2 pt-3 pr-3 pb-3 cursor-pointer hover:bg-primary-dark" (click)="goToNextPage()">
       <div class="text-slate-100 flex items-center justify-end">
           NEXT <mat-icon>chevron_right</mat-icon>
       </div>

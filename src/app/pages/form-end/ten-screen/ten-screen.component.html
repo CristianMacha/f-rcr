@@ -1,26 +1,50 @@
 <div class="overflow-hidden relative box-border bg-white rounded-md min-w-full lg:min-w-[1000px]">
   <div class="flex flex-row p-4 md:p-10 justify-between items-center gap-2 box-border h-full">
     <div class="w-full">
-      <div class="text-2xl"><span class="text-primary">9. </span>{{title}}</div>
-      <mat-form-field appearance="standard" class="w-full">
-        <input type="text" matInput [formControl]="locationControl">
-        <mat-error>Is required.</mat-error>
-      </mat-form-field>
+      <div class="text-2xl"><span class="text-primary">6. </span>{{title}}</div>
+      <form [formGroup]="userInfoForm">
+        <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
+          <div class="col-span-1">
+            <mat-form-field appearance="standard" class="w-full">
+              <label for="name">Name</label>
+              <input type="text" matInput formControlName="name">
+              <mat-error>Is required.</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-span-1">
+            <mat-form-field appearance="standard" class="w-full">
+              <label for="email">Email</label>
+              <input type="text" matInput formControlName="email">
+              <mat-error>Is required.</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-span-1 md:col-span-2">
+            <mat-form-field appearance="standard" class="w-full">
+              <label for="city">City</label>
+              <input type="text" matInput formControlName="city">
+              <mat-error>Is required.</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 
   <div class="bg-primary flex">
-    <div class="w-1/2 pt-3 pl-3 pb-3 cursor-pointer hover:bg-primary-dark border-r border-gray-400" (click)="goToBackPage()">
+    <div class="w-1/2 pt-3 pl-3 pb-3 cursor-pointer hover:bg-primary-dark" (click)="goToBackPage()">
       <div class="text-slate-100 flex items-center justify-start">
         <mat-icon>chevron_left</mat-icon> PREVIOUS
       </div>
     </div>
-    <div *ngIf="!loading" class="w-1/2 pt-3 pr-3 pb-3 cursor-pointer hover:bg-primary-dark border-l border-gray-400" (click)="validatePage()">
+    <div class="bg-white rounded-full p-[2px]">
+      <img src="https://www.rcr-flooring.com/wp-content/uploads/2022/04/logonuevo.svg" class="w-[50px] h-[50px]">
+    </div>
+    <div *ngIf="!loading" class="w-1/2 pt-3 pr-3 pb-3 cursor-pointer hover:bg-primary-dark" (click)="validatePage()">
       <div class="text-slate-100 flex items-center justify-end gap-4">
           SEND <mat-icon>send</mat-icon>
       </div>
     </div>
-    <div *ngIf="loading" class="w-1/2 pt-3 pr-3 pb-3 border-l border-gray-400">
+    <div *ngIf="loading" class="w-1/2 pt-3 pr-3 pb-3">
       <div class="text-slate-100 flex items-center justify-end gap-4">
           Loading
       </div>

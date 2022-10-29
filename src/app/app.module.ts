@@ -23,7 +23,6 @@ import { ThreeScreenComponent } from './pages/form-end/three-screen/three-screen
 import { FourScreenComponent } from './pages/form-end/four-screen/four-screen.component';
 import { FiveScreenComponent } from './pages/form-end/five-screen/five-screen.component';
 import { SixScreenComponent } from './pages/form-end/six-screen/six-screen.component';
-import { SevenScreenComponent } from './pages/form-end/seven-screen/seven-screen.component';
 import { EightScreenComponent } from './pages/form-end/eight-screen/eight-screen.component';
 import { NineScreenComponent } from './pages/form-end/nine-screen/nine-screen.component';
 import { ZoneComponent } from './pages/form-end/six-screen/zone/zone.component';
@@ -44,7 +43,6 @@ import { AproxSquareComponent } from './pages/form-end/four-screen/components/ap
     FourScreenComponent,
     FiveScreenComponent,
     SixScreenComponent,
-    SevenScreenComponent,
     EightScreenComponent,
     NineScreenComponent,
     ZoneComponent,

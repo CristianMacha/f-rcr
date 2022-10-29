@@ -1,74 +1,47 @@
-<div class="overflow-hidden form_content">
-  <div class="relative h-screen overflow-hidden flex justify-center items-center w-full p-2">
+<div class="form_content">
+  <div class="relative min-h-screen overflow-hidden flex justify-center items-center w-full p-2">
     <div class="fixed top-0 z-20 w-full">
-      <mat-progress-bar [value]="progress"></mat-progress-bar>
+      <mat-progress-bar [value]="progressBar" ></mat-progress-bar>
     </div>
-    <vs-one-screen
-      @animate
-      *ngIf="progress == 10"
-      [dataForm]="dataForm"
-      (goToPage)="goToPage($event)">
-    </vs-one-screen>
-
-    <vs-two-screen
-      @animate
-      *ngIf="progress == 20"
-      [dataForm]="dataForm"
-      (goToPage)="goToPage($event)">
-    </vs-two-screen>
 
     <vs-three-screen
       @animate
-      *ngIf="progress == 30"
+      *ngIf="progress == 10"
       [dataForm]="dataForm"
       (goToPage)="goToPage($event)">
     </vs-three-screen>
 
     <vs-four-screen
       @animate
-      *ngIf="progress == 40"
+      *ngIf="progress == 20"
       [dataForm]="dataForm"
       (goToPage)="goToPage($event)">
     </vs-four-screen>
 
     <vs-five-screen
       @animate
-      *ngIf="progress == 50"
+      *ngIf="progress == 30"
       [dataForm]="dataForm"
       (goToPage)="goToPage($event)">
     </vs-five-screen>
 
     <vs-six-screen
       @animate
-      *ngIf="progress == 60"
+      *ngIf="progress == 40"
       [dataForm]="dataForm"
       (goToPage)="goToPage($event)">
     </vs-six-screen>
 
-    <vs-seven-screen
-      @animate
-      *ngIf="progress == 70"
-      [dataForm]="dataForm"
-      (goToPage)="goToPage($event)">
-    </vs-seven-screen>
-
-    <vs-eight-screen
-      @animate
-      *ngIf="progress == 80"
-      [dataForm]="dataForm"
-      (goToPage)="goToPage($event)">
-    </vs-eight-screen>
-
     <vs-nine-screen
       @animate
-      *ngIf="progress == 90"
+      *ngIf="progress == 50"
       [dataForm]="dataForm"
       (goToPage)="goToPage($event)"
       (file)="setFile($event)">
     </vs-nine-screen>
 
     <vs-ten-screen
-      *ngIf="progress == 100"
+      *ngIf="progress == 60"
       @animate
       [dataForm]="dataForm"
       [file]="file"
@@ -76,7 +49,7 @@
     </vs-ten-screen>
 
     <vs-eleven-screen
-      *ngIf="progress == 110"
+      *ngIf="progress == 70"
       @animate>
     </vs-eleven-screen>
   </div>

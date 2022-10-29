@@ -22,11 +22,11 @@ export class FiveScreenComponent implements OnInit {
   }
 
   goToNextPage() {
-    this.goToPage.emit(6);
+    this.goToPage.emit(4);
   }
 
   goToBackPage() {
-    this.goToPage.emit(4);
+    this.goToPage.emit(2);
   }
 
 }

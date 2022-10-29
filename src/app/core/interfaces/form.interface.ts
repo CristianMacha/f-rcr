@@ -5,7 +5,6 @@ export interface IFormData {
   email: string
   address: string
   haveTile: boolean
-  hasDesign: boolean
   size: string
   image: string
   areas: IFArea[]
