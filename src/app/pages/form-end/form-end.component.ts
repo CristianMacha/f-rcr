@@ -20,7 +20,7 @@ interface IPage {
           style({
             opacity: 0
           }),
-          animate('100ms', style({
+          animate('200ms', style({
             opacity: 1
            })),
         ]),
@@ -57,7 +57,7 @@ export class FormEndComponent implements OnInit {
           {
             id: 1,
             name: 'floor',
-            image: 'assets/imgs/bathroom_1.jpg',
+            image: 'assets/areas/bathroom_3.jpg',
             selected: false,
             size: '',
             tiles: [
@@ -91,7 +91,7 @@ export class FormEndComponent implements OnInit {
           {
             id: 2,
             name: 'backsplash',
-            image: 'assets/imgs/bathroom_2.jpg',
+            image: 'assets/areas/bathroom_4.jpg',
             selected: false,
             size: '',
             tiles: [
@@ -125,7 +125,7 @@ export class FormEndComponent implements OnInit {
           {
             id: 3,
             name: 'tub/shower',
-            image: 'assets/imgs/bathroom_3.jpg',
+            image: 'assets/areas/bathroom_1.jpg',
             selected: false,
             size: '',
             tiles: [
@@ -159,7 +159,7 @@ export class FormEndComponent implements OnInit {
           {
             id: 4,
             name: 'wall',
-            image: 'assets/imgs/bathroom_4.jpg',
+            image: 'assets/areas/bathroom_2.jpg',
             selected: false,
             size: '',
             tiles: [
@@ -200,7 +200,7 @@ export class FormEndComponent implements OnInit {
           {
             id: 1,
             name: 'BACKSPLASH',
-            image: 'assets/imgs/kitchen_2.jpg',
+            image: 'assets/areas/kitchen_3.jpg',
             selected: false,
             size: '',
             tiles: [
@@ -234,7 +234,7 @@ export class FormEndComponent implements OnInit {
           {
             id: 2,
             name: 'FLOOR',
-            image: 'assets/imgs/kitchen_3.jpg',
+            image: 'assets/areas/kitchen_4.jpg',
             selected: false,
             size: '',
             tiles: [
@@ -275,7 +275,7 @@ export class FormEndComponent implements OnInit {
           {
             id: 1,
             name: 'exterior_1',
-            image: 'assets/imgs/exterior_1.jpg',
+            image: 'assets/areas/exterior_1.jpg',
             selected: false,
             size: '',
             tiles: [
@@ -309,7 +309,7 @@ export class FormEndComponent implements OnInit {
           {
             id: 2,
             name: 'exterior_2',
-            image: 'assets/imgs/exterior_2.jpg',
+            image: 'assets/areas/exterior_2.jpg',
             selected: false,
             size: '',
             tiles: [
@@ -343,7 +343,7 @@ export class FormEndComponent implements OnInit {
           {
             id: 3,
             name: 'exterior_3',
-            image: 'assets/imgs/exterior_3.jpg',
+            image: 'assets/areas/exterior_3.jpg',
             selected: false,
             size: '',
             tiles: [
@@ -384,7 +384,7 @@ export class FormEndComponent implements OnInit {
           {
             id: 1,
             name: 'table',
-            image: 'assets/imgs/dinning_room_1.jpg',
+            image: 'assets/areas/dinning_room_1.jpg',
             selected: false,
             size: '',
             tiles: [
@@ -417,8 +417,8 @@ export class FormEndComponent implements OnInit {
           },
           {
             id: 2,
-            name: 'dinning_room_2',
-            image: 'assets/imgs/dinning_room_2.jpg',
+            name: 'wall',
+            image: 'assets/areas/dinning_room_2.jpg',
             selected: false,
             size: '',
             tiles: [
@@ -452,7 +452,41 @@ export class FormEndComponent implements OnInit {
           {
             id: 3,
             name: 'floor',
-            image: 'assets/imgs/dinning_room_3.jpg',
+            image: 'assets/areas/dinning_room_3.jpg',
+            selected: false,
+            size: '',
+            tiles: [
+              {
+                id: 1,
+                name: 'CERAMIC',
+                selected: false,
+              },
+              {
+                id: 2,
+                name: 'PORCELAIN',
+                selected: false,
+              },
+              {
+                id: 3,
+                name: 'NATURE STONE',
+                selected: false,
+              },
+              {
+                id: 4,
+                name: 'GLASS',
+                selected: false,
+              },
+              {
+                id: 5,
+                name: 'Not Sure',
+                selected: false,
+              }
+            ]
+          },
+          {
+            id: 4,
+            name: 'pillar',
+            image: 'assets/areas/dinning_room_4.jpg',
             selected: false,
             size: '',
             tiles: [
@@ -493,7 +527,7 @@ export class FormEndComponent implements OnInit {
           {
             id: 1,
             name: 'hallway_1',
-            image: 'assets/imgs/hallway_1.jpg',
+            image: 'assets/areas/hallway_2.jpg',
             selected: false,
             size: '',
             tiles: [
@@ -527,7 +561,7 @@ export class FormEndComponent implements OnInit {
           {
             id: 2,
             name: 'wall',
-            image: 'assets/imgs/hallway_2.jpg',
+            image: 'assets/areas/hallway_1.jpg',
             selected: false,
             size: '',
             tiles: [
@@ -560,42 +594,8 @@ export class FormEndComponent implements OnInit {
           },
           {
             id: 3,
-            name: 'hallway_3',
-            image: 'assets/imgs/hallway_3.jpg',
-            selected: false,
-            size: '',
-            tiles: [
-              {
-                id: 1,
-                name: 'CERAMIC',
-                selected: false,
-              },
-              {
-                id: 2,
-                name: 'PORCELAIN',
-                selected: false,
-              },
-              {
-                id: 3,
-                name: 'NATURE STONE',
-                selected: false,
-              },
-              {
-                id: 4,
-                name: 'GLASS',
-                selected: false,
-              },
-              {
-                id: 5,
-                name: 'Not Sure',
-                selected: false,
-              }
-            ]
-          },
-          {
-            id: 4,
             name: 'floor',
-            image: 'assets/imgs/hallway_4.jpg',
+            image: 'assets/areas/hallway_3.jpg',
             selected: false,
             size: '',
             tiles: [
@@ -629,12 +629,6 @@ export class FormEndComponent implements OnInit {
         ]
       },
     ]
-  }
-
-  pagesA = {
-    'one': `${window.innerHeight * 0}`,
-    'two': `${window.innerHeight * 1}`,
-    'three': `${window.innerHeight * 2}`,
   }
 
   pages: IPage[] = [];
